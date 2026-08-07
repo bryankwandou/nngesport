@@ -1,0 +1,223 @@
+"use client";
+
+import { motion, useInView, useMotionValue, useSpring, useTransform } from "motion/react";
+import { useEffect, useRef, type ReactNode } from "react";
+
+/* ---------------------------------------------------------------- Penanda ---- */
+
+/**
+ * Label kecil yang memberi tahu pembaca apakah sebuah keterangan punya sumber.
+ * Ini bukan hiasan. Ini yang membedakan halaman profil sungguhan dari halaman
+ * yang isinya dikarang.
+ */
+export function SourceBadge({
+  verified,
+  href,
+}: {
+  verified: boolean;
+  href?: string;
+}) {
+  if (verified && href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/25 bg-cyan-400/[0.07] px-2.5 py-1 text-[10px] font-medium tracking-wide text-cyan-400 transition-colors hover:border-cyan-400/50"
+      >
+        <span className="h-1 w-1 rounded-full bg-cyan-400" />
+        Sumber
+      </a>
+    );
+  }
+  if (verified) {
+    return (
+      <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/25 bg-cyan-400/[0.07] px-2.5 py-1 text-[10px] font-medium tracking-wide text-cyan-400">
+        <span className="h-1 w-1 rounded-full bg-cyan-400" />
+        Terkonfirmasi
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/25 bg-amber-400/[0.07] px-2.5 py-1 text-[10px] font-medium tracking-wide text-amber-400">
+      <span className="h-1 w-1 rounded-full bg-amber-400" />
+      Menunggu konfirmasi
+    </span>
+  );
+}
+
+export function Eyebrow({ children }: { children: ReactNode }) {
+  return (
+    <p className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-bone-400">
+      <span className="h-px w-7 bg-linear-to-r from-violet-500 to-cyan-400" />
+      {children}
+    </p>
+  );
+}
+
+/* ----------------------------------------------------------------- Angka ---- */
+
+/**
+ * Angka yang menghitung naik saat masuk layar.
+ * Berhenti tepat di nilai akhir, tanpa memantul, supaya tetap terbaca sebagai data.
+ */
+export function Counter({
+  to,
+  suffix = "",
+  decimals = 0,
+  className,
+}: {
+  to: number;
+  suffix?: string;
+  decimals?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-20% 0px" });
+  const raw = useMotionValue(0);
+  const smooth = useSpring(raw, { stiffness: 70, damping: 22, mass: 0.8 });
+  const shown = useTransform(smooth, (v) =>
+    v.toLocaleString("id-ID", {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals,
+    })
+  );
+
+  useEffect(() => {
+    if (inView) raw.set(to);
+  }, [inView, to, raw]);
+
+  return (
+    <span ref={ref} className={className}>
+      <motion.span>{shown}</motion.span>
+      {suffix}
+    </span>
+  );
+}
+
+/* ----------------------------------------------------------------- Kartu ---- */
+
+/**
+ * Kartu yang miring mengikuti kursor.
+ *
+ * Sudutnya sengaja dijaga kecil, sekitar enam derajat. Lebih dari itu kartunya
+ * terlihat seperti mainan, bukan seperti panel data tim.
+ */
+export function TiltCard({
+  children,
+  className,
+  intensity = 6,
+}: {
+  children: ReactNode;
+  className?: string;
+  intensity?: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const px = useMotionValue(0.5);
+  const py = useMotionValue(0.5);
+
+  const rx = useSpring(useTransform(py, [0, 1], [intensity, -intensity]), {
+    stiffness: 220,
+    damping: 24,
+  });
+  const ry = useSpring(useTransform(px, [0, 1], [-intensity, intensity]), {
+    stiffness: 220,
+    damping: 24,
+  });
+
+  /* Sorotan cahaya mengikuti kursor, dihitung sekali sebagai satu nilai gerak. */
+  const glare = useTransform(
+    [px, py],
+    ([x, y]: number[]) =>
+      `radial-gradient(360px circle at ${x * 100}% ${y * 100}%, rgba(168,85,247,0.15), transparent 68%)`
+  );
+
+  return (
+    <motion.div
+      ref={ref}
+      onPointerMove={(e) => {
+        const r = ref.current?.getBoundingClientRect();
+        if (!r) return;
+        px.set((e.clientX - r.left) / r.width);
+        py.set((e.clientY - r.top) / r.height);
+      }}
+      onPointerLeave={() => {
+        px.set(0.5);
+        py.set(0.5);
+      }}
+      style={{ rotateX: rx, rotateY: ry, transformPerspective: 1100 }}
+      className={`group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-ink-850 transition-colors duration-300 hover:border-white/[0.16] ${className ?? ""}`}
+    >
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{ background: glare }}
+      />
+      <div className="relative">{children}</div>
+    </motion.div>
+  );
+}
+
+/* ---------------------------------------------------------------- Marquee ---- */
+
+/** Pita berjalan tanpa henti. Isinya digandakan agar sambungannya tidak terlihat. */
+export function Marquee({ items }: { items: string[] }) {
+  const doubled = [...items, ...items];
+  return (
+    <div
+      className="relative flex overflow-hidden border-y border-white/[0.07] bg-ink-900 py-3.5"
+      role="marquee"
+      aria-label="Sorotan singkat"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-linear-to-r from-ink-900 to-transparent"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-linear-to-l from-ink-900 to-transparent"
+      />
+      <div className="animate-marquee flex shrink-0 items-center gap-10 whitespace-nowrap pr-10">
+        {doubled.map((t, i) => (
+          <span key={i} className="flex items-center gap-10 text-xs tracking-[0.18em] text-bone-400 uppercase">
+            {t}
+            <span className="h-1 w-1 rounded-full bg-violet-500" />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------- Slot kosong -- */
+
+/**
+ * Dipakai ketika sebuah bagian memang belum punya data.
+ * Menyatakan kekosongan itu terang-terangan jauh lebih baik daripada mengisinya
+ * dengan tebakan yang bisa dibantah orang lain.
+ */
+export function EmptyState({
+  title,
+  body,
+  action,
+}: {
+  title: string;
+  body: string;
+  action?: ReactNode;
+}) {
+  return (
+    <div className="relative overflow-hidden rounded-2xl border border-dashed border-white/[0.14] bg-ink-850/60 px-6 py-14 text-center">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-0 h-40 w-80 -translate-x-1/2 rounded-full bg-violet-600/10 blur-3xl"
+      />
+      <p className="relative font-display text-xl font-700 tracking-tight text-bone-50">
+        {title}
+      </p>
+      <p className="relative mx-auto mt-3 max-w-md text-sm leading-relaxed text-bone-400">
+        {body}
+      </p>
+      {action && <div className="relative mt-6">{action}</div>}
+    </div>
+  );
+}

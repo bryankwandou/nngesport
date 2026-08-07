@@ -1,26 +1,183 @@
 @import "tailwindcss";
 
+/*
+  Sistem warna NNG.
+
+  Dasarnya obsidian, bukan hitam murni, supaya lapisan permukaan masih bisa dibedakan
+  tanpa harus menaikkan kontras berlebihan. Ungu dipakai sebagai warna utama, sian
+  sebagai pasangannya, dan kuning hanya keluar untuk penanda capaian.
+*/
+
+@theme {
+  --color-ink-950: #07080b;
+  --color-ink-900: #0b0d13;
+  --color-ink-850: #10131b;
+  --color-ink-800: #161a24;
+  --color-ink-700: #1f2432;
+  --color-ink-600: #2b3141;
+
+  --color-bone-50: #f7f7f9;
+  --color-bone-200: #d5d6dd;
+  --color-bone-400: #9698a6;
+  --color-bone-500: #74768447;
+
+  --color-violet-400: #a855f7;
+  --color-violet-500: #8b3ff0;
+  --color-violet-600: #7c3aed;
+  --color-cyan-400: #22d3ee;
+  --color-amber-400: #fbbf24;
+
+  --font-display: var(--font-display), system-ui, sans-serif;
+  --font-sans: var(--font-body), system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+  --edge: color-mix(in oklab, var(--color-bone-50) 9%, transparent);
+  --edge-soft: color-mix(in oklab, var(--color-bone-50) 5%, transparent);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: var(--edge-soft);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ink-950);
+  color: var(--color-bone-50);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-violet-500) 40%, transparent);
+  color: var(--color-bone-50);
+}
+
+/* Fokus terlihat jelas tanpa merusak tampilan tombol berlapis. */
+:focus-visible {
+  outline: 2px solid var(--color-cyan-400);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Batang gulir yang tidak berteriak. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink-950);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-700);
+  border-radius: 99px;
+  border: 2px solid var(--color-ink-950);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-600);
+}
+
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 76rem;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-page {
+    padding-inline: 2rem;
+  }
+}
+
+/* Garis bantu vertikal yang membingkai isi halaman, meniru cetakan majalah. */
+@utility rule-y {
+  background-image: linear-gradient(to bottom, var(--edge), transparent);
+}
+
+/* Teks berlapis gradien untuk judul utama saja, bukan untuk paragraf. */
+@utility text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-bone-50) 8%,
+    var(--color-violet-400) 52%,
+    var(--color-cyan-400) 96%
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+@utility grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* Pita berjalan untuk baris pengumuman. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 34s linear infinite;
+}
+
+/* Kilau yang menyapu tepi kartu saat disentuh kursor. */
+@keyframes sweep {
+  from {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  to {
+    transform: translateX(320%) skewX(-18deg);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.animate-pulse-ring {
+  animation: pulse-ring 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* Hormati preferensi sistem untuk gerak minimal. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
