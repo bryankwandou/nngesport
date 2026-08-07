@@ -3,6 +3,7 @@ import { Sora, Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StructuredData } from "@/components/StructuredData";
 import { org, site } from "@/content/nng";
 
 /* Sora untuk judul: sudutnya tegas, cocok untuk lambang tim. */
@@ -79,6 +80,7 @@ export default function RootLayout({
         >
           Lompat ke isi
         </a>
+        <StructuredData />
         <SiteHeader />
         <main id="isi">{children}</main>
         <SiteFooter />

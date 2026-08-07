@@ -356,8 +356,51 @@ export const nav = [
   { label: "Sejarah", href: "/sejarah" },
   { label: "Roster", href: "/roster" },
   { label: "Prestasi", href: "/prestasi" },
+  { label: "Toko", href: "/toko" },
   { label: "Kanal", href: "/kanal" },
   { label: "Kontak", href: "/kontak" },
+];
+
+/**
+ * Lini dagang.
+ *
+ * Daftar barang belum terbit di sumber terbuka. Yang bisa dipastikan hanya keberadaan
+ * dua akun @nng_store di TikTok dan Instagram. Kategori di bawah adalah kerangka lazim
+ * merchandise tim, ditandai terbuka sampai katalog resminya diserahkan.
+ */
+export const storeChannels = [
+  {
+    platform: "Instagram",
+    handle: "@nng_store",
+    href: "https://www.instagram.com/nng_store/",
+    note: "Etalase produk",
+  },
+  {
+    platform: "TikTok",
+    handle: "@nng_store",
+    href: "https://www.tiktok.com/@nng_store",
+    note: "Peragaan barang dan siaran belanja",
+  },
+];
+
+export const storeCategories = [
+  {
+    name: "Jersey pertandingan",
+    detail:
+      "Seragam yang dipakai saat bertanding, biasanya terbit mengikuti musim kompetisi.",
+  },
+  {
+    name: "Kaos harian",
+    detail: "Potongan lebih longgar dengan lambang yang lebih kecil, untuk dipakai sehari-hari.",
+  },
+  {
+    name: "Penutup kepala",
+    detail: "Topi dan kupluk dengan bordir lambang perisai.",
+  },
+  {
+    name: "Perlengkapan meja",
+    detail: "Alas tetikus, gantungan kunci, dan tempelan yang menyertai pembelian.",
+  },
 ];
 
 export const contact = {
