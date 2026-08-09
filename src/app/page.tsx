@@ -288,7 +288,7 @@ export default function Beranda() {
             <div>
               <Eyebrow>Garis waktu</Eyebrow>
               <h2 className="mt-5 max-w-lg font-display text-[clamp(1.9rem,3.6vw,2.9rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-                Tujuh titik yang mengubah arah.
+                {timeline.length} titik yang mengubah arah.
               </h2>
             </div>
             <Link

@@ -288,7 +288,7 @@ export const channels = [
     handle: "@nng_esport",
     href: "https://www.tiktok.com/@nng_esport",
     note: "Kanal utama organisasi",
-    stat: "9.660 pengikut &middot; 8.381 unggahan",
+    stat: "9.660 pengikut · 8.381 unggahan",
     primary: true,
     verified: true,
     source: "https://www.tiktok.com/@nng_esport",
@@ -298,7 +298,7 @@ export const channels = [
     handle: "@nng_store",
     href: "https://www.tiktok.com/@nng_store",
     note: "Lini dagang",
-    stat: "2.307 pengikut &middot; 6.648 unggahan",
+    stat: "2.307 pengikut · 6.648 unggahan",
     primary: true,
     verified: true,
     source: "https://www.tiktok.com/@nng_store",
@@ -421,7 +421,7 @@ export const values = [
     index: "01",
     title: "Muncul setiap hari",
     body:
-      "Enam belas tahun konten tidak dibangun oleh satu video viral, tetapi oleh ribuan " +
+      "Delapan ribu unggahan tidak dibangun oleh satu video viral, tetapi oleh ribuan " +
       "hari biasa yang tetap dikerjakan meski tidak ada yang menonton.",
   },
   {

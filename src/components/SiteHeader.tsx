@@ -15,8 +15,16 @@ export function SiteHeader() {
 
   useMotionValueEvent(scrollY, "change", (v) => setLifted(v > 12));
 
-  /* Tutup laci begitu berpindah halaman, supaya tidak menutupi isi baru. */
-  useEffect(() => setOpen(false), [path]);
+  /*
+    Tutup laci begitu alamat berubah, supaya isi halaman baru tidak tertutup.
+    Penyesuaian dikerjakan saat render, bukan lewat effect, agar React tidak
+    sempat menggambar satu bingkai dengan laci yang masih terbuka di halaman baru.
+  */
+  const [pathSaatDibuka, setPathSaatDibuka] = useState(path);
+  if (pathSaatDibuka !== path) {
+    setPathSaatDibuka(path);
+    setOpen(false);
+  }
 
   /* Kunci gulir badan halaman selama laci terbuka. */
   useEffect(() => {

@@ -52,12 +52,7 @@ export default function Kanal() {
                         {c.handle}
                       </h3>
                       <p className="mt-2 text-sm text-bone-400">{c.note}</p>
-                      {c.stat && (
-                        <p
-                          className="mt-3 text-xs text-bone-200"
-                          dangerouslySetInnerHTML={{ __html: c.stat }}
-                        />
-                      )}
+                      {c.stat && <p className="mt-3 text-xs text-bone-200">{c.stat}</p>}
                       <div className="flex-1" />
                       <span className="mt-7 text-xs text-bone-400 transition-colors group-hover:text-volt-400">
                         Buka kanal

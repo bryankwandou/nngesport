@@ -15,7 +15,7 @@ export default function Sejarah() {
     <>
       <PageHeader
         eyebrow="Perjalanan"
-        title="Enam belas tahun, satu benang merah."
+        title="Sembilan tahun, satu benang merah."
         lead={org.longIntro}
       />
 

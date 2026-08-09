@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, RevealItem, scaleIn } from "@/components/motion-primitives";
 import { Counter, EmptyState, Eyebrow } from "@/components/ui";
-import { achievements, milestones } from "@/content/nng";
+import { achievements, divisions, milestones } from "@/content/nng";
 
 export const metadata: Metadata = {
   title: "Prestasi",
@@ -25,8 +25,8 @@ export default function Prestasi() {
         <div className="container-page py-14">
           <Reveal className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {[
-              { n: 16, l: "Tahun berkarya" },
-              { n: 5, l: "Judul permainan" },
+              { n: 8381, l: "Unggahan" },
+              { n: divisions.length, l: "Cabang kompetitif" },
               { n: milestones.length, l: "Capaian bersumber" },
               { n: achievements.length, l: "Gelar turnamen" },
             ].map((s) => (
@@ -105,7 +105,7 @@ export default function Prestasi() {
             <RevealItem>
               <Eyebrow>Terverifikasi</Eyebrow>
               <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-                Empat capaian yang bisa dibuka sendiri.
+                {milestones.length} capaian yang bisa dibuka sendiri.
               </h2>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
                 Klik mana pun untuk membuka halaman aslinya. Tidak ada yang perlu dipercaya

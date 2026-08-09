@@ -30,19 +30,41 @@ bagi calon sponsor daripada halaman panjang yang gugur begitu diperiksa.
 
 ### Yang berhasil ditarik
 
-- Jabatan pendiri, dari profil Threads yang bersangkutan
-- Riwayat kanal 2017 sampai 2024, dari keterangan kanal YouTube resmi
-- Lima judul permainan yang diisi
-- Kemitraan kreator Mobile Legends 2025
-- Cabang siniar, templat CapCut, dan karya NFT di Tezos
+Dari halaman profil TikTok, 8 Agustus 2026:
+
+| | `@nng_esport` | `@nng_store` |
+| --- | --- | --- |
+| Nama tampil | NNG FAM | NNG Store |
+| Pengikut | 9.660 | 2.307 |
+| Unggahan | 8.381 | 6.648 |
+| Suka | 4.428 | 2.050 |
+
+Ditambah lambang kedua akun (tersimpan di `public/img/`), tahun berdiri 2017, tiga cabang
+kompetitif MLBB, PUBG, dan Valorant, serta semboyan "Now or Never".
+
+Dari sumber lain: jabatan pendiri lewat profil Threads, riwayat kanal 2017 sampai 2024
+lewat keterangan kanal YouTube, kemitraan kreator Mobile Legends 2025, cabang siniar,
+templat CapCut, dan karya NFT di Tezos.
 
 ### Yang tidak bisa ditarik
 
-TikTok menolak permintaan otomatis dari luar aplikasinya. Jumlah pengikut, daftar video,
-dan gambar profil `@nng_esport` serta `@nng_store` karena itu tidak dicantumkan. Tautannya
-tetap dipasang supaya pembaca bisa memeriksa sendiri.
+Daftar video per unggahan, karena TikTok mulai menolak permintaan setelah beberapa kali
+pembacaan. Profil Instagram `@nng_store`, karena membalas dengan pembatasan laju.
+Tautan keduanya tetap dipasang supaya pembaca bisa memeriksa sendiri.
 
 Susunan pemain dan hasil turnamen juga tidak ditemukan di sumber terbuka mana pun.
+
+### Klaim yang sengaja tidak diterbitkan
+
+Bio `@nng_esport` mencantumkan tiga gelar: runner-up MSC 2023, MSC 2024, dan MPL 2019.
+Catatan penyelenggara menyebut nama lain untuk ketiganya. MSC dan MPL adalah turnamen
+lapis pertama dengan arsip publik lengkap, jadi klaim semacam ini akan dicek dalam
+hitungan menit oleh calon sponsor, dan satu yang gugur menjatuhkan seluruh halaman
+termasuk angka yang memang benar.
+
+Selisihnya dicatat di `disputedClaims` dalam `src/content/nng.ts` dan tidak dirender di
+halaman mana pun. Kalau yang dimaksud ternyata turnamen komunitas dengan nama serupa,
+tulis nama lengkap ajangnya lalu pindahkan ke `achievements`.
 
 ---
 
@@ -89,15 +111,14 @@ src/
 
 ---
 
-## Lambang
+## Lambang dan warna
 
-Perisai bersudut enam, mengikuti kebiasaan lambang tim di kawasan ini. Di dalamnya dua
-puncak menanjak: sepasang huruf N yang sekaligus terbaca sebagai punggung bukit, mengangguk
-ke Jayapura tempat tim ini berdiri. Belah ketupat di puncak kanan menandai titik tertinggi
-yang sedang dituju. Lengkung di kaki perisai menutup rangkaian sebagai huruf G.
+Seluruh keputusan visual tercatat di [`brand.md`](brand.md).
 
-Warna: obsidian `#07080B` sebagai dasar, ungu `#7C3AED` ke `#A855F7` sebagai warna utama,
-sian `#22D3EE` sebagai pasangannya, kuning `#FBBF24` hanya untuk penanda status.
+Ringkasnya: bentuk dan warna diangkat dari lambang yang sudah dipakai akun resmi, bukan
+dipilih dari selera. Perisai bersudut dengan dua puncak menanjak di dalamnya, merah
+`#F4213B` sebagai warna utama, biru `#3AA5FF` sebagai pasangannya, di atas dasar obsidian
+`#07080B`. Kuning `#FBBF24` hanya keluar sebagai penanda status.
 
 ---
 

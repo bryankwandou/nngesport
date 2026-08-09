@@ -8,7 +8,23 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
+
+/* Tidak pernah berubah, jadi React tidak perlu berlangganan apa pun. */
+const noop = () => () => {};
+
+/**
+ * Bernilai salah selama render di peladen dan render pertama di peramban,
+ * lalu benar setelahnya. Dipakai untuk memilih tampilan statis atau bergerak
+ * tanpa memicu render berantai lewat setState di dalam effect.
+ */
+function useHydrated() {
+  return useSyncExternalStore(
+    noop,
+    () => true,
+    () => false
+  );
+}
 
 /* ---------------------------------------------------------------- Penanda ---- */
 
@@ -85,7 +101,7 @@ export function Counter({
   className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [ready, setReady] = useState(false);
+  const ready = useHydrated();
   const inView = useInView(ref, { once: true, margin: "-20% 0px" });
   const still = useReducedMotion();
 
@@ -99,7 +115,6 @@ export function Counter({
   const smooth = useSpring(raw, { stiffness: 70, damping: 22, mass: 0.8 });
   const shown = useTransform(smooth, fmt);
 
-  useEffect(() => setReady(true), []);
   useEffect(() => {
     if (ready && inView) raw.set(to);
   }, [ready, inView, to, raw]);
