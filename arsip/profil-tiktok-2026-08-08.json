@@ -1,0 +1,63 @@
+{
+  "diambil": "2026-08-08",
+  "sumber": "halaman profil publik TikTok",
+  "akun": {
+    "@nng_esport": {
+      "handle": "@nng_esport",
+      "id": "6764220520798159873",
+      "nama_tampil": "NNG FAM",
+      "bio": "NNG E-SPORT \nEst. 2017\nMLBB,PUBG,VALO\nRunner up MSC 2023&2024\nRunner up MPL 2019",
+      "terverifikasi_platform": false,
+      "akun_privat": false,
+      "bahasa": "id",
+      "avatar_url_asli": "https://p16-common-sign.tiktokcdn.com/tos-maliva-avt-0068/c81ff13198418be4719c8fc3ae1a62f3~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=5d9919cb&x-expires=1786316400&x-signature=MTZukW9Zgd5IAEnhO43fiJerTck%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my",
+      "tautan_bio": null,
+      "statistik": {
+        "pengikut": 9660,
+        "mengikuti": 6315,
+        "suka": 4428,
+        "unggahan": 8381,
+        "teman": 2751
+      },
+      "video_terekam": []
+    },
+    "@nng_store": {
+      "handle": "@nng_store",
+      "id": "6950495727575761922",
+      "nama_tampil": "NNG Store",
+      "bio": "NNG Store x @nayrbryanGaming Official\nNow or Never\nTokopedia, Tiktok, Shopee",
+      "terverifikasi_platform": false,
+      "akun_privat": false,
+      "bahasa": "en",
+      "avatar_url_asli": "https://p16-common-sign.tiktokcdn.com/tos-alisg-avt-0068/ccc88fdc2b1cfeb9b6da20faa0b6f78d~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=8ce37b8d&x-expires=1786316400&x-signature=lWv6INLmA0VzCZaYfX%2F7uAT%2BLIM%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my",
+      "tautan_bio": null,
+      "statistik": {
+        "pengikut": 2307,
+        "mengikuti": 42,
+        "suka": 2050,
+        "unggahan": 6648,
+        "teman": 15
+      },
+      "video_terekam": []
+    },
+    "@nayrbryangaming": {
+      "handle": "@nayrbryangaming",
+      "id": "6760253517707363329",
+      "nama_tampil": "nayrbryanGaming",
+      "bio": "Est 10 Jan 2018\nThanks for 8.6M Subs ❤\nNNG Esport🇷🇺\nContent creator Since 2010",
+      "terverifikasi_platform": false,
+      "akun_privat": false,
+      "bahasa": "en",
+      "avatar_url_asli": "https://p16-common-sign.tiktokcdn.com/tos-alisg-avt-0068/046739b1cd1579a7e29d426497f0ac0d~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=48dbdb48&x-expires=1786316400&x-signature=gmhYgsediS2dbF%2B1Ftmt6BZIxDQ%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my",
+      "tautan_bio": "https://discord.gg/92MMpgFBEe",
+      "statistik": {
+        "pengikut": 75100,
+        "mengikuti": 4778,
+        "suka": 358800,
+        "unggahan": 42800,
+        "teman": 2129
+      },
+      "video_terekam": []
+    }
+  }
+}

@@ -25,7 +25,7 @@ export default function Prestasi() {
         <div className="container-page py-14">
           <Reveal className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {[
-              { n: 8381, l: "Unggahan" },
+              { n: 57829, l: "Unggahan" },
               { n: divisions.length, l: "Cabang kompetitif" },
               { n: milestones.length, l: "Capaian bersumber" },
               { n: achievements.length, l: "Gelar turnamen" },

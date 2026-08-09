@@ -99,7 +99,7 @@ export function Hero() {
             </motion.p>
 
             <SplitHeading
-              text="Delapan ribu unggahan tanpa jeda."
+              text="Lima puluh tujuh ribu unggahan."
               delay={0.12}
               className="mt-6 font-display text-[clamp(2.6rem,7vw,4.9rem)] font-800 leading-[0.98] tracking-[-0.035em] text-gradient"
             />
@@ -144,8 +144,8 @@ export function Hero() {
               className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/[0.08] pt-7"
             >
               {[
-                { n: 8381, s: "", l: "Unggahan" },
-                { n: 9660, s: "", l: "Pengikut" },
+                { n: 57829, s: "", l: "Unggahan" },
+                { n: 87067, s: "", l: "Pengikut" },
                 { n: 3, s: "", l: "Cabang kompetitif" },
               ].map((s) => (
                 <div key={s.l}>

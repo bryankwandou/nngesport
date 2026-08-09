@@ -23,7 +23,7 @@ export default function Beranda() {
     "Abepura, Jayapura, Papua",
     motto,
     "MLBB, PUBG, Valorant",
-    "8.381 unggahan",
+    "57.829 unggahan di tiga kanal",
     "Mitra kreator Mobile Legends",
     "Lini dagang NNG Store",
   ];
@@ -49,7 +49,8 @@ export default function Beranda() {
             <p className="text-bone-400">
               Yang membedakan NNG dari kebanyakan tim yang muncul belakangan bukan jumlah
               pengikut, melainkan panjang catatannya. Organisasi ini berdiri pada 2017 dan
-              sejak itu mengunggah lebih dari delapan ribu potongan. Ketika kanal terdahulu
+              sejak itu mengunggah lebih dari delapan ribu potongan di kanalnya sendiri,
+              di luar empat puluh dua ribu milik kanal pendiri. Ketika kanal terdahulu
               hilang kena penalti platform, semuanya dimulai lagi dari satu pengikut, bukan
               dibiarkan mati.
             </p>
@@ -90,7 +91,10 @@ export default function Beranda() {
             </p>
           </RevealItem>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-2">
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <RevealItem>
+              <AccountCard account={accountStats.founder} snapshot={snapshotDate} accent="flare" />
+            </RevealItem>
             <RevealItem>
               <AccountCard account={accountStats.esport} snapshot={snapshotDate} accent="flare" />
             </RevealItem>

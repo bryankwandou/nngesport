@@ -29,11 +29,11 @@ export const org = {
     "suntikan modal atau ruang rapat, melainkan dari koneksi seadanya di Abepura dan " +
     "kemauan untuk tetap muncul setiap hari selama bertahun-tahun.",
   longIntro:
-    "Delapan ribu unggahan bukan angka yang lahir dari satu video viral. Angka itu " +
-    "dikumpulkan dari ribuan hari biasa yang tetap dikerjakan meski tidak ada yang " +
-    "menonton, dari kanal yang pernah hilang kena penalti platform lalu dibuka lagi dari " +
-    "nol pengikut, dan dari jarak Papua ke pusat industri yang diperlakukan sebagai " +
-    "pekerjaan, bukan alasan.",
+    "Lima puluh tujuh ribu unggahan di tiga kanal bukan angka yang lahir dari satu video " +
+    "viral. Angka itu dikumpulkan dari ribuan hari biasa yang tetap dikerjakan meski tidak " +
+    "ada yang menonton, dari kanal yang pernah hilang kena penalti platform lalu dibuka " +
+    "lagi dari nol pengikut, dan dari jarak Papua ke pusat industri yang diperlakukan " +
+    "sebagai pekerjaan, bukan alasan.",
 };
 
 /**
@@ -69,6 +69,24 @@ export const accountStats = {
     avatar: "/img/nng-store-avatar.jpg",
     bio: "NNG Store x @nayrbryanGaming Official\nNow or Never\nTokopedia, TikTok, Shopee",
     href: "https://www.tiktok.com/@nng_store",
+  },
+  /*
+    Kanal pendiri, dan yang terbesar dari ketiganya.
+    Bio aslinya juga memuat baris ucapan terima kasih atas 8,6 juta pelanggan.
+    Angka itu tidak cocok dengan jumlah pengikut di platform ini dan tidak jelas
+    merujuk ke kanal mana, jadi disimpan di arsip saja, tidak dipajang di halaman.
+  */
+  founder: {
+    handle: "@nayrbryanGaming",
+    nickname: "nayrbryanGaming",
+    followers: 75100,
+    following: 4778,
+    likes: 358800,
+    videos: 42800,
+    friends: 2129,
+    avatar: "/img/nayrbryangaming-avatar.jpg",
+    bio: "Est 10 Jan 2018\nNNG Esport\nPembuat konten sejak 2010",
+    href: "https://www.tiktok.com/@nayrbryangaming",
   },
 };
 
@@ -421,8 +439,8 @@ export const values = [
     index: "01",
     title: "Muncul setiap hari",
     body:
-      "Delapan ribu unggahan tidak dibangun oleh satu video viral, tetapi oleh ribuan " +
-      "hari biasa yang tetap dikerjakan meski tidak ada yang menonton.",
+      "Lima puluh tujuh ribu unggahan tidak dibangun oleh satu video viral, tetapi oleh " +
+      "ribuan hari biasa yang tetap dikerjakan meski tidak ada yang menonton.",
   },
   {
     index: "02",
