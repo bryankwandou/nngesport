@@ -1,7 +1,14 @@
 "use client";
 
-import { motion, useInView, useMotionValue, useSpring, useTransform } from "motion/react";
-import { useEffect, useRef, type ReactNode } from "react";
+import {
+  motion,
+  useInView,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from "motion/react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 /* ---------------------------------------------------------------- Penanda ---- */
 
@@ -60,6 +67,11 @@ export function Eyebrow({ children }: { children: ReactNode }) {
 /**
  * Angka yang menghitung naik saat masuk layar.
  * Berhenti tepat di nilai akhir, tanpa memantul, supaya tetap terbaca sebagai data.
+ *
+ * Sebelum skrip jalan, yang tercetak adalah nilai akhirnya, bukan nol. Kalau nol
+ * yang dikirim dari peladen, mesin pencari dan pembaca tanpa skrip akan melihat
+ * organisasi ini punya nol pengikut, dan itu jauh lebih merugikan daripada
+ * kehilangan animasinya.
  */
 export function Counter({
   to,
@@ -73,19 +85,34 @@ export function Counter({
   className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
+  const [ready, setReady] = useState(false);
   const inView = useInView(ref, { once: true, margin: "-20% 0px" });
-  const raw = useMotionValue(0);
-  const smooth = useSpring(raw, { stiffness: 70, damping: 22, mass: 0.8 });
-  const shown = useTransform(smooth, (v) =>
+  const still = useReducedMotion();
+
+  const fmt = (v: number) =>
     v.toLocaleString("id-ID", {
       minimumFractionDigits: decimals,
       maximumFractionDigits: decimals,
-    })
-  );
+    });
 
+  const raw = useMotionValue(0);
+  const smooth = useSpring(raw, { stiffness: 70, damping: 22, mass: 0.8 });
+  const shown = useTransform(smooth, fmt);
+
+  useEffect(() => setReady(true), []);
   useEffect(() => {
-    if (inView) raw.set(to);
-  }, [inView, to, raw]);
+    if (ready && inView) raw.set(to);
+  }, [ready, inView, to, raw]);
+
+  /* Render peladen dan render klien pertama sama-sama memakai nilai akhir. */
+  if (!ready || still) {
+    return (
+      <span ref={ref} className={className}>
+        {fmt(to)}
+        {suffix}
+      </span>
+    );
+  }
 
   return (
     <span ref={ref} className={className}>
