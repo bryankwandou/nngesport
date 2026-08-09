@@ -43,14 +43,14 @@ export default function Toko() {
                         </span>
                       </div>
                       <div>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-violet-400">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-flare-400">
                           {c.platform}
                         </p>
                         <h3 className="mt-2 font-display text-2xl font-800 tracking-tight text-bone-50">
                           {c.handle}
                         </h3>
                         <p className="mt-2 text-sm text-bone-400">{c.note}</p>
-                        <span className="mt-6 inline-block text-xs text-bone-400 transition-colors group-hover:text-cyan-400">
+                        <span className="mt-6 inline-block text-xs text-bone-400 transition-colors group-hover:text-volt-400">
                           Buka etalase
                           <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
                             &rarr;
@@ -87,7 +87,7 @@ export default function Toko() {
                 <RevealItem key={k.name}>
                   <div className="group h-full bg-ink-850 p-8 transition-colors duration-300 hover:bg-ink-800">
                     <div className="flex items-start justify-between gap-4">
-                      <span className="font-display text-[11px] font-700 tracking-[0.2em] text-violet-400">
+                      <span className="font-display text-[11px] font-700 tracking-[0.2em] text-flare-400">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span className="rounded-full border border-amber-400/25 bg-amber-400/[0.07] px-2.5 py-1 text-[10px] font-medium text-amber-400">
@@ -100,7 +100,7 @@ export default function Toko() {
                     <p className="mt-3 text-sm leading-[1.75] text-bone-400">{k.detail}</p>
                     <span
                       aria-hidden
-                      className="mt-5 block h-px w-0 bg-linear-to-r from-violet-500 to-cyan-400 transition-all duration-500 group-hover:w-full"
+                      className="mt-5 block h-px w-0 bg-linear-to-r from-flare-500 to-volt-400 transition-all duration-500 group-hover:w-full"
                     />
                   </div>
                 </RevealItem>

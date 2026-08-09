@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, RevealItem, scaleIn } from "@/components/motion-primitives";
 import { Eyebrow, SourceBadge, TiltCard } from "@/components/ui";
-import { channels } from "@/content/nng";
+import { channels, snapshotDate } from "@/content/nng";
 
 export const metadata: Metadata = {
   title: "Kanal",
@@ -32,8 +32,7 @@ export default function Kanal() {
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
               Sisi kompetitif berjalan di @nng_esport, sementara @nng_store mengurus lini
-              dagangnya. TikTok menutup profilnya dari pembacaan otomatis, jadi angka
-              pengikut di sini tidak diklaim.
+              dagangnya. Angka di bawah ditarik dari halaman profil pada {snapshotDate}.
             </p>
           </RevealItem>
 
@@ -44,7 +43,7 @@ export default function Kanal() {
                   <TiltCard className="h-full">
                     <div className="flex h-full flex-col p-7">
                       <div className="flex items-start justify-between gap-3">
-                        <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-violet-400">
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-flare-400">
                           {c.platform}
                         </span>
                         <SourceBadge verified={c.verified} href={c.source} />
@@ -52,8 +51,15 @@ export default function Kanal() {
                       <h3 className="mt-6 font-display text-xl font-800 tracking-tight text-bone-50">
                         {c.handle}
                       </h3>
-                      <p className="mt-2 flex-1 text-sm text-bone-400">{c.note}</p>
-                      <span className="mt-7 text-xs text-bone-400 transition-colors group-hover:text-cyan-400">
+                      <p className="mt-2 text-sm text-bone-400">{c.note}</p>
+                      {c.stat && (
+                        <p
+                          className="mt-3 text-xs text-bone-200"
+                          dangerouslySetInnerHTML={{ __html: c.stat }}
+                        />
+                      )}
+                      <div className="flex-1" />
+                      <span className="mt-7 text-xs text-bone-400 transition-colors group-hover:text-volt-400">
                         Buka kanal
                         <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
                           &rarr;
@@ -105,7 +111,7 @@ export default function Kanal() {
                     </div>
                     <span
                       aria-hidden
-                      className="shrink-0 text-bone-400 transition-all duration-300 group-hover:translate-x-1 group-hover:text-cyan-400"
+                      className="shrink-0 text-bone-400 transition-all duration-300 group-hover:translate-x-1 group-hover:text-volt-400"
                     >
                       &rarr;
                     </span>
@@ -126,11 +132,11 @@ export default function Kanal() {
                 Keterbatasan pembacaan
               </p>
               <p className="mt-5 max-w-3xl text-sm leading-[1.8] text-bone-200">
-                TikTok menolak permintaan otomatis dari luar aplikasinya, sehingga jumlah
-                pengikut, daftar video, dan gambar profil @nng_esport serta @nng_store tidak
-                bisa ditarik untuk halaman ini. Tautannya tetap dipasang agar pembaca bisa
-                memeriksa sendiri. Begitu keterangan resminya diserahkan, angkanya akan
-                ditampilkan lengkap dengan tanggal pengambilan.
+                Keterangan profil dan lambang kedua akun TikTok berhasil ditarik pada{" "}
+                {snapshotDate} dan dipakai di halaman ini apa adanya. Yang belum berhasil
+                adalah daftar video per unggahan serta profil Instagram @nng_store, karena
+                keduanya membatasi pembacaan dari luar aplikasi. Angka yang tampil punya
+                tanggal, jadi pembaca bisa menilai sendiri seberapa segar datanya.
               </p>
             </div>
           </RevealItem>

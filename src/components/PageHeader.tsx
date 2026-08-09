@@ -17,8 +17,8 @@ export function PageHeader({
   return (
     <header className="grain relative overflow-hidden border-b border-white/[0.07] pt-[68px]">
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-24 top-0 h-[28rem] w-[28rem] rounded-full bg-violet-600/[0.13] blur-[120px]" />
-        <div className="absolute -right-20 bottom-[-40%] h-[24rem] w-[24rem] rounded-full bg-cyan-400/[0.08] blur-[110px]" />
+        <div className="absolute -left-24 top-0 h-[28rem] w-[28rem] rounded-full bg-flare-600/[0.13] blur-[120px]" />
+        <div className="absolute -right-20 bottom-[-40%] h-[24rem] w-[24rem] rounded-full bg-volt-400/[0.08] blur-[110px]" />
       </div>
       <div
         aria-hidden

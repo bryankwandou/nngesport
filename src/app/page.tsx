@@ -3,16 +3,29 @@ import { Hero } from "@/components/Hero";
 import { Reveal, RevealItem, fadeUp, scaleIn } from "@/components/motion-primitives";
 import { Eyebrow, Marquee, SourceBadge, TiltCard } from "@/components/ui";
 import { LogoMark } from "@/components/Logo";
-import { divisions, leadership, milestones, org, timeline, values } from "@/content/nng";
+import { AccountCard } from "@/components/AccountCard";
+import {
+  accountStats,
+  divisions,
+  leadership,
+  milestones,
+  motto,
+  org,
+  otherTitles,
+  snapshotDate,
+  timeline,
+  values,
+} from "@/content/nng";
 
 export default function Beranda() {
   const sorotan = [
-    "Berdiri sejak 2010",
+    "Berdiri 2017",
     "Abepura, Jayapura, Papua",
+    motto,
+    "MLBB, PUBG, Valorant",
+    "8.381 unggahan",
     "Mitra kreator Mobile Legends",
-    "Lima judul permainan",
-    "Bangun ulang tiga kali",
-    "Siniar dan templat sunting",
+    "Lini dagang NNG Store",
   ];
 
   return (
@@ -35,22 +48,56 @@ export default function Beranda() {
             <p>{org.intro}</p>
             <p className="text-bone-400">
               Yang membedakan NNG dari kebanyakan tim yang muncul belakangan bukan jumlah
-              pengikut, melainkan panjang catatannya. Kanal pertama dibuka pada 2017,
-              disusul pindah ritme ke format pendek setahun kemudian. Ketika tiga kanal
-              terdahulu hilang kena penalti platform, semuanya dimulai lagi dari satu
-              pengikut, bukan dibiarkan mati.
+              pengikut, melainkan panjang catatannya. Organisasi ini berdiri pada 2017 dan
+              sejak itu mengunggah lebih dari delapan ribu potongan. Ketika kanal terdahulu
+              hilang kena penalti platform, semuanya dimulai lagi dari satu pengikut, bukan
+              dibiarkan mati.
             </p>
             <div className="flex flex-wrap gap-2 pt-2">
               {divisions.map((d) => (
                 <span
                   key={d.code}
-                  className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-bone-200"
+                  className="rounded-full border border-flare-500/30 bg-flare-500/[0.08] px-3 py-1.5 text-xs font-semibold text-flare-400"
+                >
+                  {d.code}
+                </span>
+              ))}
+              {otherTitles.map((d) => (
+                <span
+                  key={d.code}
+                  className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-bone-400"
                 >
                   {d.code}
                 </span>
               ))}
             </div>
           </RevealItem>
+        </Reveal>
+      </section>
+
+      {/* ---------------------------------------------------- Akun resmi --- */}
+      <section className="container-page pb-24 md:pb-32">
+        <Reveal>
+          <RevealItem>
+            <Eyebrow>Angka sebenarnya</Eyebrow>
+            <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.9rem,3.6vw,2.9rem)] font-800 leading-[1.06] tracking-[-0.03em]">
+              Dua akun, ditarik langsung dari sumbernya.
+            </h2>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
+              Lambang dan angka di bawah diambil apa adanya dari halaman profil, bukan
+              ditulis ulang dari ingatan. Tanggal pengambilannya ikut dicantumkan karena
+              angka semacam ini bergerak tiap hari.
+            </p>
+          </RevealItem>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            <RevealItem>
+              <AccountCard account={accountStats.esport} snapshot={snapshotDate} accent="flare" />
+            </RevealItem>
+            <RevealItem>
+              <AccountCard account={accountStats.store} snapshot={snapshotDate} accent="volt" />
+            </RevealItem>
+          </div>
         </Reveal>
       </section>
 
@@ -61,11 +108,12 @@ export default function Beranda() {
             <RevealItem>
               <Eyebrow>Divisi</Eyebrow>
               <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.9rem,3.6vw,2.9rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-                Lima judul yang benar-benar dimainkan, bukan sekadar dicantumkan.
+                  Tiga cabang kompetitif, disebut sendiri di bio resmi.
               </h2>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-                Daftar di bawah diambil dari keterangan kanal resmi. Tidak ada judul
-                tambahan yang dimasukkan hanya supaya barisnya terlihat penuh.
+                MLBB, PUBG, dan Valorant adalah tiga nama yang dicantumkan organisasi
+                sebagai cabangnya. Judul lain memang mengisi kanal, tapi tidak dinaikkan
+                ke daftar ini supaya bedanya jelas.
               </p>
             </RevealItem>
 
@@ -75,7 +123,7 @@ export default function Beranda() {
                   <TiltCard className="h-full">
                     <div className="flex h-full flex-col p-6">
                       <div className="flex items-start justify-between gap-3">
-                        <span className="font-display text-[11px] font-700 tracking-[0.2em] text-violet-400">
+                        <span className="font-display text-[11px] font-700 tracking-[0.2em] text-flare-400">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         <SourceBadge verified={d.verified} />
@@ -97,7 +145,7 @@ export default function Beranda() {
               <RevealItem variant={scaleIn}>
                 <Link
                   href="/roster"
-                  className="group relative flex h-full min-h-[214px] flex-col justify-between overflow-hidden rounded-2xl border border-white/[0.08] bg-linear-to-br from-violet-600/20 to-cyan-400/[0.06] p-6 transition-colors duration-300 hover:border-violet-400/40"
+                  className="group relative flex h-full min-h-[214px] flex-col justify-between overflow-hidden rounded-2xl border border-white/[0.08] bg-linear-to-br from-flare-600/20 to-volt-400/[0.06] p-6 transition-colors duration-300 hover:border-flare-400/40"
                 >
                   <LogoMark uid="cta-div" className="h-10 w-10" />
                   <div>
@@ -134,11 +182,11 @@ export default function Beranda() {
                 <TiltCard className="h-full" intensity={4}>
                   <div className="flex h-full flex-col p-7 md:p-8">
                     <div className="flex items-start gap-4">
-                      <div className="relative grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-linear-to-br from-violet-600 to-cyan-400 font-display text-lg font-800 text-white">
+                      <div className="relative grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-linear-to-br from-flare-600 to-volt-400 font-display text-lg font-800 text-white">
                         {p.initials}
                       </div>
                       <div className="min-w-0">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-violet-400">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-flare-400">
                           {p.role}
                         </p>
                         <h3 className="mt-1 truncate font-display text-xl font-700 tracking-tight text-bone-50">
@@ -155,7 +203,7 @@ export default function Beranda() {
 
                     <p className="mt-6 text-sm leading-relaxed text-bone-200">{p.bio}</p>
 
-                    <blockquote className="mt-6 border-l-2 border-violet-500/60 pl-4 text-sm italic leading-relaxed text-bone-400">
+                    <blockquote className="mt-6 border-l-2 border-flare-500/60 pl-4 text-sm italic leading-relaxed text-bone-400">
                       {p.quote}
                     </blockquote>
 
@@ -185,7 +233,7 @@ export default function Beranda() {
                           href={l.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-bone-200 transition-colors hover:border-cyan-400/40 hover:text-cyan-400"
+                          className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-bone-200 transition-colors hover:border-volt-400/40 hover:text-volt-400"
                         >
                           {l.label}
                         </a>
@@ -214,7 +262,7 @@ export default function Beranda() {
               {values.map((v) => (
                 <RevealItem key={v.index}>
                   <div className="group h-full bg-ink-850 p-7 transition-colors duration-300 hover:bg-ink-800">
-                    <span className="font-display text-[11px] font-700 tracking-[0.2em] text-violet-400">
+                    <span className="font-display text-[11px] font-700 tracking-[0.2em] text-flare-400">
                       {v.index}
                     </span>
                     <h3 className="mt-4 font-display text-base font-700 tracking-tight text-bone-50">
@@ -223,7 +271,7 @@ export default function Beranda() {
                     <p className="mt-3 text-sm leading-relaxed text-bone-400">{v.body}</p>
                     <span
                       aria-hidden
-                      className="mt-5 block h-px w-0 bg-linear-to-r from-violet-500 to-cyan-400 transition-all duration-500 group-hover:w-full"
+                      className="mt-5 block h-px w-0 bg-linear-to-r from-flare-500 to-volt-400 transition-all duration-500 group-hover:w-full"
                     />
                   </div>
                 </RevealItem>
@@ -245,7 +293,7 @@ export default function Beranda() {
             </div>
             <Link
               href="/sejarah"
-              className="group text-sm font-semibold text-bone-200 transition-colors hover:text-violet-400"
+              className="group text-sm font-semibold text-bone-200 transition-colors hover:text-flare-400"
             >
               Versi lengkap
               <span className="ml-1.5 inline-block transition-transform duration-300 group-hover:translate-x-1">
@@ -258,7 +306,7 @@ export default function Beranda() {
             {timeline.map((t) => (
               <RevealItem key={`${t.year}-${t.title}`} as="li">
                 <div className="group grid gap-3 bg-ink-850 px-6 py-6 transition-colors duration-300 hover:bg-ink-800 sm:grid-cols-[110px_1fr_auto] sm:items-baseline sm:gap-6 sm:px-8">
-                  <span className="font-display text-2xl font-800 tracking-tight text-violet-400 transition-colors group-hover:text-cyan-400">
+                  <span className="font-display text-2xl font-800 tracking-tight text-flare-400 transition-colors group-hover:text-volt-400">
                     {t.year}
                   </span>
                   <div>
@@ -297,9 +345,9 @@ export default function Beranda() {
                     href={m.source}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex h-full flex-col rounded-2xl border border-white/[0.08] bg-ink-850 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/30"
+                    className="group flex h-full flex-col rounded-2xl border border-white/[0.08] bg-ink-850 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-volt-400/30"
                   >
-                    <span className="font-display text-[11px] font-700 tracking-[0.2em] text-cyan-400">
+                    <span className="font-display text-[11px] font-700 tracking-[0.2em] text-volt-400">
                       {m.year}
                     </span>
                     <h3 className="mt-4 font-display text-base font-700 leading-snug tracking-tight text-bone-50">
@@ -308,7 +356,7 @@ export default function Beranda() {
                     <p className="mt-3 flex-1 text-sm leading-relaxed text-bone-400">
                       {m.detail}
                     </p>
-                    <span className="mt-5 text-xs text-bone-400 transition-colors group-hover:text-cyan-400">
+                    <span className="mt-5 text-xs text-bone-400 transition-colors group-hover:text-volt-400">
                       Buka sumber
                       <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
                         &rarr;
@@ -326,10 +374,10 @@ export default function Beranda() {
       <section className="container-page py-24 md:py-32">
         <Reveal>
           <RevealItem variant={scaleIn}>
-            <div className="grain relative overflow-hidden rounded-3xl border border-white/[0.1] bg-linear-to-br from-violet-600/[0.18] via-ink-850 to-cyan-400/[0.08] px-8 py-16 text-center md:px-16 md:py-24">
+            <div className="grain relative overflow-hidden rounded-3xl border border-white/[0.1] bg-linear-to-br from-flare-600/[0.18] via-ink-850 to-volt-400/[0.08] px-8 py-16 text-center md:px-16 md:py-24">
               <div
                 aria-hidden
-                className="pointer-events-none absolute left-1/2 top-0 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-violet-500/20 blur-[100px]"
+                className="pointer-events-none absolute left-1/2 top-0 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-flare-500/20 blur-[100px]"
               />
               <LogoMark uid="cta" className="relative mx-auto h-16 w-16" />
               <h2 className="relative mx-auto mt-8 max-w-2xl font-display text-[clamp(1.9rem,4vw,3.1rem)] font-800 leading-[1.04] tracking-[-0.03em]">

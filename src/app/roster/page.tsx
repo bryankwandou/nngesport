@@ -33,7 +33,7 @@ export default function Roster() {
                 <RevealItem key={p.ign} variant={scaleIn}>
                   <TiltCard className="h-full">
                     <div className="p-7">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-violet-400">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-flare-400">
                         {p.role}
                       </p>
                       <h2 className="mt-2 font-display text-xl font-800 tracking-tight text-bone-50">
@@ -56,7 +56,7 @@ export default function Roster() {
                 action={
                   <Link
                     href="/kontak"
-                    className="inline-block rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-bone-200 transition-colors hover:border-violet-400/50 hover:text-bone-50"
+                    className="inline-block rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-bone-200 transition-colors hover:border-flare-400/50 hover:text-bone-50"
                   >
                     Kirim data roster
                   </Link>
@@ -85,7 +85,7 @@ export default function Roster() {
             <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {openSlots.map((s, i) => (
                 <RevealItem key={s.role} variant={scaleIn}>
-                  <div className="group relative flex h-full min-h-[168px] flex-col justify-between overflow-hidden rounded-2xl border border-dashed border-white/[0.14] bg-ink-850/50 p-5 transition-colors duration-300 hover:border-violet-400/40">
+                  <div className="group relative flex h-full min-h-[168px] flex-col justify-between overflow-hidden rounded-2xl border border-dashed border-white/[0.14] bg-ink-850/50 p-5 transition-colors duration-300 hover:border-flare-400/40">
                     <span className="font-display text-[11px] font-700 tracking-[0.2em] text-bone-400">
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -121,11 +121,11 @@ export default function Roster() {
               <RevealItem key={p.handle}>
                 <div className="flex h-full flex-col rounded-2xl border border-white/[0.08] bg-ink-850 p-7">
                   <div className="flex items-start gap-4">
-                    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-linear-to-br from-violet-600 to-cyan-400 font-display text-base font-800 text-white">
+                    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-linear-to-br from-flare-600 to-volt-400 font-display text-base font-800 text-white">
                       {p.initials}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-violet-400">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-flare-400">
                         {p.role}
                       </p>
                       <h3 className="mt-1 truncate font-display text-lg font-700 tracking-tight text-bone-50">
@@ -153,7 +153,7 @@ export default function Roster() {
               {divisions.map((d) => (
                 <RevealItem key={d.code}>
                   <span className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-ink-850 px-4 py-2 text-sm text-bone-200">
-                    <span className="font-display text-[10px] font-700 tracking-[0.14em] text-violet-400">
+                    <span className="font-display text-[10px] font-700 tracking-[0.14em] text-flare-400">
                       {d.code}
                     </span>
                     {d.game}

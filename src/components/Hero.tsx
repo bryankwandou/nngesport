@@ -65,9 +65,9 @@ export function Hero() {
     >
       {/* Kabut warna di lapisan terjauh */}
       <motion.div aria-hidden style={{ y: still ? 0 : yFog }} className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-40 top-[-12%] h-[46rem] w-[46rem] rounded-full bg-violet-600/[0.16] blur-[130px]" />
-        <div className="absolute -right-32 top-[18%] h-[34rem] w-[34rem] rounded-full bg-cyan-400/[0.10] blur-[120px]" />
-        <div className="absolute bottom-[-20%] left-1/3 h-[30rem] w-[30rem] rounded-full bg-violet-500/[0.09] blur-[110px]" />
+        <div className="absolute -left-40 top-[-12%] h-[46rem] w-[46rem] rounded-full bg-flare-600/[0.16] blur-[130px]" />
+        <div className="absolute -right-32 top-[18%] h-[34rem] w-[34rem] rounded-full bg-volt-400/[0.10] blur-[120px]" />
+        <div className="absolute bottom-[-20%] left-1/3 h-[30rem] w-[30rem] rounded-full bg-flare-500/[0.09] blur-[110px]" />
       </motion.div>
 
       {/* Kisi tipis sebagai lantai visual */}
@@ -92,14 +92,14 @@ export function Hero() {
               className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-[11px] font-medium tracking-[0.16em] uppercase text-bone-400 backdrop-blur"
             >
               <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-cyan-400" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-volt-400" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-volt-400" />
               </span>
               {org.base} &middot; sejak {org.founded}
             </motion.p>
 
             <SplitHeading
-              text="Enam belas tahun tanpa jeda."
+              text="Delapan ribu unggahan tanpa jeda."
               delay={0.12}
               className="mt-6 font-display text-[clamp(2.6rem,7vw,4.9rem)] font-800 leading-[0.98] tracking-[-0.035em] text-gradient"
             />
@@ -121,7 +121,7 @@ export function Hero() {
             >
               <Link
                 href="/sejarah"
-                className="group relative overflow-hidden rounded-full bg-linear-to-r from-violet-600 to-violet-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(168,85,247,0.4),0_18px_40px_-16px_rgba(124,58,237,0.9)] transition-transform duration-300 hover:-translate-y-0.5"
+                className="group relative overflow-hidden rounded-full bg-linear-to-r from-flare-600 to-flare-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(168,85,247,0.4),0_18px_40px_-16px_rgba(124,58,237,0.9)] transition-transform duration-300 hover:-translate-y-0.5"
               >
                 <span className="relative z-10">Baca perjalanannya</span>
                 <span
@@ -144,9 +144,9 @@ export function Hero() {
               className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/[0.08] pt-7"
             >
               {[
-                { n: 16, s: "", l: "Tahun berjalan" },
-                { n: 5, s: "", l: "Judul permainan" },
-                { n: 3, s: "x", l: "Bangun ulang kanal" },
+                { n: 8381, s: "", l: "Unggahan" },
+                { n: 9660, s: "", l: "Pengikut" },
+                { n: 3, s: "", l: "Cabang kompetitif" },
               ].map((s) => (
                 <div key={s.l}>
                   <dt className="sr-only">{s.l}</dt>

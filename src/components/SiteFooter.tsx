@@ -10,7 +10,7 @@ export function SiteFooter() {
     <footer className="relative mt-32 border-t border-white/[0.07] bg-ink-900">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 -top-px h-px bg-linear-to-r from-transparent via-violet-500/60 to-transparent"
+        className="pointer-events-none absolute inset-x-0 -top-px h-px bg-linear-to-r from-transparent via-flare-500/60 to-transparent"
       />
 
       <div className="container-page grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr] md:py-20">
@@ -38,7 +38,7 @@ export function SiteFooter() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-sm text-bone-200 transition-colors hover:text-violet-400"
+                  className="text-sm text-bone-200 transition-colors hover:text-flare-400"
                 >
                   {item.label}
                 </Link>
@@ -58,7 +58,7 @@ export function SiteFooter() {
                   href={c.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-bone-200 transition-colors hover:text-cyan-400"
+                  className="text-sm text-bone-200 transition-colors hover:text-volt-400"
                 >
                   {c.platform}
                   <span className="ml-1.5 text-bone-400">{c.handle}</span>

@@ -18,20 +18,62 @@ export const site = {
 export const org = {
   name: "NNG Esport",
   shortName: "NNG",
+  displayName: "NNG FAM",
   tagline: "Dari Abepura, menuju panggung yang lebih besar",
-  founded: "2010",
+  /** Tertulis "Est. 2017" di bio akun resmi @nng_esport. */
+  founded: "2017",
   base: "Abepura, Jayapura, Papua",
   country: "Indonesia",
   intro:
     "NNG tumbuh dari kebiasaan sederhana: main, rekam, unggah, ulangi. Bukan lahir dari " +
     "suntikan modal atau ruang rapat, melainkan dari koneksi seadanya di Abepura dan " +
-    "kemauan untuk tetap muncul setiap hari selama lebih dari satu dekade.",
+    "kemauan untuk tetap muncul setiap hari selama bertahun-tahun.",
   longIntro:
-    "Enam belas tahun bukan angka yang lahir dari satu video viral. Angka itu dikumpulkan " +
-    "dari ribuan hari biasa yang tetap dikerjakan meski tidak ada yang menonton, dari tiga " +
-    "kanal yang hilang kena penalti platform lalu dibuka lagi dari nol pengikut, dan dari " +
-    "jarak Papua ke pusat industri yang diperlakukan sebagai pekerjaan, bukan alasan.",
+    "Delapan ribu unggahan bukan angka yang lahir dari satu video viral. Angka itu " +
+    "dikumpulkan dari ribuan hari biasa yang tetap dikerjakan meski tidak ada yang " +
+    "menonton, dari kanal yang pernah hilang kena penalti platform lalu dibuka lagi dari " +
+    "nol pengikut, dan dari jarak Papua ke pusat industri yang diperlakukan sebagai " +
+    "pekerjaan, bukan alasan.",
 };
+
+/**
+ * Angka dari profil resmi.
+ *
+ * Ditarik langsung dari halaman profil TikTok pada tanggal di bawah. Angka semacam ini
+ * bergerak terus, jadi tanggal pengambilannya ikut ditampilkan supaya pembaca tahu
+ * seberapa segar datanya. Perbarui bersama-sama, jangan sebagian.
+ */
+export const snapshotDate = "8 Agustus 2026";
+
+export const accountStats = {
+  esport: {
+    handle: "@nng_esport",
+    nickname: "NNG FAM",
+    followers: 9660,
+    following: 6315,
+    likes: 4428,
+    videos: 8381,
+    friends: 2751,
+    avatar: "/img/nng-esport-avatar.jpg",
+    bio: "NNG E-SPORT\nEst. 2017\nMLBB, PUBG, VALO",
+    href: "https://www.tiktok.com/@nng_esport",
+  },
+  store: {
+    handle: "@nng_store",
+    nickname: "NNG Store",
+    followers: 2307,
+    following: 42,
+    likes: 2050,
+    videos: 6648,
+    friends: 15,
+    avatar: "/img/nng-store-avatar.jpg",
+    bio: "NNG Store x @nayrbryanGaming Official\nNow or Never\nTokopedia, TikTok, Shopee",
+    href: "https://www.tiktok.com/@nng_store",
+  },
+};
+
+/** Semboyan yang tertulis di bio @nng_store. */
+export const motto = "Now or Never";
 
 /**
  * Susunan kepemimpinan mengikuti keterangan pemilik organisasi.
@@ -93,37 +135,76 @@ export const leadership = [
   },
 ];
 
-/** Judul permainan yang namanya muncul di deskripsi kanal resmi. */
+/**
+ * Divisi.
+ *
+ * Tiga yang pertama disebut terang-terangan di bio @nng_esport sebagai cabang resmi.
+ * Sisanya muncul di deskripsi kanal YouTube pendiri sebagai judul yang diisi, tapi
+ * tidak dicantumkan sebagai divisi kompetitif, jadi dipisahkan.
+ */
 export const divisions = [
   {
     game: "Mobile Legends: Bang Bang",
     code: "MLBB",
-    blurb: "Divisi paling ramai. Menjadi mitra kreator resmi lewat kerja sama 2025.",
+    blurb:
+      "Cabang paling ramai, dan satu-satunya yang sudah menghasilkan kemitraan kreator resmi.",
+    competitive: true,
     verified: true,
+    source: "https://www.tiktok.com/@nng_esport",
   },
   {
     game: "PUBG Mobile",
-    code: "PUBGM",
-    blurb: "Salah satu judul paling awal yang mengisi kanal sejak periode 2017.",
+    code: "PUBG",
+    blurb: "Judul paling awal yang mengisi kanal, bertahan sejak periode pertama.",
+    competitive: true,
     verified: true,
+    source: "https://www.tiktok.com/@nng_esport",
   },
   {
-    game: "Free Fire",
-    code: "FF",
-    blurb: "Materi cepat, cocok untuk format pendek yang mendominasi TikTok.",
+    game: "Valorant",
+    code: "VALO",
+    blurb:
+      "Cabang termuda dan satu-satunya yang berjalan di komputer, bukan telepon genggam.",
+    competitive: true,
     verified: true,
+    source: "https://www.tiktok.com/@nng_esport",
+  },
+];
+
+/** Judul lain yang mengisi kanal, di luar tiga cabang kompetitif di atas. */
+export const otherTitles = [
+  { game: "Free Fire", code: "FF" },
+  { game: "Growtopia", code: "GT" },
+  { game: "Genshin Impact", code: "GI" },
+];
+
+/**
+ * Klaim yang tertulis di bio resmi tapi berbenturan dengan catatan penyelenggara.
+ *
+ * Bio @nng_esport mencantumkan "Runner up MSC 2023&2024" dan "Runner up MPL 2019".
+ * Catatan resmi turnamen tersebut menyebut nama lain: runner-up MSC 2023 adalah
+ * Blacklist International, runner-up MSC 2024 adalah Falcons AP.Bren. Selisih ini
+ * dicatat di sini, bukan diterbitkan sebagai prestasi, karena satu klaim yang gugur
+ * saat dicek sponsor akan menjatuhkan seluruh halaman.
+ *
+ * Larik ini sengaja tidak dirender di halaman mana pun. Ia ada supaya temuannya
+ * tidak hilang dan bisa dibahas dengan pemilik organisasi.
+ */
+export const disputedClaims = [
+  {
+    claim: "Runner up MSC 2023",
+    officialRecord: "Blacklist International",
+    source: "https://en.wikipedia.org/wiki/2023_MLBB_Southeast_Asia_Cup",
   },
   {
-    game: "Growtopia",
-    code: "GT",
-    blurb: "Judul yang menemani awal kanal, termasuk seri giveaway.",
-    verified: true,
+    claim: "Runner up MSC 2024",
+    officialRecord: "Falcons AP.Bren",
+    source: "https://en.wikipedia.org/wiki/2024_MLBB_Mid_Season_Cup",
   },
   {
-    game: "Genshin Impact",
-    code: "GI",
-    blurb: "Sisi eksplorasi dan naratif dari daftar tayang NNG.",
-    verified: true,
+    claim: "Runner up MPL 2019",
+    officialRecord: "Tidak ditemukan catatan NNG di arsip MPL mana pun",
+    source: "https://en.wikipedia.org/wiki/Mobile_Legends:_Bang_Bang_Professional_League",
   },
 ];
 
@@ -139,11 +220,22 @@ export const timeline = [
   },
   {
     year: "2017",
-    title: "Pintu YouTube dibuka",
+    title: "NNG E-Sport berdiri",
     body:
-      "Kanal panjang pertama berjalan. Growtopia dan PUBG mengisi sebagian besar unggahan awal.",
+      "Tahun yang tercatat sebagai titik awal organisasi di bio akun resmi. Kanal panjang " +
+      "pertama juga berjalan di tahun yang sama, dengan Growtopia dan PUBG mengisi " +
+      "sebagian besar unggahan.",
     verified: true,
-    source: "https://www.youtube.com/@nayrbryanGamingOfficial",
+    source: "https://www.tiktok.com/@nng_esport",
+  },
+  {
+    year: "2021",
+    title: "Lini dagang dibuka",
+    body:
+      "Akun @nng_store mulai jalan sebagai sisi niaga, menjual lewat Tokopedia, TikTok, " +
+      "dan Shopee dengan semboyan Now or Never.",
+    verified: true,
+    source: "https://www.tiktok.com/@nng_store",
   },
   {
     year: "2018",
@@ -196,16 +288,20 @@ export const channels = [
     handle: "@nng_esport",
     href: "https://www.tiktok.com/@nng_esport",
     note: "Kanal utama organisasi",
+    stat: "9.660 pengikut &middot; 8.381 unggahan",
     primary: true,
-    verified: false,
+    verified: true,
+    source: "https://www.tiktok.com/@nng_esport",
   },
   {
     platform: "TikTok",
     handle: "@nng_store",
     href: "https://www.tiktok.com/@nng_store",
     note: "Lini dagang",
+    stat: "2.307 pengikut &middot; 6.648 unggahan",
     primary: true,
-    verified: false,
+    verified: true,
+    source: "https://www.tiktok.com/@nng_store",
   },
   {
     platform: "Instagram",

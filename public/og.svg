@@ -1,30 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" fill="none">
   <defs>
-    <linearGradient id="s" x1="0" y1="630" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#7C3AED"/>
-      <stop offset="52%" stop-color="#A855F7"/>
-      <stop offset="100%" stop-color="#22D3EE"/>
+    <linearGradient id="s" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3AA5FF"/>
+      <stop offset="50%" stop-color="#FF5765"/>
+      <stop offset="100%" stop-color="#D10F28"/>
     </linearGradient>
-    <linearGradient id="ms" x1="700" y1="470" x2="1010" y2="180" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#7C3AED"/>
-      <stop offset="52%" stop-color="#A855F7"/>
-      <stop offset="100%" stop-color="#22D3EE"/>
+    <linearGradient id="ms" x1="880" y1="130" x2="880" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3AA5FF"/>
+      <stop offset="42%" stop-color="#FF5765"/>
+      <stop offset="100%" stop-color="#D10F28"/>
     </linearGradient>
-    <linearGradient id="p" x1="700" y1="150" x2="1010" y2="500" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#1B1E28"/>
+    <linearGradient id="p" x1="760" y1="130" x2="1000" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1C212C"/>
       <stop offset="100%" stop-color="#0A0B10"/>
     </linearGradient>
-    <radialGradient id="fog1" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.42"/>
-      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/>
+    <radialGradient id="fogR" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#D10F28" stop-opacity="0.40"/>
+      <stop offset="100%" stop-color="#D10F28" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="fog2" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.26"/>
-      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+    <radialGradient id="fogB" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#1878F0" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#1878F0" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="k" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0%" stop-color="#E9D5FF"/>
-      <stop offset="100%" stop-color="#22D3EE"/>
+      <stop offset="0%" stop-color="#D6EBFF"/>
+      <stop offset="100%" stop-color="#3AA5FF"/>
     </radialGradient>
     <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
       <path d="M60 0 L0 0 0 60" fill="none" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="1"/>
@@ -33,32 +33,33 @@
 
   <rect width="1200" height="630" fill="#07080B"/>
   <rect width="1200" height="630" fill="url(#grid)"/>
-  <ellipse cx="180" cy="120" rx="460" ry="380" fill="url(#fog1)"/>
-  <ellipse cx="1080" cy="540" rx="380" ry="300" fill="url(#fog2)"/>
+  <ellipse cx="150" cy="560" rx="480" ry="360" fill="url(#fogR)"/>
+  <ellipse cx="1000" cy="90" rx="420" ry="320" fill="url(#fogB)"/>
 
   <!-- Lambang -->
-  <g transform="translate(700 150) scale(2.42)">
-    <path d="M64 8 L110 31 L110 76 C110 96 89 111 64 119 C39 111 18 96 18 76 L18 31 Z" fill="url(#p)"/>
-    <path d="M64 8 L110 31 L110 76 C110 96 89 111 64 119 C39 111 18 96 18 76 L18 31 Z" stroke="url(#ms)" stroke-width="3.5" stroke-linejoin="round"/>
-    <path d="M31 92 L48 52 L61 78 L78 44 L97 84" stroke="url(#ms)" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter"/>
-    <path d="M42 100 C52 106 76 106 90 98" stroke="url(#ms)" stroke-width="4.5" stroke-linecap="round" opacity="0.55"/>
-    <path d="M78 30 L83.5 37.5 L78 45 L72.5 37.5 Z" fill="url(#k)"/>
+  <g transform="translate(760 128) scale(1.93)">
+    <path d="M64 7 L104 22 L112 32 L112 74 C112 95 90 111 64 121 C38 111 16 95 16 74 L16 32 L24 22 Z" fill="url(#p)"/>
+    <path d="M64 7 L104 22 L112 32 L112 74 C112 95 90 111 64 121 C38 111 16 95 16 74 L16 32 L24 22 Z" stroke="url(#ms)" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M64 16 L98 28 L104 36 L104 72 C104 89 86 103 64 112 C42 103 24 89 24 72 L24 36 L30 28 Z" stroke="url(#ms)" stroke-width="1.2" stroke-linejoin="round" opacity="0.32"/>
+    <path d="M32 90 L48 53 L61 77 L77 45 L96 82" stroke="url(#ms)" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter"/>
+    <path d="M42 98 C52 104 76 104 90 96" stroke="url(#ms)" stroke-width="4.5" stroke-linecap="round" opacity="0.55"/>
+    <path d="M77 31 L82.5 38.5 L77 46 L71.5 38.5 Z" fill="url(#k)"/>
   </g>
 
   <!-- Teks -->
   <g font-family="Segoe UI, Helvetica, Arial, sans-serif">
-    <rect x="88" y="150" width="9" height="9" fill="#22D3EE"/>
-    <text x="112" y="159" fill="#9698A6" font-size="17" letter-spacing="4.6" font-weight="600">ABEPURA, JAYAPURA, PAPUA</text>
+    <rect x="88" y="148" width="9" height="9" fill="#3AA5FF"/>
+    <text x="112" y="157" fill="#9698A6" font-size="17" letter-spacing="4.6" font-weight="600">ABEPURA, JAYAPURA, PAPUA</text>
 
-    <text x="88" y="268" fill="#F7F7F9" font-size="94" font-weight="800" letter-spacing="-3">NNG ESPORT</text>
-    <text x="88" y="356" fill="url(#s)" font-size="60" font-weight="800" letter-spacing="-2">Enam belas tahun</text>
-    <text x="88" y="424" fill="url(#s)" font-size="60" font-weight="800" letter-spacing="-2">tanpa jeda.</text>
+    <text x="88" y="262" fill="#F7F7F9" font-size="88" font-weight="800" letter-spacing="-3">NNG E-SPORT</text>
+    <text x="88" y="348" fill="url(#s)" font-size="56" font-weight="800" letter-spacing="-2">Berdiri 2017.</text>
+    <text x="88" y="412" fill="url(#s)" font-size="56" font-weight="800" letter-spacing="-2">Tidak pernah libur.</text>
 
-    <rect x="88" y="470" width="330" height="1" fill="#FFFFFF" fill-opacity="0.14"/>
+    <rect x="88" y="456" width="330" height="1" fill="#FFFFFF" fill-opacity="0.14"/>
 
-    <text x="88" y="518" fill="#9698A6" font-size="21">Main, rekam, unggah, ulangi.</text>
-    <text x="88" y="550" fill="#9698A6" font-size="21">Sejak 2010.</text>
+    <text x="88" y="502" fill="#9698A6" font-size="21">MLBB &#183; PUBG &#183; Valorant</text>
+    <text x="88" y="536" fill="#9698A6" font-size="21">8.381 unggahan &#183; 9.660 pengikut</text>
 
-    <text x="88" y="596" fill="#74768A" font-size="17" letter-spacing="2.4">nngesport.vercel.app</text>
+    <text x="88" y="586" fill="#74768A" font-size="17" letter-spacing="2.4">nngesport.vercel.app</text>
   </g>
 </svg>

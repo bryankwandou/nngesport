@@ -69,7 +69,7 @@ export default function Kontak() {
                         <p className="font-display text-base font-700 leading-snug tracking-tight text-bone-50">
                           {c.label}
                         </p>
-                        <span className="mt-2.5 inline-block text-xs text-bone-400 transition-colors group-hover:text-cyan-400">
+                        <span className="mt-2.5 inline-block text-xs text-bone-400 transition-colors group-hover:text-volt-400">
                           Kirim pesan
                           <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
                             &rarr;
@@ -100,7 +100,7 @@ export default function Kontak() {
               {keperluan.map((k, i) => (
                 <RevealItem key={k.title}>
                   <div className="group h-full bg-ink-850 p-8 transition-colors duration-300 hover:bg-ink-800">
-                    <span className="font-display text-[11px] font-700 tracking-[0.2em] text-violet-400">
+                    <span className="font-display text-[11px] font-700 tracking-[0.2em] text-flare-400">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h3 className="mt-4 font-display text-lg font-700 tracking-tight text-bone-50">

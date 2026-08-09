@@ -23,17 +23,17 @@ export function SourceBadge({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/25 bg-cyan-400/[0.07] px-2.5 py-1 text-[10px] font-medium tracking-wide text-cyan-400 transition-colors hover:border-cyan-400/50"
+        className="inline-flex items-center gap-1.5 rounded-full border border-volt-400/25 bg-volt-400/[0.07] px-2.5 py-1 text-[10px] font-medium tracking-wide text-volt-400 transition-colors hover:border-volt-400/50"
       >
-        <span className="h-1 w-1 rounded-full bg-cyan-400" />
+        <span className="h-1 w-1 rounded-full bg-volt-400" />
         Sumber
       </a>
     );
   }
   if (verified) {
     return (
-      <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/25 bg-cyan-400/[0.07] px-2.5 py-1 text-[10px] font-medium tracking-wide text-cyan-400">
-        <span className="h-1 w-1 rounded-full bg-cyan-400" />
+      <span className="inline-flex items-center gap-1.5 rounded-full border border-volt-400/25 bg-volt-400/[0.07] px-2.5 py-1 text-[10px] font-medium tracking-wide text-volt-400">
+        <span className="h-1 w-1 rounded-full bg-volt-400" />
         Terkonfirmasi
       </span>
     );
@@ -49,7 +49,7 @@ export function SourceBadge({
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
     <p className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-bone-400">
-      <span className="h-px w-7 bg-linear-to-r from-violet-500 to-cyan-400" />
+      <span className="h-px w-7 bg-linear-to-r from-flare-500 to-volt-400" />
       {children}
     </p>
   );
@@ -181,7 +181,7 @@ export function Marquee({ items }: { items: string[] }) {
         {doubled.map((t, i) => (
           <span key={i} className="flex items-center gap-10 text-xs tracking-[0.18em] text-bone-400 uppercase">
             {t}
-            <span className="h-1 w-1 rounded-full bg-violet-500" />
+            <span className="h-1 w-1 rounded-full bg-flare-500" />
           </span>
         ))}
       </div>
@@ -209,7 +209,7 @@ export function EmptyState({
     <div className="relative overflow-hidden rounded-2xl border border-dashed border-white/[0.14] bg-ink-850/60 px-6 py-14 text-center">
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 h-40 w-80 -translate-x-1/2 rounded-full bg-violet-600/10 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-0 h-40 w-80 -translate-x-1/2 rounded-full bg-flare-600/10 blur-3xl"
       />
       <p className="relative font-display text-xl font-700 tracking-tight text-bone-50">
         {title}

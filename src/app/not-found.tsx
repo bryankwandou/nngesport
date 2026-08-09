@@ -5,7 +5,7 @@ export default function TidakDitemukan() {
   return (
     <section className="grain relative flex min-h-[100svh] items-center justify-center overflow-hidden px-6 text-center">
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/3 h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-violet-600/[0.14] blur-[130px]" />
+        <div className="absolute left-1/2 top-1/3 h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-flare-600/[0.14] blur-[130px]" />
       </div>
 
       <div className="relative">
@@ -22,7 +22,7 @@ export default function TidakDitemukan() {
         </p>
         <Link
           href="/"
-          className="mt-8 inline-block rounded-full bg-linear-to-r from-violet-600 to-violet-500 px-6 py-3 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5"
+          className="mt-8 inline-block rounded-full bg-linear-to-r from-flare-600 to-flare-500 px-6 py-3 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5"
         >
           Kembali ke beranda
         </Link>
