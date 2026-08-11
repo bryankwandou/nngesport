@@ -94,6 +94,49 @@ export const accountStats = {
 export const motto = "Now or Never";
 
 /**
+ * Keadaan akun Instagram, dibaca 9 Agustus 2026 memakai sesi pemilik akun.
+ *
+ * Angkanya jauh di bawah TikTok, dan itu memang begitu adanya. Menyembunyikan
+ * selisih ini tidak ada gunanya: calon sponsor akan membuka kedua profil, dan
+ * lebih baik mereka menemukan angka yang sama dengan yang tertulis di sini.
+ */
+export const instagramAccounts = [
+  {
+    handle: "@nng_store",
+    href: "https://www.instagram.com/nng_store/",
+    fullName: null,
+    bio: null,
+    followers: 60,
+    following: 312,
+    posts: 34,
+    avatar: "/img/nng-store-instagram.jpg",
+    note: "Etalase produk",
+  },
+  {
+    handle: "@nayrbryan_gaming",
+    href: "https://www.instagram.com/nayrbryan_gaming/",
+    fullName: "nayrbryanGaming",
+    bio: "Trading psychology & discipline\nMarket insights | Risk management\nBuild consistency, not hype\nContent creator since 2010\nCEO | NNG Trading Community",
+    followers: 1514,
+    following: 2292,
+    posts: 3867,
+    avatar: "/img/nayrbryan-gaming-instagram.jpg",
+    note: "Kanal pendiri",
+  },
+];
+
+/**
+ * Cabang ketiga merek NNG, di luar esport dan lini dagang.
+ * Disebut sendiri di bio Instagram pendiri sebagai NNG Trading Community.
+ */
+export const tradingCommunity = {
+  name: "NNG Trading Community",
+  lead: "nayrbryanGaming",
+  focus: "Psikologi dagang, disiplin, dan pengelolaan risiko",
+  source: "https://www.instagram.com/nayrbryan_gaming/",
+};
+
+/**
  * Susunan kepemimpinan mengikuti keterangan pemilik organisasi.
  *
  * Catatan lapangan: profil Threads @bryan_kwandou menuliskan dirinya sebagai
@@ -326,8 +369,10 @@ export const channels = [
     handle: "@nng_store",
     href: "https://www.instagram.com/nng_store/",
     note: "Etalase produk",
+    stat: "60 pengikut · 34 unggahan",
     primary: true,
-    verified: false,
+    verified: true,
+    source: "https://www.instagram.com/nng_store/",
   },
   {
     platform: "TikTok",

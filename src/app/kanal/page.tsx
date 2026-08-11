@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, RevealItem, scaleIn } from "@/components/motion-primitives";
-import { Eyebrow, SourceBadge, TiltCard } from "@/components/ui";
-import { channels, snapshotDate } from "@/content/nng";
+import { Counter, Eyebrow, SourceBadge, TiltCard } from "@/components/ui";
+import { channels, instagramAccounts, snapshotDate } from "@/content/nng";
 
 export const metadata: Metadata = {
   title: "Kanal",
@@ -118,6 +119,79 @@ export default function Kanal() {
         </div>
       </section>
 
+      {/* Instagram */}
+      <section className="container-page py-20 md:py-28">
+        <Reveal>
+          <RevealItem>
+            <Eyebrow>Instagram</Eyebrow>
+            <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
+              Jauh lebih sepi, dan itu memang apa adanya.
+            </h2>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
+              Angka di Instagram tidak sebanding dengan TikTok. Menyembunyikan selisih itu
+              tidak ada gunanya, karena siapa pun bisa membuka kedua profil dan
+              membandingkan sendiri.
+            </p>
+          </RevealItem>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {instagramAccounts.map((a) => (
+              <RevealItem key={a.handle} variant={scaleIn}>
+                <a
+                  href={a.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-full flex-col rounded-2xl border border-white/[0.08] bg-ink-850 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-volt-400/30"
+                >
+                  <div className="flex items-start gap-4">
+                    <Image
+                      src={a.avatar}
+                      alt={`Foto profil Instagram ${a.handle}`}
+                      width={100}
+                      height={100}
+                      className="h-14 w-14 shrink-0 rounded-full object-cover ring-1 ring-white/10"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <h3 className="truncate font-display text-lg font-800 tracking-tight text-bone-50">
+                        {a.handle}
+                      </h3>
+                      <p className="mt-0.5 truncate text-xs text-bone-400">
+                        {a.fullName ?? a.note}
+                      </p>
+                    </div>
+                  </div>
+
+                  {a.bio && (
+                    <p className="mt-5 whitespace-pre-line text-sm leading-relaxed text-bone-400">
+                      {a.bio}
+                    </p>
+                  )}
+
+                  <div className="flex-1" />
+
+                  <dl className="mt-6 grid grid-cols-3 gap-3 border-t border-white/[0.07] pt-5">
+                    {[
+                      { k: "Pengikut", v: a.followers },
+                      { k: "Unggahan", v: a.posts },
+                      { k: "Diikuti", v: a.following },
+                    ].map((s) => (
+                      <div key={s.k}>
+                        <dd className="font-display text-base font-800 tracking-tight text-bone-50">
+                          <Counter to={s.v} />
+                        </dd>
+                        <dt className="mt-0.5 text-[10px] uppercase tracking-[0.1em] text-bone-400">
+                          {s.k}
+                        </dt>
+                      </div>
+                    ))}
+                  </dl>
+                </a>
+              </RevealItem>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
       {/* Catatan keterbatasan */}
       <section className="container-page py-20 md:py-24">
         <Reveal>
@@ -127,11 +201,12 @@ export default function Kanal() {
                 Keterbatasan pembacaan
               </p>
               <p className="mt-5 max-w-3xl text-sm leading-[1.8] text-bone-200">
-                Keterangan profil dan lambang kedua akun TikTok berhasil ditarik pada{" "}
-                {snapshotDate} dan dipakai di halaman ini apa adanya. Yang belum berhasil
-                adalah daftar video per unggahan serta profil Instagram @nng_store, karena
-                keduanya membatasi pembacaan dari luar aplikasi. Angka yang tampil punya
-                tanggal, jadi pembaca bisa menilai sendiri seberapa segar datanya.
+                Keterangan profil dan lambang tiga akun TikTok berhasil ditarik pada{" "}
+                {snapshotDate}, disusul dua akun Instagram sehari kemudian. Semuanya dipakai
+                di halaman ini apa adanya. Yang tetap belum berhasil adalah daftar video per
+                unggahan, karena TikTok berhenti melayani pembacaan setelah beberapa kali
+                permintaan. Angka yang tampil selalu membawa tanggal, jadi pembaca bisa
+                menilai sendiri seberapa segar datanya.
               </p>
             </div>
           </RevealItem>

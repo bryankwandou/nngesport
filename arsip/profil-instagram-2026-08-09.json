@@ -1,0 +1,32 @@
+{
+  "diambil": "2026-08-09",
+  "sumber": "halaman profil Instagram, dibaca dengan sesi pemilik akun",
+  "akun": {
+    "@nng_store": {
+      "handle": "@nng_store",
+      "nama_lengkap": null,
+      "bio": null,
+      "terverifikasi_platform": "false",
+      "akun_privat": "false",
+      "statistik": {
+        "pengikut": 60,
+        "mengikuti": 312,
+        "unggahan": 34
+      },
+      "foto_profil_tersimpan": "/img/nng-store-instagram.jpg"
+    },
+    "@nayrbryan_gaming": {
+      "handle": "@nayrbryan_gaming",
+      "nama_lengkap": "nayrbryanGaming",
+      "bio": "Trading psychology & discipline\\nMarket insights | Risk management\\nBuild consistency, not hype\\nContent creator since 2010\\nCEO | NNG Trading Community",
+      "terverifikasi_platform": "false",
+      "akun_privat": "false",
+      "statistik": {
+        "pengikut": 1514,
+        "mengikuti": 2292,
+        "unggahan": 3867
+      },
+      "foto_profil_tersimpan": "/img/nayrbryan-gaming-instagram.jpg"
+    }
+  }
+}
