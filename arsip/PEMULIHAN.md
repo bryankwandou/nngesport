@@ -60,21 +60,45 @@ Keadaan ketiga akun pada 8 Agustus 2026:
 Bio ketiganya tersimpan utuh, termasuk tanggal berdiri 10 Januari 2018 untuk kanal
 pendiri dan keterangan Est. 2017 untuk kanal organisasi.
 
+### `profil-instagram-2026-08-09.json`
+
+Keadaan dua akun Instagram, dibaca sehari setelahnya memakai sesi pemilik akun:
+
+| | @nayrbryan_gaming | @nng_store |
+| --- | --- | --- |
+| Nama lengkap | nayrbryanGaming | belum diisi |
+| Pengikut | 1.514 | 60 |
+| Unggahan | 3.867 | 34 |
+| Mengikuti | 2.292 | 312 |
+
+Bio @nayrbryan_gaming tersimpan utuh, termasuk keterangan NNG Trading Community dengan
+pemiliknya sebagai CEO. Cabang itu berada di luar esport dan lini dagang, dan sebelumnya
+tidak tercatat di mana pun.
+
 ### `mentah/`
 
-Salinan mentah halaman profil ketiga akun. Kalau suatu saat perlu keterangan yang belum
-sempat diambil, datanya masih ada di dalam berkas ini tanpa perlu mengakses TikTok lagi.
+Salinan mentah halaman profil ketiga akun TikTok dan dua akun Instagram. Kalau suatu saat
+perlu keterangan yang belum sempat diambil, datanya masih ada di dalam berkas ini tanpa
+perlu mengakses platformnya lagi.
 
 ### `../public/img/`
 
-Tiga lambang asli, terunduh sebelum tautan bertanda tangannya kedaluwarsa:
+Lima gambar, terunduh sebelum tautan bertanda tangannya kedaluwarsa:
 
-- `nayrbryangaming-avatar.jpg` bertema Growtopia, bertanda hak cipta 2020
-- `nng-esport-avatar.jpg` perisai merah biru, 943 piksel
-- `nng-store-avatar.jpg` perisai ungu, 1080 piksel
+| Berkas | Asal | Ukuran |
+| --- | --- | --- |
+| `nng-esport-avatar.jpg` | TikTok, perisai merah biru | 943 piksel |
+| `nng-store-avatar.jpg` | TikTok, perisai ungu | 1080 piksel |
+| `nayrbryangaming-avatar.jpg` | TikTok, bertema Growtopia, bertanda hak cipta 2020 | 587 piksel |
+| `nng-store-instagram.jpg` | Instagram | 100 piksel |
+| `nayrbryan-gaming-instagram.jpg` | Instagram | 100 piksel |
 
-Tautan asal dari TikTok memakai tanda tangan yang habis masa berlakunya dalam hitungan
-jam. Berkas yang tersimpan di sini tidak punya batas waktu itu.
+Tautan asal memakai tanda tangan yang habis masa berlakunya dalam hitungan jam, jadi
+berkas yang tersimpan di sini jauh lebih awet daripada tautannya.
+
+Instagram menandatangani tautannya per ukuran. Meminta versi 320 atau 640 piksel dari
+tautan yang sama dijawab penolakan, sehingga hanya versi 100 piksel yang bisa diambil.
+Versi resolusi penuhnya hanya keluar lewat pengunduhan resmi di bawah.
 
 ---
 
@@ -109,6 +133,30 @@ Pilih format HTML supaya bisa dibaca langsung tanpa alat tambahan.
 
 Simpan di dua tempat berbeda sejak awal. Satu cakram luar dan satu layanan awan sudah
 cukup. Kejadian ini terjadi justru karena semuanya hanya ada di satu tempat.
+
+---
+
+## Batas yang benar-benar tidak bisa ditembus
+
+Daftar video per unggahan. TikTok berhenti melayani pembacaan setelah beberapa kali
+permintaan dari alamat yang sama, dan blokirnya tidak bergantung pada cookie. Sudah dicoba
+berulang dengan tajuk permintaan lengkap dan seluruh cookie sesi; jawabannya tetap halaman
+kosong berukuran beberapa ratus byte.
+
+Judul, tanggal, dan jumlah tayang dari 57.829 unggahan karena itu hanya bisa keluar lewat
+pengunduhan resmi di bawah. Tidak ada jalan pintas untuk bagian ini.
+
+---
+
+## Setelah semua cookie dipakai
+
+Cookie sesi yang dipakai untuk membaca profil sebaiknya diganti setelah pekerjaan ini
+selesai, dengan keluar dari semua perangkat lalu masuk kembali. Sesi lama langsung tidak
+berlaku begitu itu dilakukan.
+
+Ini bukan karena ada yang salah dengan pembacaannya, melainkan kebiasaan yang sama seperti
+mengganti kunci setelah kunci cadangan sempat dipegang orang lain. Apalagi laptop yang
+hilang juga membawa sesi yang masih aktif.
 
 ---
 
