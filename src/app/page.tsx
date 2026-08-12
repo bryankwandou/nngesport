@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { Reveal, RevealItem, fadeUp, scaleIn } from "@/components/motion-primitives";
 import { Eyebrow, Marquee, SourceBadge, TiltCard } from "@/components/ui";
-import { LogoMark } from "@/components/Logo";
+import { LogoCrest } from "@/components/Logo";
 import { AccountCard } from "@/components/AccountCard";
 import {
   accountStats,
@@ -82,7 +82,7 @@ export default function Beranda() {
           <RevealItem>
             <Eyebrow>Angka sebenarnya</Eyebrow>
             <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.9rem,3.6vw,2.9rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-              Dua akun, ditarik langsung dari sumbernya.
+              Tiga akun, ditarik langsung dari sumbernya.
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
               Lambang dan angka di bawah diambil apa adanya dari halaman profil, bukan
@@ -151,7 +151,7 @@ export default function Beranda() {
                   href="/roster"
                   className="group relative flex h-full min-h-[214px] flex-col justify-between overflow-hidden rounded-2xl border border-white/[0.08] bg-linear-to-br from-flare-600/20 to-volt-400/[0.06] p-6 transition-colors duration-300 hover:border-flare-400/40"
                 >
-                  <LogoMark uid="cta-div" className="h-10 w-10" />
+                  <LogoCrest size={80} className="h-10 w-10 ring-1 ring-white/10" />
                   <div>
                     <p className="font-display text-lg font-700 leading-snug tracking-tight text-bone-50">
                       Susunan pemain
@@ -210,12 +210,6 @@ export default function Beranda() {
                     <blockquote className="mt-6 border-l-2 border-flare-500/60 pl-4 text-sm italic leading-relaxed text-bone-400">
                       {p.quote}
                     </blockquote>
-
-                    {p.note && (
-                      <p className="mt-4 rounded-lg border border-amber-400/20 bg-amber-400/[0.05] px-3 py-2 text-xs leading-relaxed text-amber-400/90">
-                        Catatan arsip: {p.note}
-                      </p>
-                    )}
 
                     <dl className="mt-7 grid grid-cols-3 gap-4 border-t border-white/[0.07] pt-5">
                       {p.stats.map((s) => (
@@ -383,7 +377,7 @@ export default function Beranda() {
                 aria-hidden
                 className="pointer-events-none absolute left-1/2 top-0 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-flare-500/20 blur-[100px]"
               />
-              <LogoMark uid="cta" className="relative mx-auto h-16 w-16" />
+              <LogoCrest size={160} className="relative mx-auto h-20 w-20 ring-1 ring-white/12" />
               <h2 className="relative mx-auto mt-8 max-w-2xl font-display text-[clamp(1.9rem,4vw,3.1rem)] font-800 leading-[1.04] tracking-[-0.03em]">
                 Kalau Anda melihat sesuatu di sini, mari bicara.
               </h2>

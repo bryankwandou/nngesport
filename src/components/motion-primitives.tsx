@@ -1,7 +1,18 @@
 "use client";
 
 import { motion, useInView, useReducedMotion, type Variants } from "motion/react";
-import { useRef, type ReactNode } from "react";
+import { useRef, useState, useSyncExternalStore, type ReactNode } from "react";
+
+const noop = () => () => {};
+
+/** Salah selama render peladen dan render pertama peramban, benar setelahnya. */
+function useHydrated() {
+  return useSyncExternalStore(
+    noop,
+    () => true,
+    () => false
+  );
+}
 
 /*
   Kumpulan gerak yang dipakai berulang di seluruh situs.
@@ -50,18 +61,47 @@ export function Reveal({
   as?: "div" | "section" | "ul" | "ol";
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [lewati, setLewati] = useState<boolean | null>(null);
   const inView = useInView(ref, { once: true, margin: "-12% 0px -8% 0px" });
   const still = useReducedMotion();
+  const hydrated = useHydrated();
 
   const Tag = motion[as] as typeof motion.div;
+
+  /*
+    Sampai skrip selesai dipasang, bagian ini digambar tanpa aturan gerak sama sekali,
+    sehingga isinya terlihat penuh sejak HTML pertama tiba.
+
+    Versi sebelumnya memasang keadaan tersembunyi sejak render peladen. Akibatnya, bila
+    pengamat perpotongan gagal menyala karena satu dan lain hal, bagian itu tetap
+    beropasitas nol dan pembaca hanya melihat kotak hitam sepanjang layar. Menyembunyikan
+    isi lebih dulu lalu berharap skrip memunculkannya adalah pertaruhan yang tidak sepadan
+    dengan animasi masuk.
+  */
+  /*
+    Bagian yang sudah tampak di layar pada saat skrip selesai dipasang tidak pernah
+    dianimasikan. Menyembunyikannya lebih dulu hanya untuk memunculkannya kembali
+    menghasilkan kedipan yang terlihat jelas di bagian paling atas halaman.
+  */
+  if (hydrated && lewati === null) {
+    setLewati(inView);
+  }
+
+  if (!hydrated || still || lewati !== false) {
+    return (
+      <Tag ref={ref} className={className}>
+        {children}
+      </Tag>
+    );
+  }
 
   return (
     <Tag
       ref={ref}
       className={className}
       variants={stagger(gap, delay)}
-      initial={still ? false : "hidden"}
-      animate={inView || still ? "show" : "hidden"}
+      initial="hidden"
+      animate={inView ? "show" : "hidden"}
     >
       {children}
     </Tag>
@@ -102,9 +142,15 @@ export function SplitHeading({
   delay?: number;
 }) {
   const still = useReducedMotion();
+  const hydrated = useHydrated();
   const words = text.split(" ");
 
-  if (still) return <h1 className={className}>{text}</h1>;
+  /*
+    Judul dikirim sebagai teks biasa dari peladen. Kalau kata-katanya diletakkan dalam
+    keadaan tersembunyi sejak awal, mesin pencari dan pembaca tanpa skrip menerima judul
+    yang tidak terlihat sama sekali.
+  */
+  if (still || !hydrated) return <h1 className={className}>{text}</h1>;
 
   return (
     <motion.h1

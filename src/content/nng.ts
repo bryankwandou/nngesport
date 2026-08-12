@@ -166,9 +166,9 @@ export const leadership = [
       { label: "objkt", href: "https://objkt.com/users/tz2LB1bnJNcyQe5Fy89XJKvhCcDfovpZ2gi5" },
     ],
     stats: [
-      { label: "Pengikut Instagram", value: "1.516" },
-      { label: "Pengikut Threads", value: "204" },
-      { label: "Tahun berkarya", value: "16" },
+      { label: "Pengikut TikTok", value: "75.100" },
+      { label: "Unggahan TikTok", value: "42.800" },
+      { label: "Pengikut Instagram", value: "1.514" },
     ],
   },
   {
@@ -181,8 +181,6 @@ export const leadership = [
       "pekerjaan lepas, karya NFT, dan fotografi.",
     quote:
       "Juara sejati tidak berlatih sampai berhasil sekali. Ia berlatih sampai sulit untuk gagal.",
-    note:
-      "Bio Threads yang bersangkutan menuliskan jabatan Founder dan CEO NNG E-Sport.",
     verified: true,
     source: "https://www.threads.com/@bryan_kwandou",
     links: [

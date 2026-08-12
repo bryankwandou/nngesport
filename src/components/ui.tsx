@@ -171,7 +171,7 @@ export function TiltCard({
   const glare = useTransform(
     [px, py],
     ([x, y]: number[]) =>
-      `radial-gradient(360px circle at ${x * 100}% ${y * 100}%, rgba(168,85,247,0.15), transparent 68%)`
+      `radial-gradient(360px circle at ${x * 100}% ${y * 100}%, rgba(244,33,59,0.16), transparent 68%)`
   );
 
   return (

@@ -77,7 +77,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-2">
             <Link
               href="/kontak"
-              className="hidden rounded-full bg-linear-to-r from-flare-600 to-flare-500 px-4 py-2 text-[13px] font-semibold text-white shadow-[0_0_0_1px_rgba(168,85,247,0.35),0_10px_30px_-12px_rgba(124,58,237,0.8)] transition-transform duration-300 hover:-translate-y-px sm:block"
+              className="hidden rounded-full bg-linear-to-r from-flare-600 to-flare-500 px-4 py-2 text-[13px] font-semibold text-white shadow-[0_0_0_1px_rgba(244,33,59,0.4),0_10px_30px_-12px_rgba(209,15,40,0.85)] transition-transform duration-300 hover:-translate-y-px sm:block"
             >
               Ajak kerja sama
             </Link>

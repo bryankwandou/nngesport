@@ -10,7 +10,7 @@ import {
   useReducedMotion,
 } from "motion/react";
 import { useEffect, useRef } from "react";
-import { LogoMark } from "./Logo";
+import { LogoCrest } from "./Logo";
 import { SplitHeading } from "./motion-primitives";
 import { Counter } from "./ui";
 import { org } from "@/content/nng";
@@ -121,7 +121,7 @@ export function Hero() {
             >
               <Link
                 href="/sejarah"
-                className="group relative overflow-hidden rounded-full bg-linear-to-r from-flare-600 to-flare-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(168,85,247,0.4),0_18px_40px_-16px_rgba(124,58,237,0.9)] transition-transform duration-300 hover:-translate-y-0.5"
+                className="group relative overflow-hidden rounded-full bg-linear-to-r from-flare-600 to-flare-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(244,33,59,0.45),0_18px_40px_-16px_rgba(209,15,40,0.9)] transition-transform duration-300 hover:-translate-y-0.5"
               >
                 <span className="relative z-10">Baca perjalanannya</span>
                 <span
@@ -181,7 +181,7 @@ export function Hero() {
                 animate={still ? {} : { y: [0, -14, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
               >
-                <LogoMark uid="hero" glow className="h-[22rem] w-[22rem] drop-shadow-2xl" />
+                <LogoCrest size={640} priority className="h-[21rem] w-[21rem] rounded-3xl shadow-2xl ring-1 ring-white/12" />
               </motion.div>
 
               {/* Cincin orbit yang berputar pelan di belakang lambang */}

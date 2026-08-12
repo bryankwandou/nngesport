@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, RevealItem, scaleIn } from "@/components/motion-primitives";
 import { Eyebrow, TiltCard } from "@/components/ui";
-import { LogoMark } from "@/components/Logo";
+import { LogoCrest } from "@/components/Logo";
 import { storeCategories, storeChannels } from "@/content/nng";
 
 export const metadata: Metadata = {
@@ -37,7 +37,7 @@ export default function Toko() {
                   <TiltCard className="h-full">
                     <div className="flex h-full flex-col justify-between gap-10 p-8">
                       <div className="flex items-start justify-between">
-                        <LogoMark uid={`t-${c.platform}`} className="h-10 w-10" />
+                        <LogoCrest size={80} className="h-10 w-10 ring-1 ring-white/10" />
                         <span className="rounded-full border border-amber-400/25 bg-amber-400/[0.07] px-2.5 py-1 text-[10px] font-medium text-amber-400">
                           Katalog menyusul
                         </span>

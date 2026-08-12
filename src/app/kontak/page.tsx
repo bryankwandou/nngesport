@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, RevealItem, scaleIn } from "@/components/motion-primitives";
 import { Eyebrow, TiltCard } from "@/components/ui";
-import { LogoMark } from "@/components/Logo";
+import { LogoCrest } from "@/components/Logo";
 import { contact, org } from "@/content/nng";
 
 export const metadata: Metadata = {
@@ -64,7 +64,7 @@ export default function Kontak() {
                 <a href={c.href} target="_blank" rel="noopener noreferrer" className="block h-full">
                   <TiltCard className="h-full">
                     <div className="flex h-full flex-col justify-between gap-8 p-7">
-                      <LogoMark uid={`k-${c.label.slice(0, 4)}`} className="h-9 w-9" />
+                      <LogoCrest size={80} className="h-10 w-10 ring-1 ring-white/10" />
                       <div>
                         <p className="font-display text-base font-700 leading-snug tracking-tight text-bone-50">
                           {c.label}

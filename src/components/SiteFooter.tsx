@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LogoMark } from "./Logo";
+import { LogoCrest } from "./Logo";
 import { nav, org, channels } from "@/content/nng";
 
 export function SiteFooter() {
@@ -16,7 +16,7 @@ export function SiteFooter() {
       <div className="container-page grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr] md:py-20">
         <div>
           <div className="flex items-center gap-3">
-            <LogoMark uid="ftr" className="h-11 w-11" />
+            <LogoCrest size={96} className="h-12 w-12 ring-1 ring-white/10" />
             <div>
               <p className="font-display text-lg font-800 tracking-tight">{org.name}</p>
               <p className="text-xs text-bone-400">

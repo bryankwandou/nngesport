@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LogoMark } from "@/components/Logo";
+import { LogoCrest } from "@/components/Logo";
 
 export default function TidakDitemukan() {
   return (
@@ -9,7 +9,7 @@ export default function TidakDitemukan() {
       </div>
 
       <div className="relative">
-        <LogoMark uid="e404" className="mx-auto h-16 w-16" />
+        <LogoCrest size={140} className="mx-auto h-18 w-18 ring-1 ring-white/10" />
         <p className="mt-8 font-display text-[clamp(4rem,14vw,8rem)] font-800 leading-none tracking-[-0.05em] text-gradient">
           404
         </p>

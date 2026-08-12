@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 /**
  * Lambang NNG Esport.
  *
@@ -119,10 +121,38 @@ export function LogoMark({ className, uid = "nng", glow = false }: LogoProps) {
   );
 }
 
-export function LogoLockup({ className, uid = "lockup" }: LogoProps) {
+/**
+ * Lambang resmi, memakai berkas gambar yang diunduh langsung dari akun @nng_esport.
+ *
+ * Inilah lambang yang sebenarnya dipakai organisasi. Versi vektor di atas hanya
+ * penyederhanaan untuk ukuran sangat kecil seperti favicon, dan tidak lagi dipakai
+ * sebagai wajah merek di halaman.
+ */
+export function LogoCrest({
+  className,
+  size = 40,
+  priority = false,
+}: {
+  className?: string;
+  size?: number;
+  priority?: boolean;
+}) {
+  return (
+    <Image
+      src="/img/nng-esport-avatar.jpg"
+      alt="Lambang resmi NNG Esport"
+      width={size}
+      height={size}
+      priority={priority}
+      className={`rounded-xl object-cover ${className ?? ""}`}
+    />
+  );
+}
+
+export function LogoLockup({ className }: LogoProps) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${className ?? ""}`}>
-      <LogoMark uid={uid} className="h-8 w-8 shrink-0" />
+      <LogoCrest size={72} priority className="h-9 w-9 shrink-0 ring-1 ring-white/10" />
       <span className="flex flex-col leading-none">
         <span className="text-[15px] font-extrabold tracking-[0.18em] text-zinc-50">
           NNG
