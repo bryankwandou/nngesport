@@ -45,6 +45,9 @@ export const org = {
  */
 export const snapshotDate = "8 Agustus 2026";
 
+/** Instagram dibaca sehari setelah TikTok, jadi tanggalnya berbeda. */
+export const snapshotDateInstagram = "9 Agustus 2026";
+
 export const accountStats = {
   esport: {
     handle: "@nng_esport",

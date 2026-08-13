@@ -36,15 +36,11 @@
   <ellipse cx="150" cy="560" rx="480" ry="360" fill="url(#fogR)"/>
   <ellipse cx="1000" cy="90" rx="420" ry="320" fill="url(#fogB)"/>
 
-  <!-- Lambang -->
-  <g transform="translate(760 128) scale(1.93)">
-    <path d="M64 7 L104 22 L112 32 L112 74 C112 95 90 111 64 121 C38 111 16 95 16 74 L16 32 L24 22 Z" fill="url(#p)"/>
-    <path d="M64 7 L104 22 L112 32 L112 74 C112 95 90 111 64 121 C38 111 16 95 16 74 L16 32 L24 22 Z" stroke="url(#ms)" stroke-width="3.5" stroke-linejoin="round"/>
-    <path d="M64 16 L98 28 L104 36 L104 72 C104 89 86 103 64 112 C42 103 24 89 24 72 L24 36 L30 28 Z" stroke="url(#ms)" stroke-width="1.2" stroke-linejoin="round" opacity="0.32"/>
-    <path d="M32 90 L48 53 L61 77 L77 45 L96 82" stroke="url(#ms)" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter"/>
-    <path d="M42 98 C52 104 76 104 90 96" stroke="url(#ms)" stroke-width="4.5" stroke-linecap="round" opacity="0.55"/>
-    <path d="M77 31 L82.5 38.5 L77 46 L71.5 38.5 Z" fill="url(#k)"/>
-  </g>
+  <!--
+    Lambang tidak digambar di sini. Berkas foto asli milik akun resmi ditempelkan
+    di atas hasil render oleh scripts/buat-aset.mjs, karena lambang itu berupa
+    gambar raster yang tidak bisa diwakili ulang sebagai jalur vektor.
+  -->
 
   <!-- Teks -->
   <g font-family="Segoe UI, Helvetica, Arial, sans-serif">

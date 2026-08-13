@@ -45,7 +45,7 @@ export function SiteHeader() {
       >
         <div className="container-page flex h-[68px] items-center justify-between">
           <Link href="/" aria-label="NNG Esport, kembali ke beranda">
-            <LogoLockup uid="hdr" />
+            <LogoLockup />
           </Link>
 
           <nav className="hidden items-center gap-1 md:flex" aria-label="Navigasi utama">

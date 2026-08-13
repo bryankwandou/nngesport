@@ -205,10 +205,15 @@ export function TiltCard({
 /** Pita berjalan tanpa henti. Isinya digandakan agar sambungannya tidak terlihat. */
 export function Marquee({ items }: { items: string[] }) {
   const doubled = [...items, ...items];
+  const batasAsli = items.length;
   return (
+    /*
+      Isinya digandakan supaya sambungannya tidak terlihat, jadi salinan kedua
+      disembunyikan dari pembaca layar agar tidak dibacakan dua kali.
+      Peran marquee tidak dipakai karena bukan peran yang sah menurut ARIA.
+    */
     <div
       className="relative flex overflow-hidden border-y border-white/[0.07] bg-ink-900 py-3.5"
-      role="marquee"
       aria-label="Sorotan singkat"
     >
       <div
@@ -221,9 +226,13 @@ export function Marquee({ items }: { items: string[] }) {
       />
       <div className="animate-marquee flex shrink-0 items-center gap-10 whitespace-nowrap pr-10">
         {doubled.map((t, i) => (
-          <span key={i} className="flex items-center gap-10 text-xs tracking-[0.18em] text-bone-400 uppercase">
+          <span
+            key={i}
+            aria-hidden={i >= batasAsli}
+            className="flex items-center gap-10 text-xs tracking-[0.18em] text-bone-400 uppercase"
+          >
             {t}
-            <span className="h-1 w-1 rounded-full bg-flare-500" />
+            <span aria-hidden className="h-1 w-1 rounded-full bg-flare-500" />
           </span>
         ))}
       </div>

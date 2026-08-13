@@ -3,7 +3,12 @@ import Image from "next/image";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, RevealItem, scaleIn } from "@/components/motion-primitives";
 import { Counter, Eyebrow, SourceBadge, TiltCard } from "@/components/ui";
-import { channels, instagramAccounts, snapshotDate } from "@/content/nng";
+import {
+  channels,
+  instagramAccounts,
+  snapshotDate,
+  snapshotDateInstagram,
+} from "@/content/nng";
 
 export const metadata: Metadata = {
   title: "Kanal",
@@ -130,7 +135,7 @@ export default function Kanal() {
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
               Angka di Instagram tidak sebanding dengan TikTok. Menyembunyikan selisih itu
               tidak ada gunanya, karena siapa pun bisa membuka kedua profil dan
-              membandingkan sendiri.
+              membandingkan sendiri. Ditarik {snapshotDateInstagram}.
             </p>
           </RevealItem>
 

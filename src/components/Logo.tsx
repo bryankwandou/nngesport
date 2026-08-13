@@ -149,7 +149,7 @@ export function LogoCrest({
   );
 }
 
-export function LogoLockup({ className }: LogoProps) {
+export function LogoLockup({ className }: { className?: string }) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${className ?? ""}`}>
       <LogoCrest size={72} priority className="h-9 w-9 shrink-0 ring-1 ring-white/10" />

@@ -47,18 +47,29 @@ export const metadata: Metadata = {
     siteName: org.name,
     title: `${org.name} — ${org.tagline}`,
     description: org.intro,
-    images: [{ url: "/og.svg", width: 1200, height: 630, alt: org.name }],
+    /*
+      Gambar pratinjau harus raster. Facebook, WhatsApp, dan X tidak merender SVG
+      sebagai og:image, sehingga tautan yang dibagikan muncul tanpa gambar sama sekali.
+    */
+    images: [
+      { url: "/og.png", width: 1200, height: 630, type: "image/png", alt: org.name },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${org.name} — ${org.tagline}`,
     description: org.intro,
-    images: ["/og.svg"],
+    images: ["/og.png"],
   },
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-    apple: "/icon.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
+  manifest: "/manifest.webmanifest",
   robots: { index: true, follow: true },
 };
 
