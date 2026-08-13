@@ -11,9 +11,11 @@ import {
 } from "motion/react";
 import { useEffect, useRef } from "react";
 import { LogoCrest } from "./Logo";
-import { SplitHeading } from "./motion-primitives";
+import { SplitHeading, useHydrated } from "./motion-primitives";
 import { Counter } from "./ui";
 import { org } from "@/content/nng";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
  * Bagian pembuka.
@@ -25,6 +27,25 @@ import { org } from "@/content/nng";
 export function Hero() {
   const wrap = useRef<HTMLDivElement>(null);
   const still = useReducedMotion();
+  const hydrated = useHydrated();
+
+  /*
+    Menyusun aturan gerak masuk untuk satu elemen.
+
+    Sebelum skrip selesai dipasang, tidak ada aturan apa pun yang dikembalikan, sehingga
+    elemen digambar penuh sejak HTML pertama tiba. Versi sebelumnya menaruh opasitas nol
+    langsung di HTML peladen, yang berarti judul, paragraf, dan kedua tombol ajakan
+    dikirim dalam keadaan tidak terlihat. Kalau skrip gagal dimuat, pembaca hanya
+    mendapat layar kosong, dan mesin pencari membaca halaman tanpa tombol sama sekali.
+  */
+  const masuk = (delay: number, geser = 16) =>
+    !hydrated || still
+      ? {}
+      : {
+          initial: { opacity: 0, y: geser },
+          animate: { opacity: 1, y: 0 },
+          transition: { delay, duration: 0.7, ease: EASE },
+        };
 
   const { scrollYProgress } = useScroll({
     target: wrap,
@@ -86,9 +107,7 @@ export function Hero() {
         <div className="grid items-center gap-14 lg:grid-cols-[1.12fr_0.88fr]">
           <motion.div style={{ y: still ? 0 : yText }}>
             <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              {...masuk(0, 12)}
               className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-[11px] font-medium tracking-[0.16em] uppercase text-bone-400 backdrop-blur"
             >
               <span className="relative flex h-1.5 w-1.5">
@@ -105,18 +124,14 @@ export function Hero() {
             />
 
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              {...masuk(0.5)}
               className="mt-6 max-w-xl text-[15px] leading-relaxed text-bone-200 sm:text-base"
             >
               {org.longIntro}
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.62, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              {...masuk(0.62)}
               className="mt-9 flex flex-wrap items-center gap-3"
             >
               <Link
@@ -138,9 +153,7 @@ export function Hero() {
             </motion.div>
 
             <motion.dl
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
+              {...masuk(0.8, 0)}
               className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/[0.08] pt-7"
             >
               {[
@@ -171,9 +184,13 @@ export function Hero() {
             className="relative hidden justify-self-center lg:block"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.86, rotate: -6 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ delay: 0.24, duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
+              {...(!hydrated || still
+                ? {}
+                : {
+                    initial: { opacity: 0, scale: 0.86, rotate: -6 },
+                    animate: { opacity: 1, scale: 1, rotate: 0 },
+                    transition: { delay: 0.24, duration: 1.05, ease: EASE },
+                  })}
               style={{ rotateX: still ? 0 : rx, rotateY: still ? 0 : ry, transformPerspective: 1000 }}
               className="relative"
             >
@@ -205,10 +222,7 @@ export function Hero() {
       {/* Petunjuk gulir */}
       <motion.div
         aria-hidden
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.3, duration: 0.8 }}
-        style={{ opacity: still ? 1 : fade }}
+        style={{ opacity: still || !hydrated ? 1 : fade }}
         className="absolute bottom-7 left-1/2 z-10 -translate-x-1/2"
       >
         <div className="flex h-9 w-[22px] justify-center rounded-full border border-white/15 pt-2">

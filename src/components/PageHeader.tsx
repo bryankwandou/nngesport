@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
-import { SplitHeading } from "./motion-primitives";
+import { motion, useReducedMotion } from "motion/react";
+import { SplitHeading, useHydrated } from "./motion-primitives";
 import { Eyebrow } from "./ui";
 
 /** Kepala halaman yang dipakai semua halaman selain beranda, supaya iramanya sama. */
@@ -14,6 +14,22 @@ export function PageHeader({
   title: string;
   lead: string;
 }) {
+  const hydrated = useHydrated();
+  const still = useReducedMotion();
+
+  /*
+    Sama seperti di bagian pembuka beranda: sebelum skrip terpasang, tidak ada aturan
+    gerak yang dikirim, sehingga kepala halaman tiba dalam keadaan terbaca penuh.
+  */
+  const masuk = (delay: number, geser: number) =>
+    !hydrated || still
+      ? {}
+      : {
+          initial: { opacity: 0, y: geser },
+          animate: { opacity: 1, y: 0 },
+          transition: { delay, duration: 0.65, ease: [0.16, 1, 0.3, 1] as const },
+        };
+
   return (
     <header className="grain relative overflow-hidden border-b border-white/[0.07] pt-[68px]">
       <div aria-hidden className="pointer-events-none absolute inset-0">
@@ -32,11 +48,7 @@ export function PageHeader({
       />
 
       <div className="container-page relative py-20 md:py-28">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <motion.div {...masuk(0, 10)}>
           <Eyebrow>{eyebrow}</Eyebrow>
         </motion.div>
 
@@ -47,9 +59,7 @@ export function PageHeader({
         />
 
         <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          {...masuk(0.4, 14)}
           className="mt-6 max-w-2xl text-[15px] leading-relaxed text-bone-200"
         >
           {lead}

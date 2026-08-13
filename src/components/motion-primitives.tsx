@@ -6,7 +6,7 @@ import { useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 const noop = () => () => {};
 
 /** Salah selama render peladen dan render pertama peramban, benar setelahnya. */
-function useHydrated() {
+export function useHydrated() {
   return useSyncExternalStore(
     noop,
     () => true,
