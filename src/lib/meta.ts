@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { getContent } from "@/content";
-import { htmlLocale, type Lang } from "./i18n";
+import { htmlLocale, path as routePath, type Lang, type RouteKey } from "./i18n";
 
 /**
  * Keterangan halaman yang sama untuk kedua bahasa, hanya isinya yang berpindah.
@@ -26,14 +26,13 @@ export function buildMetadata(lang: Lang): Metadata {
       bukan ke beranda, sehingga penanda kampanye di belakang alamat tidak
       memecah nilai satu halaman menjadi beberapa.
     */
-    alternates: {
-      canonical: "./",
-      languages: {
-        "id-ID": home,
-        "en-US": lang === "en" ? "/en" : "/en",
-        "x-default": "/",
-      },
-    },
+    /*
+      Padanan bahasa sengaja tidak ditulis di sini. Tata letak akar berlaku sama
+      untuk seluruh halaman di bawahnya, jadi menaruhnya di sini membuat setiap
+      halaman menunjuk ke beranda sebagai padanannya. Tiap halaman mengurusnya
+      sendiri lewat `altLanguages`.
+    */
+    alternates: { canonical: "./" },
     keywords:
       lang === "en"
         ? [
@@ -98,3 +97,22 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
 };
+
+/**
+ * Padanan bahasa untuk satu halaman tertentu.
+ *
+ * Dipanggil dari berkas rute, bukan dari tata letak, supaya /en/prestasi
+ * menunjuk ke /prestasi dan bukan ke beranda. Menunjuk ke alamat yang salah
+ * lebih buruk daripada tidak menunjuk sama sekali, karena mesin pencari akan
+ * menyimpulkan seluruh situs adalah terjemahan dari satu halaman yang sama.
+ */
+export function altLanguages(key: RouteKey): Metadata["alternates"] {
+  return {
+    canonical: "./",
+    languages: {
+      "id-ID": routePath(key, "id"),
+      "en-US": routePath(key, "en"),
+      "x-default": routePath(key, "id"),
+    },
+  };
+}
