@@ -109,24 +109,6 @@ export default function Toko() {
           </Reveal>
         </div>
       </section>
-
-      {/* Catatan */}
-      <section className="container-page py-20 md:py-24">
-        <Reveal>
-          <RevealItem>
-            <div className="rounded-2xl border border-white/[0.08] bg-ink-850 p-8 md:p-10">
-              <Eyebrow>Kenapa tidak ada harga di sini</Eyebrow>
-              <p className="mt-5 max-w-3xl text-sm leading-[1.8] text-bone-400">
-                Memasang harga yang sudah berubah lebih merugikan daripada tidak memasang
-                harga sama sekali. Pembeli yang datang membawa angka lama akan kecewa, dan
-                penjualnya yang menanggung. Selama katalog resmi belum tersambung ke halaman
-                ini, arah yang paling jujur adalah mengantar pembaca langsung ke etalase
-                tempat angka sebenarnya ditulis.
-              </p>
-            </div>
-          </RevealItem>
-        </Reveal>
-      </section>
     </>
   );
 }

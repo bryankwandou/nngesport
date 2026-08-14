@@ -149,24 +149,6 @@ export default function Prestasi() {
           </Reveal>
         </div>
       </section>
-
-      {/* Catatan */}
-      <section className="container-page py-20 md:py-24">
-        <Reveal>
-          <RevealItem>
-            <div className="rounded-2xl border border-white/[0.08] bg-ink-850 p-8 md:p-10">
-              <Eyebrow>Kenapa daftarnya pendek</Eyebrow>
-              <p className="mt-5 max-w-3xl text-sm leading-[1.8] text-bone-400">
-                Halaman prestasi tim besar biasanya panjang karena hasilnya tercatat di
-                sistem penyelenggara liga. NNG belum punya jejak semacam itu di sumber
-                terbuka, dan itu bukan sesuatu yang perlu ditutupi. Ruang ini akan terisi
-                dengan sendirinya seiring tim mulai turun di ajang resmi. Sampai saat itu,
-                yang ditampilkan adalah apa yang memang ada.
-              </p>
-            </div>
-          </RevealItem>
-        </Reveal>
-      </section>
     </>
   );
 }

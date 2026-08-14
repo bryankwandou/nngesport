@@ -196,27 +196,6 @@ export default function Kanal() {
           </div>
         </Reveal>
       </section>
-
-      {/* Catatan keterbatasan */}
-      <section className="container-page py-20 md:py-24">
-        <Reveal>
-          <RevealItem>
-            <div className="rounded-2xl border border-amber-400/20 bg-amber-400/[0.04] p-8 md:p-10">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-amber-400">
-                Keterbatasan pembacaan
-              </p>
-              <p className="mt-5 max-w-3xl text-sm leading-[1.8] text-bone-200">
-                Keterangan profil dan lambang tiga akun TikTok berhasil ditarik pada{" "}
-                {snapshotDate}, disusul dua akun Instagram sehari kemudian. Semuanya dipakai
-                di halaman ini apa adanya. Yang tetap belum berhasil adalah daftar video per
-                unggahan, karena TikTok berhenti melayani pembacaan setelah beberapa kali
-                permintaan. Angka yang tampil selalu membawa tanggal, jadi pembaca bisa
-                menilai sendiri seberapa segar datanya.
-              </p>
-            </div>
-          </RevealItem>
-        </Reveal>
-      </section>
     </>
   );
 }

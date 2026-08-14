@@ -97,24 +97,13 @@ export const accountStats = {
 export const motto = "Now or Never";
 
 /**
- * Keadaan akun Instagram, dibaca 9 Agustus 2026 memakai sesi pemilik akun.
+ * Akun Instagram pendiri, keadaan 9 Agustus 2026.
  *
- * Angkanya jauh di bawah TikTok, dan itu memang begitu adanya. Menyembunyikan
- * selisih ini tidak ada gunanya: calon sponsor akan membuka kedua profil, dan
- * lebih baik mereka menemukan angka yang sama dengan yang tertulis di sini.
+ * Etalase dagang NNG di Instagram berjalan di @nngstoreofficial. Akun bernama
+ * serupa tanpa kata official bukan milik organisasi ini, dan tidak dipakai di
+ * mana pun di situs.
  */
 export const instagramAccounts = [
-  {
-    handle: "@nng_store",
-    href: "https://www.instagram.com/nng_store/",
-    fullName: null,
-    bio: null,
-    followers: 60,
-    following: 312,
-    posts: 34,
-    avatar: "/img/nng-store-instagram.jpg",
-    note: "Etalase produk",
-  },
   {
     handle: "@nayrbryan_gaming",
     href: "https://www.instagram.com/nayrbryan_gaming/",
@@ -367,13 +356,12 @@ export const channels = [
   },
   {
     platform: "Instagram",
-    handle: "@nng_store",
-    href: "https://www.instagram.com/nng_store/",
+    handle: "@nngstoreofficial",
+    href: "https://www.instagram.com/nngstoreofficial/",
     note: "Etalase produk",
-    stat: "60 pengikut · 34 unggahan",
     primary: true,
     verified: true,
-    source: "https://www.instagram.com/nng_store/",
+    source: "https://www.instagram.com/nngstoreofficial/",
   },
   {
     platform: "TikTok",
@@ -531,8 +519,8 @@ export const nav = [
 export const storeChannels = [
   {
     platform: "Instagram",
-    handle: "@nng_store",
-    href: "https://www.instagram.com/nng_store/",
+    handle: "@nngstoreofficial",
+    href: "https://www.instagram.com/nngstoreofficial/",
     note: "Etalase produk",
   },
   {
@@ -567,7 +555,7 @@ export const contact = {
   general: "Kerja sama, sponsor, dan permintaan wawancara lewat pesan langsung di kanal resmi.",
   preferred: [
     { label: "TikTok @nng_esport", href: "https://www.tiktok.com/@nng_esport" },
-    { label: "Instagram @nng_store", href: "https://www.instagram.com/nng_store/" },
+    { label: "Instagram @nngstoreofficial", href: "https://www.instagram.com/nngstoreofficial/" },
     { label: "Threads @bryan_kwandou", href: "https://www.threads.com/@bryan_kwandou" },
   ],
 };
