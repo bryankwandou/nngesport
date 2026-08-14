@@ -1,4 +1,5 @@
-import { channels, leadership, org, site } from "@/content/nng";
+import { getContent } from "@/content";
+import { htmlLocale, type Lang } from "@/lib/i18n";
 
 /**
  * Keterangan terstruktur untuk mesin pencari.
@@ -8,7 +9,8 @@ import { channels, leadership, org, site } from "@/content/nng";
  * ini dengan akun yang belum tentu benar, dan itu jauh lebih sulit dibetulkan
  * daripada dibiarkan kosong sejak awal.
  */
-export function StructuredData() {
+export function StructuredData({ lang = "id" }: { lang?: Lang }) {
+  const { channels, leadership, org, site } = getContent(lang);
   const sameAs = channels.filter((c) => c.verified).map((c) => c.href);
 
   const data = {
@@ -45,7 +47,7 @@ export function StructuredData() {
         "@id": `${site.url}/#situs`,
         url: site.url,
         name: org.name,
-        inLanguage: "id-ID",
+        inLanguage: htmlLocale[lang],
         publisher: { "@id": `${site.url}/#organisasi` },
       },
     ],

@@ -1,60 +1,108 @@
-import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, RevealItem, scaleIn } from "@/components/motion-primitives";
 import { Eyebrow, TiltCard } from "@/components/ui";
 import { LogoCrest } from "@/components/Logo";
-import { contact, org } from "@/content/nng";
+import { getContent } from "@/content";
+import type { Lang } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Kontak",
-  description:
-    "Hubungi NNG Esport untuk sponsor, kerja sama merek, wawancara, atau bergabung sebagai pemain.",
-};
+export const meta = {
+  id: {
+    title: "Kontak",
+    description:
+      "Hubungi NNG Esport untuk sponsor, kerja sama merek, wawancara, atau bergabung sebagai pemain.",
+  },
+  en: {
+    title: "Contact",
+    description:
+      "Reach NNG Esport about sponsorship, brand partnerships, interviews, or joining as a player.",
+  },
+} as const;
 
-const keperluan = [
-  {
-    title: "Sponsor dan kerja sama merek",
-    body:
-      "Terbuka untuk penempatan merek di konten, dukungan perangkat, dan kerja sama jangka panjang. Sebutkan bentuk kerja samanya sejak pesan pertama supaya pembahasannya lebih cepat.",
+const ui = {
+  id: {
+    eyebrow: "Hubungi",
+    title: "Pintunya terbuka.",
+    fastEyebrow: "Cara tercepat",
+    fastTitle: "Pesan langsung, bukan formulir.",
+    fastLead:
+      "Tidak ada kotak isian di halaman ini. Pesan yang masuk lewat kanal resmi dibaca orang yang sama yang mengurus kanalnya, dan itu jauh lebih cepat daripada surel yang menumpuk.",
+    send: "Kirim pesan",
+    kindsEyebrow: "Yang biasanya masuk",
+    kindsTitle: "Empat jenis pesan yang paling sering datang.",
+    orgLabel: "Organisasi",
+    baseLabel: "Basis",
+    foundedLabel: "Berdiri",
+    kinds: [
+      {
+        title: "Sponsor dan kerja sama merek",
+        body: "Terbuka untuk penempatan merek di konten, dukungan perangkat, dan kerja sama jangka panjang. Sebutkan bentuk kerja samanya sejak pesan pertama supaya pembahasannya lebih cepat.",
+      },
+      {
+        title: "Bergabung sebagai pemain",
+        body: "Lima posisi di divisi Mobile Legends masih kosong. Kirim nama dalam permainan, posisi, dan rekaman permainan terbaru.",
+      },
+      {
+        title: "Liputan dan wawancara",
+        body: "Materi untuk media, termasuk keterangan latar dan aset merek, bisa diminta lewat kanal resmi.",
+      },
+      {
+        title: "Koreksi isi halaman",
+        body: "Kalau ada keterangan di situs ini yang keliru atau sudah kedaluwarsa, kirimkan pembetulannya beserta tautan sumber. Halaman akan diperbarui.",
+      },
+    ],
   },
-  {
-    title: "Bergabung sebagai pemain",
-    body:
-      "Lima posisi di divisi Mobile Legends masih kosong. Kirim nama dalam permainan, posisi, dan rekaman permainan terbaru.",
+  en: {
+    eyebrow: "Get in touch",
+    title: "The door is open.",
+    fastEyebrow: "Fastest route",
+    fastTitle: "Direct messages, not a form.",
+    fastLead:
+      "There is no contact box on this page. Messages sent through the official channels are read by the same people who run those channels, which beats an inbox nobody opens.",
+    send: "Send a message",
+    kindsEyebrow: "What usually arrives",
+    kindsTitle: "The four messages that come most often.",
+    orgLabel: "Organisation",
+    baseLabel: "Based in",
+    foundedLabel: "Established",
+    kinds: [
+      {
+        title: "Sponsorship and brand partnerships",
+        body: "Open to brand placement in content, hardware support, and longer-term arrangements. Say what shape the partnership takes in the first message and the conversation moves faster.",
+      },
+      {
+        title: "Joining as a player",
+        body: "Five positions in the Mobile Legends division are open. Send an in-game name, a role, and recent gameplay footage.",
+      },
+      {
+        title: "Press and interviews",
+        body: "Media material, including background notes and brand assets, can be requested through the official channels.",
+      },
+      {
+        title: "Corrections to this site",
+        body: "If anything here is wrong or out of date, send the correction with a link to the source. The page gets updated.",
+      },
+    ],
   },
-  {
-    title: "Liputan dan wawancara",
-    body:
-      "Materi untuk media, termasuk keterangan latar dan aset merek, bisa diminta lewat kanal resmi.",
-  },
-  {
-    title: "Koreksi isi halaman",
-    body:
-      "Kalau ada keterangan di situs ini yang keliru atau sudah kedaluwarsa, kirimkan pembetulannya beserta tautan sumber. Halaman akan diperbarui.",
-  },
-];
+} as const;
 
-export default function Kontak() {
+export function Kontak({ lang }: { lang: Lang }) {
+  const { contact, org } = getContent(lang);
+  const t = ui[lang];
+
   return (
     <>
-      <PageHeader
-        eyebrow="Hubungi"
-        title="Pintunya terbuka."
-        lead={contact.general}
-      />
+      <PageHeader eyebrow={t.eyebrow} title={t.title} lead={contact.general} />
 
       {/* Kanal kontak */}
       <section className="container-page py-20 md:py-28">
         <Reveal>
           <RevealItem>
-            <Eyebrow>Cara tercepat</Eyebrow>
+            <Eyebrow>{t.fastEyebrow}</Eyebrow>
             <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-              Pesan langsung, bukan formulir.
+              {t.fastTitle}
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-              Tidak ada kotak isian di halaman ini. Pesan yang masuk lewat kanal resmi
-              dibaca orang yang sama yang mengurus kanalnya, dan itu jauh lebih cepat
-              daripada surel yang menumpuk.
+              {t.fastLead}
             </p>
           </RevealItem>
 
@@ -70,7 +118,7 @@ export default function Kontak() {
                           {c.label}
                         </p>
                         <span className="mt-2.5 inline-block text-xs text-bone-400 transition-colors group-hover:text-volt-400">
-                          Kirim pesan
+                          {t.send}
                           <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
                             &rarr;
                           </span>
@@ -90,14 +138,14 @@ export default function Kontak() {
         <div className="container-page py-20 md:py-28">
           <Reveal>
             <RevealItem>
-              <Eyebrow>Yang biasanya masuk</Eyebrow>
+              <Eyebrow>{t.kindsEyebrow}</Eyebrow>
               <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-                Empat jenis pesan yang paling sering datang.
+                {t.kindsTitle}
               </h2>
             </RevealItem>
 
             <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.06] md:grid-cols-2">
-              {keperluan.map((k, i) => (
+              {t.kinds.map((k, i) => (
                 <RevealItem key={k.title}>
                   <div className="group h-full bg-ink-850 p-8 transition-colors duration-300 hover:bg-ink-800">
                     <span className="font-display text-[11px] font-700 tracking-[0.2em] text-flare-400">
@@ -122,26 +170,22 @@ export default function Kontak() {
             <div className="grid gap-8 rounded-2xl border border-white/[0.08] bg-ink-850 p-8 sm:grid-cols-3 md:p-10">
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-bone-400">
-                  Organisasi
+                  {t.orgLabel}
                 </p>
                 <p className="mt-2 font-display text-lg font-700 text-bone-50">{org.name}</p>
               </div>
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-bone-400">
-                  Basis
+                  {t.baseLabel}
                 </p>
-                <p className="mt-2 font-display text-lg font-700 text-bone-50">
-                  {org.base}
-                </p>
+                <p className="mt-2 font-display text-lg font-700 text-bone-50">{org.base}</p>
                 <p className="text-sm text-bone-400">{org.country}</p>
               </div>
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-bone-400">
-                  Berdiri
+                  {t.foundedLabel}
                 </p>
-                <p className="mt-2 font-display text-lg font-700 text-bone-50">
-                  {org.founded}
-                </p>
+                <p className="mt-2 font-display text-lg font-700 text-bone-50">{org.founded}</p>
               </div>
             </div>
           </RevealItem>

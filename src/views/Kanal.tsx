@@ -1,44 +1,90 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, RevealItem, scaleIn } from "@/components/motion-primitives";
 import { Counter, Eyebrow, SourceBadge, TiltCard } from "@/components/ui";
-import {
-  channels,
-  instagramAccounts,
-  snapshotDate,
-  snapshotDateInstagram,
-} from "@/content/nng";
+import { getContent } from "@/content";
+import type { Lang } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Kanal",
-  description:
-    "Daftar kanal resmi NNG Esport dan pendirinya di TikTok, YouTube, Instagram, Threads, dan objkt.",
-};
+export const meta = {
+  id: {
+    title: "Kanal",
+    description:
+      "Daftar kanal resmi NNG Esport dan pendirinya di TikTok, YouTube, Instagram, Threads, dan objkt.",
+  },
+  en: {
+    title: "Channels",
+    description:
+      "Every official NNG Esport channel and its founders' accounts on TikTok, YouTube, Instagram, Threads, and objkt.",
+  },
+} as const;
 
-export default function Kanal() {
+const ui = {
+  id: {
+    eyebrow: "Kanal resmi",
+    title: "Tempat semuanya sebenarnya terjadi.",
+    lead: "Situs ini hanya rangkumannya. Isi yang sesungguhnya diunggah tiap hari di kanal-kanal berikut.",
+    orgEyebrow: "Kanal organisasi",
+    orgTitle: "Dua nama, satu rumah.",
+    orgLead: (d: string) =>
+      `Sisi kompetitif berjalan di @nng_esport, sementara lini dagangnya diurus terpisah. Angka di bawah ditarik dari halaman profil pada ${d}.`,
+    openChannel: "Buka kanal",
+    founderEyebrow: "Kanal pendiri",
+    founderTitle: "Arsip yang panjangnya belasan tahun.",
+    founderLead:
+      "Sebagian besar riwayat NNG tersimpan di sini, bukan di kanal organisasinya. Semua tautan di bawah sudah dibuka dan dikonfirmasi.",
+    igEyebrow: "Instagram",
+    igTitle: "Jauh lebih sepi, dan itu memang apa adanya.",
+    igLead: (d: string) =>
+      `Angka di Instagram tidak sebanding dengan TikTok. Menyembunyikan selisih itu tidak ada gunanya, karena siapa pun bisa membuka kedua profil dan membandingkan sendiri. Ditarik ${d}.`,
+    followers: "Pengikut",
+    posts: "Unggahan",
+    following: "Diikuti",
+  },
+  en: {
+    eyebrow: "Official channels",
+    title: "Where all of it actually happens.",
+    lead: "This site is only the summary. The real work goes up daily on the channels below.",
+    orgEyebrow: "Organisation channels",
+    orgTitle: "Two names, one house.",
+    orgLead: (d: string) =>
+      `The competitive side runs on @nng_esport while the merch line is handled separately. The figures below were read off the profile pages on ${d}.`,
+    openChannel: "Open channel",
+    founderEyebrow: "Founders' channels",
+    founderTitle: "An archive going back more than a decade.",
+    founderLead:
+      "Most of NNG's history lives here rather than on the organisation's own channels. Every link below has been opened and checked.",
+    igEyebrow: "Instagram",
+    igTitle: "A great deal quieter, and that is simply the case.",
+    igLead: (d: string) =>
+      `Instagram is nowhere near TikTok here. Hiding the gap would be pointless, since anyone can open both profiles and compare. Read on ${d}.`,
+    followers: "Followers",
+    posts: "Posts",
+    following: "Following",
+  },
+} as const;
+
+export function Kanal({ lang }: { lang: Lang }) {
+  const { channels, instagramAccounts, snapshotDate, snapshotDateInstagram } =
+    getContent(lang);
+  const t = ui[lang];
+
   const utama = channels.filter((c) => c.primary);
   const pendiri = channels.filter((c) => !c.primary);
 
   return (
     <>
-      <PageHeader
-        eyebrow="Kanal resmi"
-        title="Tempat semuanya sebenarnya terjadi."
-        lead="Situs ini hanya rangkumannya. Isi yang sesungguhnya diunggah tiap hari di kanal-kanal berikut. Yang belum bisa dikonfirmasi tanpa masuk akun ditandai terbuka, bukan disembunyikan."
-      />
+      <PageHeader eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
 
       {/* Kanal organisasi */}
       <section className="container-page py-20 md:py-28">
         <Reveal>
           <RevealItem>
-            <Eyebrow>Kanal organisasi</Eyebrow>
+            <Eyebrow>{t.orgEyebrow}</Eyebrow>
             <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-              Dua nama, satu rumah.
+              {t.orgTitle}
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-              Sisi kompetitif berjalan di @nng_esport, sementara @nng_store mengurus lini
-              dagangnya. Angka di bawah ditarik dari halaman profil pada {snapshotDate}.
+              {t.orgLead(snapshotDate)}
             </p>
           </RevealItem>
 
@@ -61,7 +107,7 @@ export default function Kanal() {
                       {c.stat && <p className="mt-3 text-xs text-bone-200">{c.stat}</p>}
                       <div className="flex-1" />
                       <span className="mt-7 text-xs text-bone-400 transition-colors group-hover:text-volt-400">
-                        Buka kanal
+                        {t.openChannel}
                         <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
                           &rarr;
                         </span>
@@ -80,13 +126,12 @@ export default function Kanal() {
         <div className="container-page py-20 md:py-28">
           <Reveal>
             <RevealItem>
-              <Eyebrow>Kanal pendiri</Eyebrow>
+              <Eyebrow>{t.founderEyebrow}</Eyebrow>
               <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-                Arsip yang panjangnya belasan tahun.
+                {t.founderTitle}
               </h2>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-                Sebagian besar riwayat NNG tersimpan di sini, bukan di kanal organisasinya.
-                Semua tautan di bawah sudah dibuka dan dikonfirmasi.
+                {t.founderLead}
               </p>
             </RevealItem>
 
@@ -128,14 +173,12 @@ export default function Kanal() {
       <section className="container-page py-20 md:py-28">
         <Reveal>
           <RevealItem>
-            <Eyebrow>Instagram</Eyebrow>
+            <Eyebrow>{t.igEyebrow}</Eyebrow>
             <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-              Jauh lebih sepi, dan itu memang apa adanya.
+              {t.igTitle}
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-              Angka di Instagram tidak sebanding dengan TikTok. Menyembunyikan selisih itu
-              tidak ada gunanya, karena siapa pun bisa membuka kedua profil dan
-              membandingkan sendiri. Ditarik {snapshotDateInstagram}.
+              {t.igLead(snapshotDateInstagram)}
             </p>
           </RevealItem>
 
@@ -151,7 +194,7 @@ export default function Kanal() {
                   <div className="flex items-start gap-4">
                     <Image
                       src={a.avatar}
-                      alt={`Foto profil Instagram ${a.handle}`}
+                      alt={`Instagram ${a.handle}`}
                       width={100}
                       height={100}
                       className="h-14 w-14 shrink-0 rounded-full object-cover ring-1 ring-white/10"
@@ -176,9 +219,9 @@ export default function Kanal() {
 
                   <dl className="mt-6 grid grid-cols-3 gap-3 border-t border-white/[0.07] pt-5">
                     {[
-                      { k: "Pengikut", v: a.followers },
-                      { k: "Unggahan", v: a.posts },
-                      { k: "Diikuti", v: a.following },
+                      { k: t.followers, v: a.followers },
+                      { k: t.posts, v: a.posts },
+                      { k: t.following, v: a.following },
                     ].map((s) => (
                       <div key={s.k}>
                         <dd className="font-display text-base font-800 tracking-tight text-bone-50">

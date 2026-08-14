@@ -3,6 +3,26 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { Counter } from "./ui";
+import type { Lang } from "@/lib/i18n";
+
+const ui = {
+  id: {
+    crest: (n: string) => `Lambang ${n}`,
+    followers: "Pengikut",
+    uploads: "Unggahan",
+    likes: "Suka",
+    following: "Diikuti",
+    read: (d: string) => `Angka diambil ${d}`,
+  },
+  en: {
+    crest: (n: string) => `${n} crest`,
+    followers: "Followers",
+    uploads: "Uploads",
+    likes: "Likes",
+    following: "Following",
+    read: (d: string) => `Figures read ${d}`,
+  },
+} as const;
 
 type Account = {
   handle: string;
@@ -27,11 +47,14 @@ export function AccountCard({
   account,
   snapshot,
   accent = "flare",
+  lang = "id",
 }: {
   account: Account;
   snapshot: string;
   accent?: "flare" | "volt";
+  lang?: Lang;
 }) {
+  const t = ui[lang];
   const ring =
     accent === "flare"
       ? "from-flare-600/40 to-flare-400/10"
@@ -51,7 +74,7 @@ export function AccountCard({
       <div className="relative h-40 overflow-hidden">
         <Image
           src={account.avatar}
-          alt={`Lambang ${account.nickname}`}
+          alt={t.crest(account.nickname)}
           fill
           sizes="(max-width: 768px) 100vw, 420px"
           className="scale-110 object-cover opacity-45 blur-[2px] transition-all duration-700 group-hover:scale-100 group-hover:opacity-65 group-hover:blur-0"
@@ -66,7 +89,7 @@ export function AccountCard({
         >
           <Image
             src={account.avatar}
-            alt={`Lambang ${account.nickname}`}
+            alt={t.crest(account.nickname)}
             width={200}
             height={200}
             className="h-full w-full rounded-[14px] object-cover"
@@ -92,10 +115,10 @@ export function AccountCard({
 
         <dl className="mt-6 grid grid-cols-4 gap-3 border-t border-white/[0.07] pt-5">
           {[
-            { k: "Pengikut", v: account.followers },
-            { k: "Unggahan", v: account.videos },
-            { k: "Suka", v: account.likes },
-            { k: "Diikuti", v: account.following },
+            { k: t.followers, v: account.followers },
+            { k: t.uploads, v: account.videos },
+            { k: t.likes, v: account.likes },
+            { k: t.following, v: account.following },
           ].map((s) => (
             <div key={s.k}>
               <dd className="font-display text-base font-800 tracking-tight text-bone-50">
@@ -109,7 +132,7 @@ export function AccountCard({
         </dl>
 
         <p className="mt-4 text-[11px] text-bone-400">
-          Angka diambil {snapshot}
+          {t.read(snapshot)}
           <span className="ml-1.5 inline-block transition-transform duration-300 group-hover:translate-x-1">
             &rarr;
           </span>

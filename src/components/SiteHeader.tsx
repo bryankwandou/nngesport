@@ -27,6 +27,36 @@ const ui = {
   },
 } as const;
 
+/**
+ * Tombol pindah bahasa.
+ *
+ * Berdiri di ruang modul, bukan di dalam SiteHeader. Komponen yang didefinisikan
+ * ulang tiap render akan dianggap React sebagai jenis yang berbeda setiap kali,
+ * sehingga simpulnya dibongkar dan dipasang lagi alih-alih diperbarui.
+ */
+function LangSwitch({
+  href,
+  lang,
+  label,
+  className = "",
+}: {
+  href: string;
+  lang: Lang;
+  label: string;
+  className?: string;
+}) {
+  return (
+    <Link
+      href={href}
+      hrefLang={lang}
+      aria-label={label}
+      className={`rounded-full px-3 py-2 font-display text-[11px] font-700 tracking-[0.14em] text-bone-400 ring-1 ring-white/10 transition-colors hover:text-bone-50 hover:ring-white/25 ${className}`}
+    >
+      {lang.toUpperCase()}
+    </Link>
+  );
+}
+
 export function SiteHeader({ lang = "id" }: { lang?: Lang }) {
   const path = usePathname();
   const [lifted, setLifted] = useState(false);
@@ -67,17 +97,6 @@ export function SiteHeader({ lang = "id" }: { lang?: Lang }) {
   */
   const otherLang: Lang = lang === "id" ? "en" : "id";
   const swapHref = routePath(routeFromPath(path), otherLang);
-
-  const LangSwitch = ({ className = "" }: { className?: string }) => (
-    <Link
-      href={swapHref}
-      hrefLang={otherLang}
-      aria-label={t.switchTo}
-      className={`rounded-full px-3 py-2 font-display text-[11px] font-700 tracking-[0.14em] text-bone-400 ring-1 ring-white/10 transition-colors hover:text-bone-50 hover:ring-white/25 ${className}`}
-    >
-      {otherLang.toUpperCase()}
-    </Link>
-  );
 
   return (
     <>
@@ -120,7 +139,7 @@ export function SiteHeader({ lang = "id" }: { lang?: Lang }) {
           </nav>
 
           <div className="flex items-center gap-2">
-            <LangSwitch className="hidden sm:block" />
+            <LangSwitch href={swapHref} lang={otherLang} label={t.switchTo} className="hidden sm:block" />
 
             <Link
               href={contactHref}
@@ -190,7 +209,7 @@ export function SiteHeader({ lang = "id" }: { lang?: Lang }) {
                 transition={{ delay: 0.05 + nav.length * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="pt-7"
               >
-                <LangSwitch />
+                <LangSwitch href={swapHref} lang={otherLang} label={t.switchTo} />
               </motion.div>
             </nav>
           </motion.div>

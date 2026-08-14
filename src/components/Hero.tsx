@@ -13,7 +13,8 @@ import { useEffect, useRef } from "react";
 import { LogoCrest } from "./Logo";
 import { SplitHeading, useHydrated } from "./motion-primitives";
 import { Counter } from "./ui";
-import { org } from "@/content/nng";
+import { getContent } from "@/content";
+import { path as routePath, type Lang } from "@/lib/i18n";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -24,7 +25,31 @@ const EASE = [0.16, 1, 0.3, 1] as const;
  * belakang paling lambat, lambang di tengah, teks paling depan. Selisih kecepatan
  * itu yang memberi kesan kedalaman tanpa perlu memuat pustaka tiga dimensi.
  */
-export function Hero() {
+
+const ui = {
+  id: {
+    since: "sejak",
+    headline: "Lima puluh tujuh ribu unggahan.",
+    readJourney: "Baca perjalanannya",
+    seeChannels: "Lihat kanal resmi",
+    uploads: "Unggahan",
+    followers: "Pengikut",
+    divisions: "Cabang kompetitif",
+  },
+  en: {
+    since: "since",
+    headline: "Fifty-seven thousand uploads.",
+    readJourney: "Read how it went",
+    seeChannels: "See the official channels",
+    uploads: "Uploads",
+    followers: "Followers",
+    divisions: "Competitive divisions",
+  },
+} as const;
+
+export function Hero({ lang = "id" }: { lang?: Lang }) {
+  const { org } = getContent(lang);
+  const t = ui[lang];
   const wrap = useRef<HTMLDivElement>(null);
   const still = useReducedMotion();
   const hydrated = useHydrated();
@@ -114,11 +139,11 @@ export function Hero() {
                 <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-volt-400" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-volt-400" />
               </span>
-              {org.base} &middot; sejak {org.founded}
+              {org.base} &middot; {t.since} {org.founded}
             </motion.p>
 
             <SplitHeading
-              text="Lima puluh tujuh ribu unggahan."
+              text={t.headline}
               delay={0.12}
               className="mt-6 font-display text-[clamp(2.6rem,7vw,4.9rem)] font-800 leading-[0.98] tracking-[-0.035em] text-gradient"
             />
@@ -135,20 +160,20 @@ export function Hero() {
               className="mt-9 flex flex-wrap items-center gap-3"
             >
               <Link
-                href="/sejarah"
+                href={routePath("history", lang)}
                 className="group relative overflow-hidden rounded-full bg-linear-to-r from-flare-600 to-flare-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(244,33,59,0.45),0_18px_40px_-16px_rgba(209,15,40,0.9)] transition-transform duration-300 hover:-translate-y-0.5"
               >
-                <span className="relative z-10">Baca perjalanannya</span>
+                <span className="relative z-10">{t.readJourney}</span>
                 <span
                   aria-hidden
                   className="absolute inset-y-0 -left-1/3 w-1/3 bg-white/25 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100 group-hover:[animation:sweep_0.9s_ease-out]"
                 />
               </Link>
               <Link
-                href="/kanal"
+                href={routePath("channels", lang)}
                 className="rounded-full border border-white/12 px-6 py-3 text-sm font-semibold text-bone-200 transition-colors duration-300 hover:border-white/25 hover:text-bone-50"
               >
-                Lihat kanal resmi
+                {t.seeChannels}
               </Link>
             </motion.div>
 
@@ -157,9 +182,9 @@ export function Hero() {
               className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/[0.08] pt-7"
             >
               {[
-                { n: 57829, s: "", l: "Unggahan" },
-                { n: 87067, s: "", l: "Pengikut" },
-                { n: 3, s: "", l: "Cabang kompetitif" },
+                { n: 57829, s: "", l: t.uploads },
+                { n: 87067, s: "", l: t.followers },
+                { n: 3, s: "", l: t.divisions },
               ].map((s) => (
                 <div key={s.l}>
                   <dt className="sr-only">{s.l}</dt>

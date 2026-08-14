@@ -1,7 +1,23 @@
 import Link from "next/link";
 import { LogoCrest } from "@/components/Logo";
+import type { Lang } from "@/lib/i18n";
 
-export default function TidakDitemukan() {
+const ui = {
+  id: {
+    title: "Halaman ini tidak ada di sini.",
+    body: "Alamatnya mungkin salah ketik, atau halamannya sudah dipindah. Coba mulai lagi dari beranda.",
+    back: "Kembali ke beranda",
+  },
+  en: {
+    title: "This page is not here.",
+    body: "The address may have a typo, or the page has moved. Try starting again from the home page.",
+    back: "Back to home",
+  },
+} as const;
+
+export function TidakDitemukan({ lang }: { lang: Lang }) {
+  const t = ui[lang];
+
   return (
     <section className="grain relative flex min-h-[100svh] items-center justify-center overflow-hidden px-6 text-center">
       <div aria-hidden className="pointer-events-none absolute inset-0">
@@ -14,17 +30,16 @@ export default function TidakDitemukan() {
           404
         </p>
         <h1 className="mt-4 font-display text-xl font-700 tracking-tight text-bone-50">
-          Halaman ini tidak ada di sini.
+          {t.title}
         </h1>
         <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-bone-400">
-          Alamatnya mungkin salah ketik, atau halamannya sudah dipindah. Coba mulai lagi
-          dari beranda.
+          {t.body}
         </p>
         <Link
-          href="/"
+          href={lang === "en" ? "/en" : "/"}
           className="mt-8 inline-block rounded-full bg-linear-to-r from-flare-600 to-flare-500 px-6 py-3 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5"
         >
-          Kembali ke beranda
+          {t.back}
         </Link>
       </div>
     </section>

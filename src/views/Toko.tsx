@@ -1,32 +1,69 @@
-import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, RevealItem, scaleIn } from "@/components/motion-primitives";
 import { Eyebrow, TiltCard } from "@/components/ui";
 import { LogoCrest } from "@/components/Logo";
-import { storeCategories, storeChannels } from "@/content/nng";
+import { getContent } from "@/content";
+import type { Lang } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Toko",
-  description:
-    "Lini dagang NNG Esport berjalan di @nng_store, tersedia di Instagram dan TikTok.",
-};
+export const meta = {
+  id: {
+    title: "Toko",
+    description:
+      "Lini dagang NNG Esport berjalan di @nng_store dan @nngstoreofficial.",
+  },
+  en: {
+    title: "Store",
+    description:
+      "NNG Esport's merch line runs through @nng_store and @nngstoreofficial.",
+  },
+} as const;
 
-export default function Toko() {
+const ui = {
+  id: {
+    eyebrow: "Lini dagang",
+    title: "Barangnya dijual di @nng_store.",
+    lead: "Sisi dagang NNG berdiri sebagai akun terpisah. Katalog resminya belum terbit di halaman yang bisa dibaca tanpa masuk akun, jadi halaman ini mengarahkan langsung ke etalasenya alih-alih memasang daftar harga yang belum tentu benar.",
+    whereEyebrow: "Tempat membeli",
+    whereTitle: "Dua etalase, pengelola yang sama.",
+    soon: "Katalog menyusul",
+    open: "Buka etalase",
+    catEyebrow: "Yang biasanya ada",
+    catTitle: "Empat kelompok barang.",
+    catLead:
+      "Daftar ini kerangka umum merchandise tim, bukan salinan katalog resmi. Ketersediaan sebenarnya, ukuran, dan harga hanya bisa dipastikan lewat etalase di atas.",
+    pending: "Menunggu konfirmasi",
+  },
+  en: {
+    eyebrow: "Merch line",
+    title: "The gear is sold through @nng_store.",
+    lead: "NNG's commercial side runs as its own account. No official catalogue is published anywhere readable without logging in, so this page points straight at the storefronts rather than printing a price list that might already be wrong.",
+    whereEyebrow: "Where to buy",
+    whereTitle: "Two storefronts, one operator.",
+    soon: "Catalogue to follow",
+    open: "Open storefront",
+    catEyebrow: "What is usually stocked",
+    catTitle: "Four groups of gear.",
+    catLead:
+      "This is the ordinary shape of team merchandise, not a copy of an official catalogue. Actual availability, sizing, and prices can only be confirmed through the storefronts above.",
+    pending: "Awaiting confirmation",
+  },
+} as const;
+
+export function Toko({ lang }: { lang: Lang }) {
+  const { storeCategories, storeChannels } = getContent(lang);
+  const t = ui[lang];
+
   return (
     <>
-      <PageHeader
-        eyebrow="Lini dagang"
-        title="Barangnya dijual di @nng_store."
-        lead="Sisi dagang NNG berdiri sebagai akun terpisah. Katalog resminya belum terbit di halaman yang bisa dibaca tanpa masuk akun, jadi halaman ini mengarahkan langsung ke etalasenya alih-alih memasang daftar harga yang belum tentu benar."
-      />
+      <PageHeader eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
 
       {/* Etalase */}
       <section className="container-page py-20 md:py-28">
         <Reveal>
           <RevealItem>
-            <Eyebrow>Tempat membeli</Eyebrow>
+            <Eyebrow>{t.whereEyebrow}</Eyebrow>
             <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-              Dua etalase, pengelola yang sama.
+              {t.whereTitle}
             </h2>
           </RevealItem>
 
@@ -39,7 +76,7 @@ export default function Toko() {
                       <div className="flex items-start justify-between">
                         <LogoCrest size={80} className="h-10 w-10 ring-1 ring-white/10" />
                         <span className="rounded-full border border-amber-400/25 bg-amber-400/[0.07] px-2.5 py-1 text-[10px] font-medium text-amber-400">
-                          Katalog menyusul
+                          {t.soon}
                         </span>
                       </div>
                       <div>
@@ -51,7 +88,7 @@ export default function Toko() {
                         </h3>
                         <p className="mt-2 text-sm text-bone-400">{c.note}</p>
                         <span className="mt-6 inline-block text-xs text-bone-400 transition-colors group-hover:text-volt-400">
-                          Buka etalase
+                          {t.open}
                           <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
                             &rarr;
                           </span>
@@ -71,14 +108,12 @@ export default function Toko() {
         <div className="container-page py-20 md:py-28">
           <Reveal>
             <RevealItem>
-              <Eyebrow>Yang biasanya ada</Eyebrow>
+              <Eyebrow>{t.catEyebrow}</Eyebrow>
               <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-                Empat kelompok barang.
+                {t.catTitle}
               </h2>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-                Daftar ini kerangka umum merchandise tim, bukan salinan katalog resmi.
-                Ketersediaan sebenarnya, ukuran, dan harga hanya bisa dipastikan lewat
-                etalase di atas.
+                {t.catLead}
               </p>
             </RevealItem>
 
@@ -91,7 +126,7 @@ export default function Toko() {
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span className="rounded-full border border-amber-400/25 bg-amber-400/[0.07] px-2.5 py-1 text-[10px] font-medium text-amber-400">
-                        Menunggu konfirmasi
+                        {t.pending}
                       </span>
                     </div>
                     <h3 className="mt-5 font-display text-lg font-700 tracking-tight text-bone-50">

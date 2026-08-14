@@ -1,9 +1,29 @@
 import Link from "next/link";
 import { LogoCrest } from "./Logo";
-import { nav, org, channels } from "@/content/nng";
+import { getContent } from "@/content";
+import type { Lang } from "@/lib/i18n";
 
-export function SiteFooter() {
+const ui = {
+  id: {
+    sitemap: "Peta situs",
+    pages: "Halaman",
+    channels: "Kanal terverifikasi",
+    since: (y: string) => `Berdiri sejak ${y}.`,
+    note: "Isi halaman ini disusun dari sumber daring terbuka, dan setiap keterangan membawa tautan asalnya.",
+  },
+  en: {
+    sitemap: "Site map",
+    pages: "Pages",
+    channels: "Verified channels",
+    since: (y: string) => `Established ${y}.`,
+    note: "This site is assembled from open online sources, and every claim carries a link back to where it came from.",
+  },
+} as const;
+
+export function SiteFooter({ lang = "id" }: { lang?: Lang }) {
   const year = new Date().getFullYear();
+  const { nav, org, channels } = getContent(lang);
+  const t = ui[lang];
   const verifiedChannels = channels.filter((c) => c.verified);
 
   return (
@@ -29,9 +49,9 @@ export function SiteFooter() {
           </p>
         </div>
 
-        <nav aria-label="Peta situs">
+        <nav aria-label={t.sitemap}>
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-bone-400">
-            Halaman
+            {t.pages}
           </p>
           <ul className="mt-4 space-y-2.5">
             {nav.map((item) => (
@@ -49,7 +69,7 @@ export function SiteFooter() {
 
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-bone-400">
-            Kanal terverifikasi
+            {t.channels}
           </p>
           <ul className="mt-4 space-y-2.5">
             {verifiedChannels.map((c) => (
@@ -72,12 +92,9 @@ export function SiteFooter() {
       <div className="border-t border-white/[0.06]">
         <div className="container-page flex flex-col gap-2 py-6 text-xs text-bone-400 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            &copy; {year} {org.name}. Berdiri sejak {org.founded}.
+            &copy; {year} {org.name}. {t.since(org.founded)}
           </p>
-          <p>
-            Isi halaman ini disusun dari sumber daring terbuka. Bagian yang belum
-            terkonfirmasi ditandai terbuka.
-          </p>
+          <p>{t.note}</p>
         </div>
       </div>
     </footer>
