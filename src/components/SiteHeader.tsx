@@ -5,13 +5,36 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "motion/react";
 import { LogoLockup } from "./Logo";
-import { nav } from "@/content/nng";
+import { getContent } from "@/content";
+import { path as routePath, routeFromPath, type Lang } from "@/lib/i18n";
 
-export function SiteHeader() {
+const ui = {
+  id: {
+    home: "NNG Esport, kembali ke beranda",
+    mainNav: "Navigasi utama",
+    cta: "Ajak kerja sama",
+    openMenu: "Buka menu",
+    closeMenu: "Tutup menu",
+    switchTo: "Baca dalam bahasa Inggris",
+  },
+  en: {
+    home: "NNG Esport, back to home",
+    mainNav: "Main navigation",
+    cta: "Work with us",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    switchTo: "Baca dalam bahasa Indonesia",
+  },
+} as const;
+
+export function SiteHeader({ lang = "id" }: { lang?: Lang }) {
   const path = usePathname();
   const [lifted, setLifted] = useState(false);
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
+
+  const { nav } = getContent(lang);
+  const t = ui[lang];
 
   useMotionValueEvent(scrollY, "change", (v) => setLifted(v > 12));
 
@@ -34,6 +57,28 @@ export function SiteHeader() {
     };
   }, [open]);
 
+  const homeHref = lang === "en" ? "/en" : "/";
+  const contactHref = routePath("contact", lang);
+
+  /*
+    Tombol bahasa membawa pembaca ke halaman yang sama, bukan ke beranda.
+    Seseorang yang sedang membaca sejarah lalu berpindah bahasa hampir pasti
+    ingin membaca sejarah, dan melemparnya ke beranda memaksanya mencari lagi.
+  */
+  const otherLang: Lang = lang === "id" ? "en" : "id";
+  const swapHref = routePath(routeFromPath(path), otherLang);
+
+  const LangSwitch = ({ className = "" }: { className?: string }) => (
+    <Link
+      href={swapHref}
+      hrefLang={otherLang}
+      aria-label={t.switchTo}
+      className={`rounded-full px-3 py-2 font-display text-[11px] font-700 tracking-[0.14em] text-bone-400 ring-1 ring-white/10 transition-colors hover:text-bone-50 hover:ring-white/25 ${className}`}
+    >
+      {otherLang.toUpperCase()}
+    </Link>
+  );
+
   return (
     <>
       <header
@@ -44,14 +89,14 @@ export function SiteHeader() {
         }`}
       >
         <div className="container-page flex h-[68px] items-center justify-between">
-          <Link href="/" aria-label="NNG Esport, kembali ke beranda">
+          <Link href={homeHref} aria-label={t.home}>
             <LogoLockup />
           </Link>
 
-          <nav className="hidden items-center gap-1 md:flex" aria-label="Navigasi utama">
+          <nav className="hidden items-center gap-1 md:flex" aria-label={t.mainNav}>
             {nav.map((item) => {
               const active =
-                item.href === "/" ? path === "/" : path.startsWith(item.href);
+                item.href === homeHref ? path === homeHref : path.startsWith(item.href);
               return (
                 <Link
                   key={item.href}
@@ -75,11 +120,13 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <LangSwitch className="hidden sm:block" />
+
             <Link
-              href="/kontak"
+              href={contactHref}
               className="hidden rounded-full bg-linear-to-r from-flare-600 to-flare-500 px-4 py-2 text-[13px] font-semibold text-white shadow-[0_0_0_1px_rgba(244,33,59,0.4),0_10px_30px_-12px_rgba(209,15,40,0.85)] transition-transform duration-300 hover:-translate-y-px sm:block"
             >
-              Ajak kerja sama
+              {t.cta}
             </Link>
 
             <button
@@ -87,7 +134,7 @@ export function SiteHeader() {
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-controls="laci-nav"
-              aria-label={open ? "Tutup menu" : "Buka menu"}
+              aria-label={open ? t.closeMenu : t.openMenu}
               className="grid h-10 w-10 place-items-center rounded-full ring-1 ring-white/10 md:hidden"
             >
               <span className="relative block h-3 w-4">
@@ -136,6 +183,15 @@ export function SiteHeader() {
                   </Link>
                 </motion.div>
               ))}
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.05 + nav.length * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="pt-7"
+              >
+                <LangSwitch />
+              </motion.div>
             </nav>
           </motion.div>
         )}
