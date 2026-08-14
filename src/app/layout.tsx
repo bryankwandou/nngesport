@@ -28,6 +28,14 @@ export const metadata: Metadata = {
     template: `%s — ${org.name}`,
   },
   description: org.intro,
+  /*
+    Titik-garis-miring membuat tiap halaman menunjuk ke alamatnya sendiri, bukan
+    ke beranda. Tanpa ini mesin pencari harus menebak alamat mana yang sah ketika
+    satu halaman terjangkau lewat beberapa jalan, misalnya dengan tambahan
+    penanda kampanye di belakangnya, dan tebakan yang salah memecah nilai satu
+    halaman menjadi beberapa.
+  */
+  alternates: { canonical: "./" },
   keywords: [
     "NNG Esport",
     "NNG",
