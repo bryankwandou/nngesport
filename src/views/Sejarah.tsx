@@ -22,23 +22,21 @@ const ui = {
     eyebrow: "Perjalanan",
     title: "Sembilan tahun, satu benang merah.",
     valuesEyebrow: "Yang dipegang",
-    valuesTitle: "Kalau catatannya panjang, alasannya biasanya sederhana.",
   },
   en: {
     eyebrow: "The road so far",
     title: "Nine years, one thread running through them.",
     valuesEyebrow: "What holds it together",
-    valuesTitle: "When a record runs long, the reason is usually plain.",
   },
 } as const;
 
 export function Sejarah({ lang }: { lang: Lang }) {
-  const { org, timeline, values } = getContent(lang);
+  const { timeline, values } = getContent(lang);
   const t = ui[lang];
 
   return (
     <>
-      <PageHeader eyebrow={t.eyebrow} title={t.title} lead={org.longIntro} />
+      <PageHeader eyebrow={t.eyebrow} title={t.title} />
 
       {/* Garis waktu bertulang */}
       <section className="container-page py-20 md:py-28">
@@ -91,9 +89,6 @@ export function Sejarah({ lang }: { lang: Lang }) {
           <Reveal>
             <RevealItem>
               <Eyebrow>{t.valuesEyebrow}</Eyebrow>
-              <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-                {t.valuesTitle}
-              </h2>
             </RevealItem>
 
             <div className="mt-12 grid gap-5 md:grid-cols-2">

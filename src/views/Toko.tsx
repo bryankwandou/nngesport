@@ -22,29 +22,23 @@ const ui = {
   id: {
     eyebrow: "Lini dagang",
     title: "Barangnya dijual di @nng_store.",
-    lead: "Sisi dagang NNG berdiri sebagai akun terpisah. Katalog resminya belum terbit di halaman yang bisa dibaca tanpa masuk akun, jadi halaman ini mengarahkan langsung ke etalasenya alih-alih memasang daftar harga yang belum tentu benar.",
     whereEyebrow: "Tempat membeli",
     whereTitle: "Dua etalase, pengelola yang sama.",
     soon: "Katalog menyusul",
     open: "Buka etalase",
     catEyebrow: "Yang biasanya ada",
     catTitle: "Empat kelompok barang.",
-    catLead:
-      "Daftar ini kerangka umum merchandise tim, bukan salinan katalog resmi. Ketersediaan sebenarnya, ukuran, dan harga hanya bisa dipastikan lewat etalase di atas.",
     pending: "Menunggu konfirmasi",
   },
   en: {
     eyebrow: "Merch line",
     title: "The gear is sold through @nng_store.",
-    lead: "NNG's commercial side runs as its own account. No official catalogue is published anywhere readable without logging in, so this page points straight at the storefronts rather than printing a price list that might already be wrong.",
     whereEyebrow: "Where to buy",
     whereTitle: "Two storefronts, one operator.",
     soon: "Catalogue to follow",
     open: "Open storefront",
     catEyebrow: "What is usually stocked",
     catTitle: "Four groups of gear.",
-    catLead:
-      "This is the ordinary shape of team merchandise, not a copy of an official catalogue. Actual availability, sizing, and prices can only be confirmed through the storefronts above.",
     pending: "Awaiting confirmation",
   },
 } as const;
@@ -55,7 +49,7 @@ export function Toko({ lang }: { lang: Lang }) {
 
   return (
     <>
-      <PageHeader eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
+      <PageHeader eyebrow={t.eyebrow} title={t.title} />
 
       {/* Etalase */}
       <section className="container-page py-20 md:py-28">
@@ -112,9 +106,6 @@ export function Toko({ lang }: { lang: Lang }) {
               <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
                 {t.catTitle}
               </h2>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-                {t.catLead}
-              </p>
             </RevealItem>
 
             <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.06] sm:grid-cols-2">

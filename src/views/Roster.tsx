@@ -20,16 +20,11 @@ const ui = {
   id: {
     eyebrow: "Susunan",
     title: "Siapa yang turun bertanding.",
-    lead: "Halaman ini hanya memuat nama yang sudah dikonfirmasi organisasi. Selama daftar resminya belum terbit, posisi ditampilkan sebagai slot terbuka, bukan diisi nama karangan.",
     activeEyebrow: "Pemain aktif",
-    emptyTitle: "Daftar resmi belum dirilis",
-    emptyBody:
-      "Susunan pemain NNG belum terbit di sumber publik mana pun yang bisa dijangkau tanpa masuk akun. Menaruh nama tebakan di halaman resmi adalah cara tercepat kehilangan kepercayaan sponsor, jadi bagian ini dibiarkan kosong sampai datanya diserahkan.",
+    emptyTitle: "Daftar resmi belum diumumkan",
     emptyAction: "Kirim data roster",
     slotsEyebrow: "Posisi terbuka",
     slotsTitle: "Lima kursi di divisi Mobile Legends.",
-    slotsLead:
-      "Kerangka posisi standar lima orang. Nama pengisinya menyusul begitu seleksi selesai.",
     open: "Terbuka",
     mgmtEyebrow: "Manajemen",
     mgmtTitle: "Yang mengurus di belakang layar.",
@@ -38,16 +33,11 @@ const ui = {
   en: {
     eyebrow: "Line-up",
     title: "Who actually plays.",
-    lead: "This page carries only names the organisation has confirmed. Until the official list is published, positions show as open seats rather than being filled with invented names.",
     activeEyebrow: "Active players",
-    emptyTitle: "The official line-up has not been published",
-    emptyBody:
-      "NNG's roster does not appear in any public source reachable without logging in. Putting guessed names on an official page is the fastest way to lose a sponsor's trust, so this stays empty until the real list is handed over.",
+    emptyTitle: "The line-up has not been announced",
     emptyAction: "Send roster details",
     slotsEyebrow: "Open positions",
     slotsTitle: "Five seats in the Mobile Legends division.",
-    slotsLead:
-      "The standard five-role structure. Names follow once selection is finished.",
     open: "Open",
     mgmtEyebrow: "Management",
     mgmtTitle: "The people running it behind the scenes.",
@@ -61,7 +51,7 @@ export function Roster({ lang }: { lang: Lang }) {
 
   return (
     <>
-      <PageHeader eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
+      <PageHeader eyebrow={t.eyebrow} title={t.title} />
 
       {/* Pemain */}
       <section className="container-page py-20 md:py-28">
@@ -95,7 +85,6 @@ export function Roster({ lang }: { lang: Lang }) {
             <RevealItem className="mt-10">
               <EmptyState
                 title={t.emptyTitle}
-                body={t.emptyBody}
                 action={
                   <Link
                     href={routePath("contact", lang)}
@@ -119,9 +108,6 @@ export function Roster({ lang }: { lang: Lang }) {
               <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
                 {t.slotsTitle}
               </h2>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-                {t.slotsLead}
-              </p>
             </RevealItem>
 
             <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">

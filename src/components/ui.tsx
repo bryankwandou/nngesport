@@ -253,7 +253,7 @@ export function EmptyState({
   action,
 }: {
   title: string;
-  body: string;
+  body?: string;
   action?: ReactNode;
 }) {
   return (
@@ -265,9 +265,11 @@ export function EmptyState({
       <p className="relative font-display text-xl font-700 tracking-tight text-bone-50">
         {title}
       </p>
-      <p className="relative mx-auto mt-3 max-w-md text-sm leading-relaxed text-bone-400">
-        {body}
-      </p>
+      {body && (
+        <p className="relative mx-auto mt-3 max-w-md text-sm leading-relaxed text-bone-400">
+          {body}
+        </p>
+      )}
       {action && <div className="relative mt-6">{action}</div>}
     </div>
   );

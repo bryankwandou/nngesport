@@ -9,14 +9,12 @@ const ui = {
     pages: "Halaman",
     channels: "Kanal terverifikasi",
     since: (y: string) => `Berdiri sejak ${y}.`,
-    note: "Isi halaman ini disusun dari sumber daring terbuka, dan setiap keterangan membawa tautan asalnya.",
   },
   en: {
     sitemap: "Site map",
     pages: "Pages",
     channels: "Verified channels",
     since: (y: string) => `Established ${y}.`,
-    note: "This site is assembled from open online sources, and every claim carries a link back to where it came from.",
   },
 } as const;
 
@@ -94,7 +92,7 @@ export function SiteFooter({ lang = "id" }: { lang?: Lang }) {
           <p>
             &copy; {year} {org.name}. {t.since(org.founded)}
           </p>
-          <p>{t.note}</p>
+          <p></p>
         </div>
       </div>
     </footer>

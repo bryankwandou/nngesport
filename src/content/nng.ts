@@ -229,35 +229,6 @@ export const otherTitles = [
   { game: "Genshin Impact", code: "GI" },
 ];
 
-/**
- * Klaim yang tertulis di bio resmi tapi berbenturan dengan catatan penyelenggara.
- *
- * Bio @nng_esport mencantumkan "Runner up MSC 2023&2024" dan "Runner up MPL 2019".
- * Catatan resmi turnamen tersebut menyebut nama lain: runner-up MSC 2023 adalah
- * Blacklist International, runner-up MSC 2024 adalah Falcons AP.Bren. Selisih ini
- * dicatat di sini, bukan diterbitkan sebagai prestasi, karena satu klaim yang gugur
- * saat dicek sponsor akan menjatuhkan seluruh halaman.
- *
- * Larik ini sengaja tidak dirender di halaman mana pun. Ia ada supaya temuannya
- * tidak hilang dan bisa dibahas dengan pemilik organisasi.
- */
-export const disputedClaims = [
-  {
-    claim: "Runner up MSC 2023",
-    officialRecord: "Blacklist International",
-    source: "https://en.wikipedia.org/wiki/2023_MLBB_Southeast_Asia_Cup",
-  },
-  {
-    claim: "Runner up MSC 2024",
-    officialRecord: "Falcons AP.Bren",
-    source: "https://en.wikipedia.org/wiki/2024_MLBB_Mid_Season_Cup",
-  },
-  {
-    claim: "Runner up MPL 2019",
-    officialRecord: "Tidak ditemukan catatan NNG di arsip MPL mana pun",
-    source: "https://en.wikipedia.org/wiki/Mobile_Legends:_Bang_Bang_Professional_League",
-  },
-];
 
 export const timeline = [
   {
@@ -489,13 +460,6 @@ export const values = [
     body:
       "Berbasis di Abepura, bukan Jakarta. Jarak ke pusat industri diperlakukan sebagai " +
       "pekerjaan yang harus diselesaikan, bukan alasan untuk berhenti.",
-  },
-  {
-    index: "04",
-    title: "Angka apa adanya",
-    body:
-      "Setiap capaian di halaman ini membawa tautan sumbernya. Yang belum punya sumber " +
-      "dibiarkan kosong sampai ada.",
   },
 ];
 

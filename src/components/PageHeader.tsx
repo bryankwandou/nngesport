@@ -12,7 +12,7 @@ export function PageHeader({
 }: {
   eyebrow: string;
   title: string;
-  lead: string;
+  lead?: string;
 }) {
   const hydrated = useHydrated();
   const still = useReducedMotion();
@@ -58,12 +58,14 @@ export function PageHeader({
           className="mt-6 max-w-4xl font-display text-[clamp(2.2rem,5.6vw,4rem)] font-800 leading-[1.02] tracking-[-0.035em] text-gradient"
         />
 
-        <motion.p
-          {...masuk(0.4, 14)}
-          className="mt-6 max-w-2xl text-[15px] leading-relaxed text-bone-200"
-        >
-          {lead}
-        </motion.p>
+        {lead && (
+          <motion.p
+            {...masuk(0.4, 14)}
+            className="mt-6 max-w-2xl text-[15px] leading-relaxed text-bone-200"
+          >
+            {lead}
+          </motion.p>
+        )}
       </div>
     </header>
   );

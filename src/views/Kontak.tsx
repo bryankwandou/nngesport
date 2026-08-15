@@ -24,8 +24,6 @@ const ui = {
     title: "Pintunya terbuka.",
     fastEyebrow: "Cara tercepat",
     fastTitle: "Pesan langsung, bukan formulir.",
-    fastLead:
-      "Tidak ada kotak isian di halaman ini. Pesan yang masuk lewat kanal resmi dibaca orang yang sama yang mengurus kanalnya, dan itu jauh lebih cepat daripada surel yang menumpuk.",
     send: "Kirim pesan",
     kindsEyebrow: "Yang biasanya masuk",
     kindsTitle: "Empat jenis pesan yang paling sering datang.",
@@ -56,8 +54,6 @@ const ui = {
     title: "The door is open.",
     fastEyebrow: "Fastest route",
     fastTitle: "Direct messages, not a form.",
-    fastLead:
-      "There is no contact box on this page. Messages sent through the official channels are read by the same people who run those channels, which beats an inbox nobody opens.",
     send: "Send a message",
     kindsEyebrow: "What usually arrives",
     kindsTitle: "The four messages that come most often.",
@@ -91,7 +87,7 @@ export function Kontak({ lang }: { lang: Lang }) {
 
   return (
     <>
-      <PageHeader eyebrow={t.eyebrow} title={t.title} lead={contact.general} />
+      <PageHeader eyebrow={t.eyebrow} title={t.title} />
 
       {/* Kanal kontak */}
       <section className="container-page py-20 md:py-28">
@@ -101,9 +97,6 @@ export function Kontak({ lang }: { lang: Lang }) {
             <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
               {t.fastTitle}
             </h2>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-              {t.fastLead}
-            </p>
           </RevealItem>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">

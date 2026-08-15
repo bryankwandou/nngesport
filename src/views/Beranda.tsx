@@ -20,22 +20,15 @@ const ui = {
     ],
     whoEyebrow: "Siapa kami",
     whoTitle: "Tidak ada bagian yang datang dengan cepat.",
-    whoBody:
-      "Yang membedakan NNG dari kebanyakan tim yang muncul belakangan bukan jumlah pengikut, melainkan panjang catatannya. Organisasi ini berdiri pada 2017 dan sejak itu mengunggah lebih dari delapan ribu potongan di kanalnya sendiri, di luar empat puluh dua ribu milik kanal pendiri. Ketika kanal terdahulu hilang kena penalti platform, semuanya dimulai lagi dari satu pengikut, bukan dibiarkan mati.",
     numbersEyebrow: "Angka sebenarnya",
     numbersTitle: "Tiga akun, ditarik langsung dari sumbernya.",
-    numbersLead:
-      "Lambang dan angka di bawah diambil apa adanya dari halaman profil, bukan ditulis ulang dari ingatan. Tanggal pengambilannya ikut dicantumkan karena angka semacam ini bergerak tiap hari.",
     divEyebrow: "Divisi",
     divTitle: "Tiga cabang kompetitif, disebut sendiri di bio resmi.",
-    divLead:
-      "MLBB, PUBG, dan Valorant adalah tiga nama yang dicantumkan organisasi sebagai cabangnya. Judul lain memang mengisi kanal, tapi tidak dinaikkan ke daftar ini supaya bedanya jelas.",
     rosterCard: "Susunan pemain",
     rosterCardSub: "Lihat posisi yang masih terbuka",
     leadEyebrow: "Yang memimpin",
     leadTitle: "Dua orang, satu kebiasaan yang sama.",
     valuesEyebrow: "Cara kerja",
-    valuesTitle: "Empat hal yang tidak dinegosiasikan.",
     tlEyebrow: "Garis waktu",
     tlTitle: (n: number) => `${n} titik yang mengubah arah.`,
     tlFull: "Versi lengkap",
@@ -43,8 +36,6 @@ const ui = {
     msTitle: "Capaian yang jejaknya bisa ditelusuri siapa pun.",
     openSource: "Buka sumber",
     ctaTitle: "Kalau Anda melihat sesuatu di sini, mari bicara.",
-    ctaLead:
-      "Terbuka untuk sponsor, kerja sama merek, permintaan wawancara, dan pemain yang ingin mengisi posisi kosong.",
     ctaPrimary: "Kirim pesan",
     ctaSecondary: "Lihat catatan prestasi",
   },
@@ -60,22 +51,15 @@ const ui = {
     ],
     whoEyebrow: "Who we are",
     whoTitle: "None of it arrived quickly.",
-    whoBody:
-      "What separates NNG from most teams that appeared recently is not follower count but the length of the record. The organisation was founded in 2017 and has since put more than eight thousand clips on its own channels, on top of forty-two thousand on the founder's. When earlier channels were wiped by platform penalties, everything restarted at one follower rather than being left to die.",
     numbersEyebrow: "The real numbers",
     numbersTitle: "Three accounts, read straight off the source.",
-    numbersLead:
-      "The crests and figures below were taken from the profile pages as they stood, not written from memory. The date they were read is printed alongside, because numbers like these move daily.",
     divEyebrow: "Divisions",
     divTitle: "Three competitive divisions, named in the official bio.",
-    divLead:
-      "MLBB, PUBG, and Valorant are the three the organisation names as its own. Other titles do fill the channels, but they are kept off this list so the difference stays clear.",
     rosterCard: "The line-up",
     rosterCardSub: "See which positions are still open",
     leadEyebrow: "Who runs it",
     leadTitle: "Two people, one shared habit.",
     valuesEyebrow: "How the work goes",
-    valuesTitle: "Four things that are not up for negotiation.",
     tlEyebrow: "Timeline",
     tlTitle: (n: number) => `${n} points where the direction changed.`,
     tlFull: "Full version",
@@ -83,8 +67,6 @@ const ui = {
     msTitle: "Work anyone can trace for themselves.",
     openSource: "Open source",
     ctaTitle: "If you see something here, let's talk.",
-    ctaLead:
-      "Open to sponsors, brand partnerships, interview requests, and players who want one of the empty seats.",
     ctaPrimary: "Send a message",
     ctaSecondary: "See the record",
   },
@@ -123,7 +105,6 @@ export function Beranda({ lang }: { lang: Lang }) {
 
           <RevealItem className="space-y-5 text-[15px] leading-[1.75] text-bone-200">
             <p>{org.intro}</p>
-            <p className="text-bone-400">{t.whoBody}</p>
             <div className="flex flex-wrap gap-2 pt-2">
               {divisions.map((d) => (
                 <span
@@ -154,9 +135,6 @@ export function Beranda({ lang }: { lang: Lang }) {
             <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.9rem,3.6vw,2.9rem)] font-800 leading-[1.06] tracking-[-0.03em]">
               {t.numbersTitle}
             </h2>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-              {t.numbersLead}
-            </p>
           </RevealItem>
 
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -182,9 +160,6 @@ export function Beranda({ lang }: { lang: Lang }) {
               <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.9rem,3.6vw,2.9rem)] font-800 leading-[1.06] tracking-[-0.03em]">
                 {t.divTitle}
               </h2>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-                {t.divLead}
-              </p>
             </RevealItem>
 
             <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -317,9 +292,6 @@ export function Beranda({ lang }: { lang: Lang }) {
           <Reveal className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
             <RevealItem>
               <Eyebrow>{t.valuesEyebrow}</Eyebrow>
-              <h2 className="mt-5 max-w-sm font-display text-[clamp(1.9rem,3.6vw,2.9rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-                {t.valuesTitle}
-              </h2>
             </RevealItem>
 
             <div className="grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.06] sm:grid-cols-2">
@@ -447,9 +419,6 @@ export function Beranda({ lang }: { lang: Lang }) {
               <h2 className="relative mx-auto mt-8 max-w-2xl font-display text-[clamp(1.9rem,4vw,3.1rem)] font-800 leading-[1.04] tracking-[-0.03em]">
                 {t.ctaTitle}
               </h2>
-              <p className="relative mx-auto mt-5 max-w-lg text-[15px] leading-relaxed text-bone-200">
-                {t.ctaLead}
-              </p>
               <div className="relative mt-9 flex flex-wrap justify-center gap-3">
                 <Link
                   href={routePath("contact", lang)}

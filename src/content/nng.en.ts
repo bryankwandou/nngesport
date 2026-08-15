@@ -190,23 +190,6 @@ export const otherTitles = [
   { game: "Genshin Impact", code: "GI" },
 ];
 
-export const disputedClaims = [
-  {
-    claim: "Runner up MSC 2023",
-    officialRecord: "Blacklist International",
-    source: "https://en.wikipedia.org/wiki/2023_MLBB_Southeast_Asia_Cup",
-  },
-  {
-    claim: "Runner up MSC 2024",
-    officialRecord: "Falcons AP.Bren",
-    source: "https://en.wikipedia.org/wiki/2024_MLBB_Mid_Season_Cup",
-  },
-  {
-    claim: "Runner up MPL 2019",
-    officialRecord: "No record of NNG found in any MPL archive",
-    source: "https://en.wikipedia.org/wiki/Mobile_Legends:_Bang_Bang_Professional_League",
-  },
-];
 
 export const timeline = [
   {
@@ -408,13 +391,6 @@ export const values = [
       "Based in Abepura, not Jakarta. The distance to the industry's centre is treated as work " +
       "to be finished, not a reason to quit.",
   },
-  {
-    index: "04",
-    title: "Numbers as they are",
-    body:
-      "Every claim on this site carries a link to its source. Anything without one is left " +
-      "empty until there is one.",
-  },
 ];
 
 export const nav = [
@@ -481,7 +457,7 @@ type Shape = {
 const _parity: Record<keyof Shape, true> = {
   site: true, org: true, snapshotDate: true, snapshotDateInstagram: true,
   accountStats: true, motto: true, instagramAccounts: true, tradingCommunity: true,
-  leadership: true, divisions: true, otherTitles: true, disputedClaims: true,
+  leadership: true, divisions: true, otherTitles: true,
   timeline: true, channels: true, roster: true, openSlots: true,
   achievements: true, milestones: true, values: true, nav: true,
   storeChannels: true, storeCategories: true, contact: true,

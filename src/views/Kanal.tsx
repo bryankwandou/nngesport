@@ -22,20 +22,10 @@ const ui = {
   id: {
     eyebrow: "Kanal resmi",
     title: "Tempat semuanya sebenarnya terjadi.",
-    lead: "Situs ini hanya rangkumannya. Isi yang sesungguhnya diunggah tiap hari di kanal-kanal berikut.",
     orgEyebrow: "Kanal organisasi",
-    orgTitle: "Dua nama, satu rumah.",
-    orgLead: (d: string) =>
-      `Sisi kompetitif berjalan di @nng_esport, sementara lini dagangnya diurus terpisah. Angka di bawah ditarik dari halaman profil pada ${d}.`,
     openChannel: "Buka kanal",
     founderEyebrow: "Kanal pendiri",
-    founderTitle: "Arsip yang panjangnya belasan tahun.",
-    founderLead:
-      "Sebagian besar riwayat NNG tersimpan di sini, bukan di kanal organisasinya. Semua tautan di bawah sudah dibuka dan dikonfirmasi.",
     igEyebrow: "Instagram",
-    igTitle: "Jauh lebih sepi, dan itu memang apa adanya.",
-    igLead: (d: string) =>
-      `Angka di Instagram tidak sebanding dengan TikTok. Menyembunyikan selisih itu tidak ada gunanya, karena siapa pun bisa membuka kedua profil dan membandingkan sendiri. Ditarik ${d}.`,
     followers: "Pengikut",
     posts: "Unggahan",
     following: "Diikuti",
@@ -43,20 +33,10 @@ const ui = {
   en: {
     eyebrow: "Official channels",
     title: "Where all of it actually happens.",
-    lead: "This site is only the summary. The real work goes up daily on the channels below.",
     orgEyebrow: "Organisation channels",
-    orgTitle: "Two names, one house.",
-    orgLead: (d: string) =>
-      `The competitive side runs on @nng_esport while the merch line is handled separately. The figures below were read off the profile pages on ${d}.`,
     openChannel: "Open channel",
     founderEyebrow: "Founders' channels",
-    founderTitle: "An archive going back more than a decade.",
-    founderLead:
-      "Most of NNG's history lives here rather than on the organisation's own channels. Every link below has been opened and checked.",
     igEyebrow: "Instagram",
-    igTitle: "A great deal quieter, and that is simply the case.",
-    igLead: (d: string) =>
-      `Instagram is nowhere near TikTok here. Hiding the gap would be pointless, since anyone can open both profiles and compare. Read on ${d}.`,
     followers: "Followers",
     posts: "Posts",
     following: "Following",
@@ -64,8 +44,7 @@ const ui = {
 } as const;
 
 export function Kanal({ lang }: { lang: Lang }) {
-  const { channels, instagramAccounts, snapshotDate, snapshotDateInstagram } =
-    getContent(lang);
+  const { channels, instagramAccounts } = getContent(lang);
   const t = ui[lang];
 
   const utama = channels.filter((c) => c.primary);
@@ -73,19 +52,13 @@ export function Kanal({ lang }: { lang: Lang }) {
 
   return (
     <>
-      <PageHeader eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
+      <PageHeader eyebrow={t.eyebrow} title={t.title} />
 
       {/* Kanal organisasi */}
       <section className="container-page py-20 md:py-28">
         <Reveal>
           <RevealItem>
             <Eyebrow>{t.orgEyebrow}</Eyebrow>
-            <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-              {t.orgTitle}
-            </h2>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-              {t.orgLead(snapshotDate)}
-            </p>
           </RevealItem>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -127,12 +100,6 @@ export function Kanal({ lang }: { lang: Lang }) {
           <Reveal>
             <RevealItem>
               <Eyebrow>{t.founderEyebrow}</Eyebrow>
-              <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-                {t.founderTitle}
-              </h2>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-                {t.founderLead}
-              </p>
             </RevealItem>
 
             <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.06] sm:grid-cols-2">
@@ -174,12 +141,6 @@ export function Kanal({ lang }: { lang: Lang }) {
         <Reveal>
           <RevealItem>
             <Eyebrow>{t.igEyebrow}</Eyebrow>
-            <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-              {t.igTitle}
-            </h2>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-              {t.igLead(snapshotDateInstagram)}
-            </p>
           </RevealItem>
 
           <div className="mt-12 grid gap-5 md:grid-cols-2">

@@ -22,7 +22,6 @@ const ui = {
   id: {
     eyebrow: "Catatan",
     title: "Apa yang sudah benar-benar dicapai.",
-    lead: "Setiap baris di halaman ini membawa tautan ke tempat keterangannya berasal. Yang belum punya tautan tidak ditulis di sini, sekalipun itu membuat daftarnya terlihat pendek.",
     stats: ["Unggahan", "Cabang kompetitif", "Capaian bersumber", "Gelar turnamen"],
     tourneyEyebrow: "Turnamen",
     tourneyTitle: "Hasil pertandingan resmi.",
@@ -30,20 +29,14 @@ const ui = {
     thEvent: "Ajang",
     thDivision: "Divisi",
     thResult: "Hasil",
-    emptyTitle: "Belum ada hasil turnamen yang bisa diverifikasi",
-    emptyBody:
-      "Pencarian di sumber terbuka tidak menemukan catatan pertandingan resmi atas nama NNG Esport. Daftar gelar palsu memang bisa mengisi ruang kosong ini, tapi sponsor yang serius akan mengeceknya, dan satu klaim yang gugur merusak seluruh halaman.",
+    emptyTitle: "Belum ada hasil turnamen",
     emptyAction: "Kirim bukti hasil pertandingan",
     verifiedEyebrow: "Terverifikasi",
-    verifiedTitle: (n: number) => `${n} capaian yang bisa dibuka sendiri.`,
-    verifiedLead:
-      "Klik mana pun untuk membuka halaman aslinya. Tidak ada yang perlu dipercaya begitu saja.",
     openSource: "Buka sumber",
   },
   en: {
     eyebrow: "The record",
     title: "What has actually been achieved.",
-    lead: "Every line on this page carries a link to where it came from. Anything without a link is not written here, even though that keeps the list short.",
     stats: ["Uploads", "Competitive divisions", "Sourced achievements", "Tournament titles"],
     tourneyEyebrow: "Tournaments",
     tourneyTitle: "Official competitive results.",
@@ -51,14 +44,9 @@ const ui = {
     thEvent: "Event",
     thDivision: "Division",
     thResult: "Result",
-    emptyTitle: "No tournament result can be verified yet",
-    emptyBody:
-      "A search of open sources turns up no official competitive record under the NNG Esport name. A list of invented titles would fill this space, but any serious sponsor checks, and one claim that collapses takes the whole page down with it.",
+    emptyTitle: "No tournament results yet",
     emptyAction: "Send proof of a result",
     verifiedEyebrow: "Verified",
-    verifiedTitle: (n: number) => `${n} achievements you can open yourself.`,
-    verifiedLead:
-      "Click any of them to open the original page. Nothing here asks to be taken on trust.",
     openSource: "Open source",
   },
 } as const;
@@ -76,7 +64,7 @@ export function Prestasi({ lang }: { lang: Lang }) {
 
   return (
     <>
-      <PageHeader eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
+      <PageHeader eyebrow={t.eyebrow} title={t.title} />
 
       {/* Ringkasan angka */}
       <section className="border-b border-white/[0.07]">
@@ -136,7 +124,6 @@ export function Prestasi({ lang }: { lang: Lang }) {
             <RevealItem className="mt-10">
               <EmptyState
                 title={t.emptyTitle}
-                body={t.emptyBody}
                 action={
                   <Link
                     href={routePath("contact", lang)}
@@ -157,12 +144,6 @@ export function Prestasi({ lang }: { lang: Lang }) {
           <Reveal>
             <RevealItem>
               <Eyebrow>{t.verifiedEyebrow}</Eyebrow>
-              <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.8rem,3.4vw,2.7rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-                {t.verifiedTitle(milestones.length)}
-              </h2>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-400">
-                {t.verifiedLead}
-              </p>
             </RevealItem>
 
             <div className="mt-12 grid gap-4 md:grid-cols-2">
