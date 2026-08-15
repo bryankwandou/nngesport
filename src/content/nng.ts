@@ -439,29 +439,6 @@ export const milestones = [
   },
 ];
 
-export const values = [
-  {
-    index: "01",
-    title: "Muncul setiap hari",
-    body:
-      "Lima puluh tujuh ribu unggahan tidak dibangun oleh satu video viral, tetapi oleh " +
-      "ribuan hari biasa yang tetap dikerjakan meski tidak ada yang menonton.",
-  },
-  {
-    index: "02",
-    title: "Bangun ulang tanpa drama",
-    body:
-      "Tiga kanal pernah hilang. Jawabannya bukan mengeluh di kolom komentar, melainkan " +
-      "membuka kanal baru dan memulai lagi dari satu pengikut.",
-  },
-  {
-    index: "03",
-    title: "Papua sebagai titik berangkat",
-    body:
-      "Berbasis di Abepura, bukan Jakarta. Jarak ke pusat industri diperlakukan sebagai " +
-      "pekerjaan yang harus diselesaikan, bukan alasan untuk berhenti.",
-  },
-];
 
 export const nav = [
   { label: "Beranda", href: "/" },

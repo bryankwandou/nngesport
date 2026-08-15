@@ -1,6 +1,6 @@
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, RevealItem } from "@/components/motion-primitives";
-import { Eyebrow, SourceBadge } from "@/components/ui";
+import { SourceBadge } from "@/components/ui";
 import { getContent } from "@/content";
 import type { Lang } from "@/lib/i18n";
 
@@ -21,17 +21,15 @@ const ui = {
   id: {
     eyebrow: "Perjalanan",
     title: "Sembilan tahun, satu benang merah.",
-    valuesEyebrow: "Yang dipegang",
   },
   en: {
     eyebrow: "The road so far",
     title: "Nine years, one thread running through them.",
-    valuesEyebrow: "What holds it together",
   },
 } as const;
 
 export function Sejarah({ lang }: { lang: Lang }) {
-  const { timeline, values } = getContent(lang);
+  const { timeline } = getContent(lang);
   const t = ui[lang];
 
   return (
@@ -83,32 +81,6 @@ export function Sejarah({ lang }: { lang: Lang }) {
         </Reveal>
       </section>
 
-      {/* Prinsip */}
-      <section className="border-t border-white/[0.07] bg-ink-900/60">
-        <div className="container-page py-20 md:py-28">
-          <Reveal>
-            <RevealItem>
-              <Eyebrow>{t.valuesEyebrow}</Eyebrow>
-            </RevealItem>
-
-            <div className="mt-12 grid gap-5 md:grid-cols-2">
-              {values.map((v) => (
-                <RevealItem key={v.index}>
-                  <div className="group h-full rounded-2xl border border-white/[0.08] bg-ink-850 p-8 transition-colors duration-300 hover:border-white/[0.16]">
-                    <span className="font-display text-[11px] font-700 tracking-[0.2em] text-flare-400">
-                      {v.index}
-                    </span>
-                    <h3 className="mt-4 font-display text-xl font-700 tracking-tight text-bone-50">
-                      {v.title}
-                    </h3>
-                    <p className="mt-4 text-[15px] leading-[1.75] text-bone-400">{v.body}</p>
-                  </div>
-                </RevealItem>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
     </>
   );
 }

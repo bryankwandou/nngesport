@@ -369,29 +369,6 @@ export const milestones = [
   },
 ];
 
-export const values = [
-  {
-    index: "01",
-    title: "Show up daily",
-    body:
-      "Fifty-seven thousand uploads were not built by one viral clip. They were built by " +
-      "thousands of ordinary days worked with nobody watching.",
-  },
-  {
-    index: "02",
-    title: "Rebuild without the drama",
-    body:
-      "Three channels have been lost. The answer was not to complain in the comments but to " +
-      "open a new channel and start again at one follower.",
-  },
-  {
-    index: "03",
-    title: "Papua as the starting point",
-    body:
-      "Based in Abepura, not Jakarta. The distance to the industry's centre is treated as work " +
-      "to be finished, not a reason to quit.",
-  },
-];
 
 export const nav = [
   { label: "Home", href: "/en" },
@@ -459,7 +436,7 @@ const _parity: Record<keyof Shape, true> = {
   accountStats: true, motto: true, instagramAccounts: true, tradingCommunity: true,
   leadership: true, divisions: true, otherTitles: true,
   timeline: true, channels: true, roster: true, openSlots: true,
-  achievements: true, milestones: true, values: true, nav: true,
+  achievements: true, milestones: true, nav: true,
   storeChannels: true, storeCategories: true, contact: true,
 };
 void _parity;

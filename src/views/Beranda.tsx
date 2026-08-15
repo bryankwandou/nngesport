@@ -19,23 +19,16 @@ const ui = {
       "Lini dagang NNG Store",
     ],
     whoEyebrow: "Siapa kami",
-    whoTitle: "Tidak ada bagian yang datang dengan cepat.",
     numbersEyebrow: "Angka sebenarnya",
-    numbersTitle: "Tiga akun, ditarik langsung dari sumbernya.",
     divEyebrow: "Divisi",
-    divTitle: "Tiga cabang kompetitif, disebut sendiri di bio resmi.",
     rosterCard: "Susunan pemain",
     rosterCardSub: "Lihat posisi yang masih terbuka",
     leadEyebrow: "Yang memimpin",
-    leadTitle: "Dua orang, satu kebiasaan yang sama.",
-    valuesEyebrow: "Cara kerja",
     tlEyebrow: "Garis waktu",
     tlTitle: (n: number) => `${n} titik yang mengubah arah.`,
     tlFull: "Versi lengkap",
     msEyebrow: "Di luar arena",
-    msTitle: "Capaian yang jejaknya bisa ditelusuri siapa pun.",
     openSource: "Buka sumber",
-    ctaTitle: "Kalau Anda melihat sesuatu di sini, mari bicara.",
     ctaPrimary: "Kirim pesan",
     ctaSecondary: "Lihat catatan prestasi",
   },
@@ -50,23 +43,16 @@ const ui = {
       "NNG Store merch line",
     ],
     whoEyebrow: "Who we are",
-    whoTitle: "None of it arrived quickly.",
     numbersEyebrow: "The real numbers",
-    numbersTitle: "Three accounts, read straight off the source.",
     divEyebrow: "Divisions",
-    divTitle: "Three competitive divisions, named in the official bio.",
     rosterCard: "The line-up",
     rosterCardSub: "See which positions are still open",
     leadEyebrow: "Who runs it",
-    leadTitle: "Two people, one shared habit.",
-    valuesEyebrow: "How the work goes",
     tlEyebrow: "Timeline",
     tlTitle: (n: number) => `${n} points where the direction changed.`,
     tlFull: "Full version",
     msEyebrow: "Away from the arena",
-    msTitle: "Work anyone can trace for themselves.",
     openSource: "Open source",
-    ctaTitle: "If you see something here, let's talk.",
     ctaPrimary: "Send a message",
     ctaSecondary: "See the record",
   },
@@ -83,7 +69,6 @@ export function Beranda({ lang }: { lang: Lang }) {
     otherTitles,
     snapshotDate,
     timeline,
-    values,
   } = getContent(lang);
   const t = ui[lang];
 
@@ -98,9 +83,6 @@ export function Beranda({ lang }: { lang: Lang }) {
         <Reveal className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <RevealItem>
             <Eyebrow>{t.whoEyebrow}</Eyebrow>
-            <h2 className="mt-5 max-w-md font-display text-[clamp(1.9rem,3.6vw,2.9rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-              {t.whoTitle}
-            </h2>
           </RevealItem>
 
           <RevealItem className="space-y-5 text-[15px] leading-[1.75] text-bone-200">
@@ -132,9 +114,6 @@ export function Beranda({ lang }: { lang: Lang }) {
         <Reveal>
           <RevealItem>
             <Eyebrow>{t.numbersEyebrow}</Eyebrow>
-            <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.9rem,3.6vw,2.9rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-              {t.numbersTitle}
-            </h2>
           </RevealItem>
 
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -157,9 +136,6 @@ export function Beranda({ lang }: { lang: Lang }) {
           <Reveal>
             <RevealItem>
               <Eyebrow>{t.divEyebrow}</Eyebrow>
-              <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.9rem,3.6vw,2.9rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-                {t.divTitle}
-              </h2>
             </RevealItem>
 
             <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -216,9 +192,6 @@ export function Beranda({ lang }: { lang: Lang }) {
         <Reveal>
           <RevealItem>
             <Eyebrow>{t.leadEyebrow}</Eyebrow>
-            <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.9rem,3.6vw,2.9rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-              {t.leadTitle}
-            </h2>
           </RevealItem>
 
           <div className="mt-12 grid gap-5 lg:grid-cols-2">
@@ -286,36 +259,6 @@ export function Beranda({ lang }: { lang: Lang }) {
         </Reveal>
       </section>
 
-      {/* --------------------------------------------------------- Prinsip --- */}
-      <section className="border-y border-white/[0.07] bg-ink-900/60">
-        <div className="container-page py-24 md:py-28">
-          <Reveal className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-            <RevealItem>
-              <Eyebrow>{t.valuesEyebrow}</Eyebrow>
-            </RevealItem>
-
-            <div className="grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.06] sm:grid-cols-2">
-              {values.map((v) => (
-                <RevealItem key={v.index}>
-                  <div className="group h-full bg-ink-850 p-7 transition-colors duration-300 hover:bg-ink-800">
-                    <span className="font-display text-[11px] font-700 tracking-[0.2em] text-flare-400">
-                      {v.index}
-                    </span>
-                    <h3 className="mt-4 font-display text-base font-700 tracking-tight text-bone-50">
-                      {v.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-bone-400">{v.body}</p>
-                    <span
-                      aria-hidden
-                      className="mt-5 block h-px w-0 bg-linear-to-r from-flare-500 to-volt-400 transition-all duration-500 group-hover:w-full"
-                    />
-                  </div>
-                </RevealItem>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
       {/* ------------------------------------------------ Garis waktu ringkas --- */}
       <section className="container-page py-24 md:py-32">
@@ -369,9 +312,6 @@ export function Beranda({ lang }: { lang: Lang }) {
           <Reveal>
             <RevealItem>
               <Eyebrow>{t.msEyebrow}</Eyebrow>
-              <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.9rem,3.6vw,2.9rem)] font-800 leading-[1.06] tracking-[-0.03em]">
-                {t.msTitle}
-              </h2>
             </RevealItem>
 
             <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -416,9 +356,6 @@ export function Beranda({ lang }: { lang: Lang }) {
                 className="pointer-events-none absolute left-1/2 top-0 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-flare-500/20 blur-[100px]"
               />
               <LogoCrest size={160} className="relative mx-auto h-20 w-20 ring-1 ring-white/12" />
-              <h2 className="relative mx-auto mt-8 max-w-2xl font-display text-[clamp(1.9rem,4vw,3.1rem)] font-800 leading-[1.04] tracking-[-0.03em]">
-                {t.ctaTitle}
-              </h2>
               <div className="relative mt-9 flex flex-wrap justify-center gap-3">
                 <Link
                   href={routePath("contact", lang)}
